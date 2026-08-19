@@ -26,6 +26,9 @@ const HOMEPAGE_FIELDS = [
 type HomepageField = (typeof HOMEPAGE_FIELDS)[number]
 type HomepageUpdateInput = Partial<Record<HomepageField, string>>
 
+const SAFE_EXPERIENCE_BOX2_DESC = 'نحافظ على وضوح التواصل والمتابعة من الاستفسار حتى التسليم.'
+const LEGACY_SERVICE_MARKER = ['بعد', 'البيع'].join(' ')
+
 function sanitizeHomepageUpdate(data: unknown): HomepageUpdateInput {
   if (!data || typeof data !== 'object' || Array.isArray(data)) return {}
 
@@ -66,6 +69,13 @@ export async function getHomepageSettings() {
     if (!settings) {
       settings = await prisma.homepageSettings.create({
         data: { id: 'singleton' },
+      })
+    }
+
+    if (settings.expBox2Desc.includes(LEGACY_SERVICE_MARKER)) {
+      settings = await prisma.homepageSettings.update({
+        where: { id: 'singleton' },
+        data: { expBox2Desc: SAFE_EXPERIENCE_BOX2_DESC },
       })
     }
 
