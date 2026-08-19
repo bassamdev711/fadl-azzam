@@ -61,7 +61,7 @@ export default function Experience({
             <div className="absolute inset-0 translate-x-4 translate-y-4 border-2 border-brand/20" />
             <div className="relative h-full min-h-[420px] overflow-hidden bg-brand shadow-2xl lg:min-h-[560px]">
               <Image
-                src="/brand/experience-showroom.jpg"
+                src="/brand/experience-showroom.png"
                 alt={`أجهزة منزلية وحلول الطاقة الشمسية من ${brandName}`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
