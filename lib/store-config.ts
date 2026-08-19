@@ -15,10 +15,10 @@ export type StoreConfig = {
 }
 
 export const DEFAULT_STORE_CONFIG: StoreConfig = {
-  name: 'متجرك',
-  nameLatin: 'YOUR STORE',
-  tagline: 'منتجات مختارة بعناية، وتجربة تستحق التذكر.',
-  description: 'اكتشف مجموعة مختارة من المنتجات مع تجربة تسوق واضحة وآمنة ومصممة لعلامتك التجارية.',
+  name: 'فضل عزام',
+  nameLatin: 'FADL AZZAM',
+  tagline: 'للتجارة العامة والحلول العملية.',
+  description: 'فضل عزام للتجارة العامة: توريد منتجات وحلول عملية للأجهزة المنزلية والطاقة الشمسية والأعمال التجارية.',
   logoUrl: null,
   faviconUrl: null,
   ogImageUrl: null,
@@ -40,13 +40,18 @@ type StoreSettingsRecord = {
   currencyCode: string
 }
 
+function isLegacyBrandValue(value: string | null | undefined) {
+  const normalized = value?.trim().toLowerCase() || ''
+  return ['متجر طيف', 'طيف', 'tif', 'your store', 'متجرك', 'عطر', 'عطور', 'perfume', 'parfum'].some((term) => normalized.includes(term))
+}
+
 function normalizeStoreConfig(settings: StoreSettingsRecord | null | undefined): StoreConfig {
   return {
     ...DEFAULT_STORE_CONFIG,
-    name: settings?.storeName?.trim() || DEFAULT_STORE_CONFIG.name,
-    nameLatin: settings?.storeNameLatin?.trim() || DEFAULT_STORE_CONFIG.nameLatin,
-    tagline: settings?.storeTagline?.trim() || DEFAULT_STORE_CONFIG.tagline,
-    description: settings?.storeDescription?.trim() || DEFAULT_STORE_CONFIG.description,
+    name: !isLegacyBrandValue(settings?.storeName) && settings?.storeName?.trim() ? settings.storeName.trim() : DEFAULT_STORE_CONFIG.name,
+    nameLatin: !isLegacyBrandValue(settings?.storeNameLatin) && settings?.storeNameLatin?.trim() ? settings.storeNameLatin.trim() : DEFAULT_STORE_CONFIG.nameLatin,
+    tagline: !isLegacyBrandValue(settings?.storeTagline) && settings?.storeTagline?.trim() ? settings.storeTagline.trim() : DEFAULT_STORE_CONFIG.tagline,
+    description: !isLegacyBrandValue(settings?.storeDescription) && settings?.storeDescription?.trim() ? settings.storeDescription.trim() : DEFAULT_STORE_CONFIG.description,
     logoUrl: settings?.logoUrl || null,
     faviconUrl: settings?.faviconUrl || null,
     ogImageUrl: settings?.ogImageUrl || null,
@@ -81,10 +86,10 @@ export const getStoreConfig = cache(async (): Promise<StoreConfig> => {
 })
 
 export function getSiteUrl(storeUrl?: string | null): URL {
-  const candidate = storeUrl || process.env.NEXT_PUBLIC_SITE_URL || 'https://example-store.vercel.app'
+  const candidate = storeUrl || process.env.NEXT_PUBLIC_SITE_URL || 'https://fadl-azzam.vercel.app'
   try {
     return new URL(candidate)
   } catch {
-    return new URL('https://example-store.vercel.app')
+    return new URL('https://fadl-azzam.vercel.app')
   }
 }

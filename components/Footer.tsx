@@ -17,8 +17,8 @@ const XIcon = (props: React.SVGProps<SVGSVGElement> & { size?: number }) => (
 );
 
 export default async function Footer({
-  storeName = 'متجرك',
-  storeNameLatin = 'YOUR STORE',
+  storeName = 'فضل عزام',
+  storeNameLatin = 'FADL AZZAM',
 }: {
   storeName?: string
   storeNameLatin?: string
@@ -90,7 +90,7 @@ export default async function Footer({
               <span className="text-2xl font-light text-surface ml-2 tracking-[0.2em]">{storeName}</span>
             </Link>
             <p className="text-sm leading-relaxed text-surface/80 mb-6">
-              نختار منتجاتنا بعناية لنمنحك تجربة واضحة، موثوقة، وتترك أثرًا يستحق التذكر.
+              فضل عزام للتجارة العامة؛ خيارات عملية، توريد موثوق، وتواصل واضح للأعمال والمنازل.
             </p>
             <div className="flex gap-4">
               {showInstagram && (
@@ -154,7 +154,7 @@ export default async function Footer({
           <div>
             <h3 className="text-surface font-bold mb-6 tracking-wider text-base">استكشف</h3>
             <ul className="space-y-4">
-              {['المجموعة', 'الأكثر مبيعًا', 'المنتجات الجديدة', 'التصنيفات'].map((item) => (
+              {['مجالاتنا', 'حلول مطلوبة', 'فرص وتوريد', 'تجهيزات تجارية'].map((item) => (
                 <li key={item}>
                   <Link href="/products" className="text-sm text-surface/80 hover:text-accent transition-colors">
                     {item}
@@ -165,7 +165,7 @@ export default async function Footer({
           </div>
 
           <div>
-            <h3 className="text-surface font-bold mb-6 tracking-wider text-base">خدمة العملاء</h3>
+            <h3 className="text-surface font-bold mb-6 tracking-wider text-base">خدماتنا</h3>
             <ul className="space-y-4">
               {legalPages.map((page) => (
                 <li key={page.id}>
@@ -190,7 +190,7 @@ export default async function Footer({
               )}
               <li>
                 <Link href="/track" className="text-sm text-surface/80 hover:text-accent transition-colors">
-                  تتبع الطلب
+                  متابعة الطلب
                 </Link>
               </li>
               <li>

@@ -22,11 +22,9 @@
   --color-surface-alt:       color-mix(in srgb, var(--brand-surface) 95%, black);
   --color-foreground-dark:   color-mix(in srgb, var(--brand-foreground) 40%, black);
 
-  /* ── خاص بالرسومات / الزجاجة ── */
-  --color-bottle-brand-start: color-mix(in srgb, var(--brand-color) 65%, black);
-  --color-bottle-brand-end:   color-mix(in srgb, var(--brand-color) 30%, black);
-  --color-bottle-cap-light:   color-mix(in srgb, var(--brand-accent) 85%, white);
-  --color-bottle-cap-dark:    color-mix(in srgb, var(--brand-accent) 60%, black);
+  /* ── مشتقات الهوية التجارية ── */
+  --shadow-brand: 0 20px 60px color-mix(in srgb, var(--brand-color) 24%, transparent);
+  --shadow-accent: 0 12px 36px color-mix(in srgb, var(--brand-accent) 22%, transparent);
 
   /* ── خطوط وحركات ── */
   --font-sans: var(--font-tajawal), Arial, sans-serif;
@@ -38,7 +36,7 @@
     100% { transform: translateX(-100%); }
   }
 
-  /* ── أسماء بديلة للوحة التحكم (تُعيَّن على الهوية الجديدة تلقائياً) ── */
+  /* ── أسماء بديلة متوافقة مع مكونات لوحة التحكم ── */
   --color-emerald:    var(--brand-color);
   --color-gold:       var(--brand-accent);
   --color-ivory:      var(--brand-surface);

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const DEFAULT_SITE_URL = 'https://example-store.vercel.app'
+const DEFAULT_SITE_URL = 'https://fadl-azzam.vercel.app'
 
 function getBaseUrl(): string {
   try {

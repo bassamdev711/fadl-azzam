@@ -6,6 +6,7 @@ import { getCurrency } from '@/lib/currency'
 import ProductCard from '@/components/ProductCard'
 import CategoryFilterChips from '@/components/CategoryFilterChips'
 import { getStoreConfig } from '@/lib/store-config'
+import { isLegacyCatalogRecord, isLegacyCollectionRecord } from '@/lib/catalog-utils'
 
 export async function generateMetadata(): Promise<Metadata> {
   const store = await getStoreConfig()
@@ -59,11 +60,14 @@ export default async function ProductsPage({
       },
     })
 
+    products = products.filter((product) => !isLegacyCatalogRecord(product))
+
     // جلب التصنيفات النشطة للفلاتر
     dbCollections = await prisma.collection.findMany({
       where: { isActive: true },
       orderBy: { createdAt: 'desc' }
     })
+    dbCollections = dbCollections.filter((collection) => !isLegacyCollectionRecord(collection))
   } catch (error) {
     console.error('Failed to load products page data:', error)
     dataLoadFailed = true
@@ -81,7 +85,7 @@ export default async function ProductsPage({
 
   return (
     <main className="min-h-screen bg-surface text-foreground font-sans flex flex-col" dir="rtl">
-      <Navbar />
+      <Navbar storeName="فضل عزام" storeNameLatin="FADL AZZAM" />
 
       <div className="flex-grow pt-16 md:pt-20 pb-24 relative">
         {/* Quick Filter Chips — Responsive & Sticky */}
@@ -120,7 +124,7 @@ export default async function ProductsPage({
         </section>
       </div>
 
-      <Footer />
+        <Footer storeName="فضل عزام" storeNameLatin="FADL AZZAM" />
     </main>
   )
 }

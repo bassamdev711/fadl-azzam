@@ -2,6 +2,7 @@ import prisma from '@/lib/prisma'
 import ProductsClient from './ProductsClient'
 import { getCurrency } from '@/lib/currency'
 import { Prisma } from '@prisma/client'
+import { isLegacyCatalogRecord } from '@/lib/catalog-utils'
 
 type ProductVariantRecord = {
   id: string
@@ -93,7 +94,7 @@ export default async function ProductsServer({ type, title, subtitle }: Products
       fetchedProducts = fetchedProducts.slice(0, 8) // Take top 8
     }
 
-    products = fetchedProducts
+    products = fetchedProducts.filter((product: ProductRecord) => !isLegacyCatalogRecord(product))
 
   } catch (e) {
     console.error('Could not load products from DB', e)

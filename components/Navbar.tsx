@@ -9,8 +9,8 @@ import SearchModal from "./SearchModal";
 import { useCartAnimation } from "./CartAnimationProvider";
 
 export default function Navbar({
-  storeName = 'متجرك',
-  storeNameLatin = 'YOUR STORE',
+  storeName = 'فضل عزام',
+  storeNameLatin = 'FADL AZZAM',
 }: {
   storeName?: string
   storeNameLatin?: string
@@ -58,9 +58,9 @@ export default function Navbar({
 
   const navLinks = [
     { name: "الرئيسية", href: "/" },
-    { name: "المجموعة", href: "/products" },
+    { name: "مجالاتنا", href: "/products" },
     { name: "من نحن", href: "/#about" },
-    { name: `تجربة ${storeName}`, href: "/#experience" },
+    { name: "كيف نعمل", href: "/#experience" },
     { name: "تواصل معنا", href: "/#contact" },
   ];
 

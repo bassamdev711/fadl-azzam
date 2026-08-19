@@ -10,6 +10,7 @@ import ProductReviews from '@/components/ProductReviews'
 import { getCurrency } from '@/lib/currency'
 import { getStoreConfig } from '@/lib/store-config'
 import ProductCard from '@/components/ProductCard'
+import { isLegacyCatalogRecord } from '@/lib/catalog-utils'
 
 export const dynamic = 'force-dynamic'
 
@@ -24,7 +25,7 @@ export async function generateMetadata({
     prisma.product.findUnique({ where: { slug: decodedSlug } }),
     getStoreConfig(),
   ])
-  if (!product) return {}
+  if (!product || isLegacyCatalogRecord(product)) return {}
   return {
     title: `${product.name} | ${store.name}`,
     description: product.description || `اكتشف ${product.name} من ${store.name}`,
@@ -44,10 +45,10 @@ export default async function ProductDetailPage({
     where: { slug: decodedSlug, isActive: true },
     include: { variants: true }
   })
-  if (!product) notFound()
+  if (!product || isLegacyCatalogRecord(product)) notFound()
 
   // المنتجات المرتبطة — حقول أساسية فقط (لا حاجة للوصف أو المخزون)
-  const related = await prisma.product.findMany({
+  let related = await prisma.product.findMany({
     where: {
       isActive: true,
       id: { not: product.id },
@@ -67,9 +68,11 @@ export default async function ProductDetailPage({
     },
   })
 
+  related = related.filter((item) => !isLegacyCatalogRecord(item))
+
   return (
     <main className="min-h-screen bg-surface text-foreground font-sans">
-      <Navbar />
+      <Navbar storeName="فضل عزام" storeNameLatin="FADL AZZAM" />
 
       {/* Breadcrumb */}
       <div className="pt-20 lg:pt-24 pb-2 px-6" dir="rtl">
@@ -77,7 +80,7 @@ export default async function ProductDetailPage({
           <nav className="flex items-center gap-2 text-xs text-foreground/50 font-medium">
             <Link href="/" className="hover:text-brand transition-colors">الرئيسية</Link>
             <ChevronRight className="w-3 h-3 rotate-180" />
-            <Link href="/products" className="hover:text-brand transition-colors">المجموعة</Link>
+            <Link href="/products" className="hover:text-brand transition-colors">مجالاتنا</Link>
             <ChevronRight className="w-3 h-3 rotate-180" />
             <span className="text-brand font-bold">{product.name}</span>
           </nav>
@@ -130,7 +133,7 @@ export default async function ProductDetailPage({
         </section>
       )}
 
-      <Footer />
+      <Footer storeName="فضل عزام" storeNameLatin="FADL AZZAM" />
     </main>
   )
 }

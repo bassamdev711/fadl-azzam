@@ -51,31 +51,31 @@ export default async function Home() {
       {/* Campaign Banner (if any) */}
       {activeCampaign && <CampaignBanner campaign={activeCampaign} />}
       
-      {/* 2. Value Proposition */}
+      {/* 2. About Fadl Azzam */}
       <About data={safeSettings} brandName={store.name} />
       
-      {/* 3. Categories (Collections) */}
+      {/* 3. Business Areas */}
       <CollectionsSection brandName={store.name} />
       
-      {/* 4. Bestsellers */}
-      <ProductsServer 
-        type="bestsellers" 
-        title="الأكثر مبيعاً" 
-        subtitle="اختيارات عملائنا المفضلة" 
+      {/* 4. Featured solutions */}
+      <ProductsServer
+        type="bestsellers"
+        title="حلول مطلوبة"
+        subtitle="خيارات عملية للأعمال والمنازل"
       />
-      
+
       {/* 5. Offers */}
-      <ProductsServer 
-        type="offers" 
-        title="عروض حصرية" 
-        subtitle="فرصتك لاقتناء الفخامة" 
+      <ProductsServer
+        type="offers"
+        title="فرص وتوريد"
+        subtitle="خيارات مناسبة لاحتياجك"
       />
-      
-      {/* 6. Handpicked / Featured */}
-      <ProductsServer 
-        type="featured" 
-        title="منتجات مختارة" 
-        subtitle={`ترشيحات فريق ${store.name}`}
+
+      {/* 6. Featured */}
+      <ProductsServer
+        type="featured"
+        title="مختارات فضل عزام"
+        subtitle={`حلول وتجهيزات من ${store.name}`}
       />
       
       {/* 7. Why trust us */}

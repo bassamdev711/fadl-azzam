@@ -14,7 +14,22 @@ type CollectionCard = {
 // Caching to improve speed
 export const revalidate = 3600 // revalidate every hour
 
-export default async function CollectionsSection({ brandName = 'متجرك' }: { brandName?: string }) {
+const categoryImages: Record<string, string> = {
+  solar: '/brand/solar-category.jpg',
+  'طاقة': '/brand/solar-category.jpg',
+  home: '/brand/home-appliances-category.jpg',
+  'أجهزة': '/brand/home-appliances-category.jpg',
+  trade: '/brand/general-trade-category.jpg',
+  'تجارة': '/brand/general-trade-category.jpg',
+};
+
+function getCategoryImage(collection: CollectionCard) {
+  if (collection.imageUrl) return collection.imageUrl;
+  const key = `${collection.slug} ${collection.name}`.toLowerCase();
+  return Object.entries(categoryImages).find(([term]) => key.includes(term.toLowerCase()))?.[1] || '/brand/general-trade-category.jpg';
+}
+
+export default async function CollectionsSection({ brandName = 'فضل عزام' }: { brandName?: string }) {
   let collections: CollectionCard[] = []
   
   try {
@@ -30,17 +45,17 @@ export default async function CollectionsSection({ brandName = 'متجرك' }: {
   if (collections.length === 0) return null
 
   return (
-    <section className="py-12 md:py-24 bg-surface" dir="rtl">
+    <section id="business-areas" className="py-12 md:py-24 bg-surface" dir="rtl">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-16 gap-4">
           <div>
             <span className="text-accent tracking-[0.3em] uppercase text-xs font-bold mb-4 block">
-              تصنيفات {brandName}
+مجالات {brandName}
             </span>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground">استكشف التصنيفات</h2>
+            <h2 className="text-3xl md:text-5xl font-black text-foreground">استكشف مجالاتنا</h2>
           </div>
           <Link href="/products" className="inline-flex items-center gap-2 text-brand font-bold border-b border-brand/30 hover:border-brand transition-colors pb-1">
-            جميع المنتجات <ArrowLeft size={16} />
+            استكشف الحلول <ArrowLeft size={16} />
           </Link>
         </div>
 
@@ -51,19 +66,15 @@ export default async function CollectionsSection({ brandName = 'متجرك' }: {
               href={`/products?collection=${collection.slug}`}
               className="group relative h-[200px] md:h-[400px] overflow-hidden rounded-xl md:rounded-3xl bg-black/5 border border-black/20 shadow-md hover:shadow-xl transition-shadow duration-300"
             >
-              {collection.imageUrl ? (
+              {getCategoryImage(collection) ? (
                 <Image 
-                  src={collection.imageUrl} 
+                  src={getCategoryImage(collection)}
                   alt={collection.name}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-              ) : (
-                <div className="absolute inset-0 bg-brand/10 flex items-center justify-center">
-                  <span className="text-brand font-black text-3xl opacity-20">{brandName}</span>
-                </div>
-              )}
+              ) : null}
               
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent" />
               
