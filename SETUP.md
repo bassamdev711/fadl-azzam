@@ -96,13 +96,13 @@ npx prisma generate
 ```
 
 ### ملاحظة مهمة
-أمر البناء في `package.json` يتضمن `prisma db push` تلقائياً:
+أمر البناء في `package.json` يطبّق مخطط Prisma ويشغّل seed الآمن تلقائيًا:
 ```json
-"build": "prisma db push --accept-data-loss && prisma generate && next build"
+"build": "prisma db push && prisma generate && prisma db seed && next build"
 ```
-هذا يضمن تطبيق تغييرات قاعدة البيانات تلقائياً مع كل deployment على Vercel.
+هذا ينشئ الجداول الناقصة في قاعدة Neon الجديدة ويجهز الإعدادات والمجالات الأساسية. لا يستخدم الأمر `--accept-data-loss`، لذلك يتوقف البناء إذا اكتشف تغييرًا قد يسبب فقدان بيانات.
 
-> ⚠️ `--accept-data-loss` آمن فقط عند إضافة أعمدة جديدة. لا تستخدمه عند حذف أعمدة تحتوي بيانات.
+> ملاحظة: لا تُفعّل `SEED_DEMO_DATA=true` في Production إذا كنت لا تريد إنشاء منتجات تجريبية.
 
 ---
 
