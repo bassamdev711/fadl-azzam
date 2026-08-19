@@ -72,13 +72,13 @@ export default function Navbar({
       style={{ top: topOffset }}
       className={`fixed w-full z-50 border-b transition-all duration-500 ${
         isScrolled
-          ? "border-accent/30 bg-[#071a4d]/95 py-1.5 shadow-[0_12px_30px_rgba(3,12,45,0.28)] backdrop-blur-xl md:py-2"
-          : "border-accent/25 bg-gradient-to-l from-[#071a4d] via-[#123bb7] to-[#071a4d] py-2.5 shadow-[0_8px_24px_rgba(3,12,45,0.18)] md:py-3.5"
+          ? "border-accent/30 bg-[#071a4d]/95 py-1 shadow-[0_12px_30px_rgba(3,12,45,0.28)] backdrop-blur-xl md:py-1.5"
+          : "border-accent/25 bg-gradient-to-l from-[#071a4d] via-[#123bb7] to-[#071a4d] py-1.5 shadow-[0_8px_24px_rgba(3,12,45,0.18)] md:py-2.5"
       }`}
       dir="rtl"
     >
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-l from-transparent via-accent/80 to-transparent" />
-      <div className="relative mx-auto flex h-12 max-w-7xl items-center justify-between px-4 md:h-14 md:px-8">
+      <div className="relative mx-auto flex h-10 max-w-7xl items-center justify-between px-4 md:h-12 md:px-8">
         {/* Logo */}
         <Link
           href="/"
@@ -86,11 +86,11 @@ export default function Navbar({
           className="group relative z-50 flex items-center"
         >
           <span className="flex flex-col items-end leading-none" dir="rtl">
-            <span className="text-xl font-black tracking-tight text-surface transition-colors duration-300 md:text-[1.55rem]">
+            <span className="text-lg font-black tracking-tight text-surface transition-colors duration-300 md:text-[1.4rem]">
               {storeName}
             </span>
-            <span className="mt-1 h-[2px] w-10 bg-accent transition-all duration-300 group-hover:w-full" />
-            <span dir="ltr" className="mt-1 text-[9px] font-semibold tracking-[0.34em] text-accent/95 transition-colors duration-300 md:text-[10px]">
+            <span className="mt-1 h-[2px] w-full bg-accent" />
+            <span dir="ltr" className="mt-1 text-[8px] font-semibold tracking-[0.3em] text-accent/95 transition-colors duration-300 md:text-[9px]">
               {storeNameLatin}
             </span>
           </span>
@@ -102,7 +102,7 @@ export default function Navbar({
             <Link
               key={link.name}
               href={link.href}
-              className="group relative rounded-full px-4 py-2 text-sm font-medium tracking-wide text-surface/80 transition-all duration-300 hover:bg-white/[0.08] hover:text-surface"
+              className="group relative rounded-full px-3 py-1.5 text-sm font-medium tracking-wide text-surface/80 transition-all duration-300 hover:bg-white/[0.08] hover:text-surface"
             >
               {link.name}
               <span className="absolute bottom-1 right-4 h-px w-0 bg-accent transition-all duration-300 group-hover:w-[calc(100%-2rem)]"></span>
@@ -114,27 +114,27 @@ export default function Navbar({
         <div className="relative z-50 flex items-center gap-1.5 md:gap-2">
           <Link 
             href="/track" 
-            className="hidden h-9 w-9 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent sm:flex"
+            className="hidden h-8 w-8 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent sm:flex"
             aria-label="تتبع الطلب"
           >
             <Package className="w-[18px] h-[18px] md:w-5 md:h-5" strokeWidth={1.5} />
           </Link>
           <Link 
             href="/favorites" 
-            className="relative hidden h-9 w-9 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent md:flex"
+            className="relative hidden h-8 w-8 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent md:flex"
             aria-label="المفضلة"
           >
             <Heart className="w-[18px] h-[18px] md:w-5 md:h-5" strokeWidth={1.5} />
           </Link>
           <button 
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent"
             aria-label="البحث"
             onClick={() => setIsSearchOpen(true)}
           >
             <Search className="w-[18px] h-[18px] md:w-5 md:h-5" strokeWidth={1.5} />
           </button>
           <div ref={localRef} className="relative hidden md:block">
-            <Link href="/cart" className="relative flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent" aria-label="سلة المشتريات">
+            <Link href="/cart" className="relative flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent" aria-label="سلة المشتريات">
               <motion.div
                 animate={triggerBounce ? { scale: [1, 1.4, 0.9, 1.15, 1], rotate: [0, -8, 8, -4, 0] } : {}}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -160,7 +160,7 @@ export default function Navbar({
           
           {/* Mobile Menu Toggle */}
           <button
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent md:hidden"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
             aria-expanded={isMobileMenuOpen}
