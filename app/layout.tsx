@@ -63,9 +63,9 @@ export async function generateMetadata(): Promise<Metadata> {
       google: 'NCVmwPE86l-HLKPT47EhXHhIKv0_Eb_tNh0bG6jtNEg',
     },
     icons: {
-      icon: store.faviconUrl ?? '/favicon.ico',
-      shortcut: store.faviconUrl ?? '/favicon.ico',
-      apple: store.faviconUrl ?? '/favicon.ico',
+      icon: store.faviconUrl ?? '/brand/favicon-store.png',
+      shortcut: store.faviconUrl ?? '/brand/favicon-store.png',
+      apple: store.faviconUrl ?? '/brand/favicon-store.png',
     },
   }
 }
