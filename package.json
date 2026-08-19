@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "prisma db push && prisma generate && prisma db seed && next build",
     "db:push": "prisma db push",
     "start": "next start",
     "lint": "eslint"
@@ -44,6 +44,7 @@
     "eslint-config-next": "16.3.1",
     "prisma": "^5.22.0",
     "tailwindcss": "^4",
+    "tsx": "^4.23.12",
     "typescript": "^5"
   },
   "prisma": {

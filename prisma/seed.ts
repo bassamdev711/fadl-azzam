@@ -20,6 +20,46 @@ async function main() {
     },
   })
 
+  const collections = [
+    {
+      name: 'الأجهزة المنزلية',
+      slug: 'home-appliances',
+      description: 'أجهزة منزلية عملية للاستخدام اليومي، مع خيارات مناسبة للمنازل والأعمال.',
+      imageUrl: '/brand/home-appliances-category.jpg',
+      isActive: true,
+    },
+    {
+      name: 'الطاقة الشمسية',
+      slug: 'solar-solutions',
+      description: 'حلول ومستلزمات الطاقة الشمسية للاحتياجات المنزلية والتجارية.',
+      imageUrl: '/brand/solar-category.jpg',
+      isActive: true,
+    },
+    {
+      name: 'التجهيزات التجارية',
+      slug: 'business-equipment',
+      description: 'تجهيزات وخيارات عملية تساعدك على تشغيل مشروعك بثقة ووضوح.',
+      imageUrl: '/brand/general-trade-category.jpg',
+      isActive: true,
+    },
+    {
+      name: 'التجارة العامة',
+      slug: 'general-trading',
+      description: 'توريد وخيارات متنوعة تُبنى على احتياجك الفعلي وميزانيتك.',
+      imageUrl: '/brand/hero-facade.jpg',
+      isActive: true,
+    },
+  ]
+
+  for (const collection of collections) {
+    await prisma.collection.upsert({
+      where: { slug: collection.slug },
+      update: {},
+      create: collection,
+    })
+  }
+  console.log('Business areas initialized.')
+
   const shippingCityCount = await prisma.shippingCity.count()
   if (shippingCityCount === 0) {
     await prisma.shippingCity.create({
