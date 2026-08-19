@@ -32,6 +32,9 @@ export async function generateMetadata(): Promise<Metadata> {
       description: store.description,
       ...(store.ogImageUrl ? { images: [store.ogImageUrl] } : {}),
     },
+    verification: {
+      google: 'NCVmwPE86l-HLKPT47EhXHhIKv0_Eb_tNh0bG6jtNEg',
+    },
     icons: {
       icon: store.faviconUrl ?? '/favicon.ico',
       shortcut: store.faviconUrl ?? '/favicon.ico',
