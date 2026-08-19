@@ -55,7 +55,7 @@ export default function ReviewForm({ productId, onSuccess }: { productId?: strin
   }
 
   return (
-    <div className="bg-white p-6 md:p-8 rounded-xl border border-black/5 shadow-sm max-w-2xl mx-auto my-12 relative overflow-hidden">
+    <div className="bg-[#0a2c7a] p-6 md:p-8 rounded-xl border border-white/10 shadow-2xl max-w-2xl mx-auto my-12 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1 h-full bg-brand"></div>
       
       <h3 className="text-2xl font-black text-foreground mb-2">شاركنا رأيك</h3>
@@ -76,7 +76,7 @@ export default function ReviewForm({ productId, onSuccess }: { productId?: strin
                 <Star 
                   size={28} 
                   fill={star <= rating ? "var(--color-accent)" : "none"} 
-                  stroke={star <= rating ? "var(--color-accent)" : "#d1d5db"} 
+                  stroke={star <= rating ? "var(--color-accent)" : "rgba(255,255,255,0.3)"}
                   strokeWidth={1.5} 
                 />
               </button>
@@ -93,7 +93,7 @@ export default function ReviewForm({ productId, onSuccess }: { productId?: strin
               onChange={(e) => setName(e.target.value)}
               required
               placeholder="اسمك الكريم"
-              className="w-full bg-surface-alt border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand/20 transition-all"
+              className="w-full bg-[#071a4d] text-surface border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all placeholder:text-surface/40"
             />
           </div>
           <div>
@@ -103,7 +103,7 @@ export default function ReviewForm({ productId, onSuccess }: { productId?: strin
               value={city}
               onChange={(e) => setCity(e.target.value)}
               placeholder="مدينتك"
-              className="w-full bg-surface-alt border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand/20 transition-all"
+              className="w-full bg-[#071a4d] text-surface border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all placeholder:text-surface/40"
             />
           </div>
         </div>
@@ -123,7 +123,7 @@ export default function ReviewForm({ productId, onSuccess }: { productId?: strin
         <button 
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-foreground text-surface font-bold py-4 rounded-lg hover:bg-brand transition-colors disabled:opacity-70 flex items-center justify-center gap-2"
+          className="w-full bg-accent text-brand font-bold py-4 rounded-lg hover:bg-accent-light transition-colors disabled:opacity-70 flex items-center justify-center gap-2"
         >
           {isSubmitting ? 'جاري الإرسال...' : (
             <>

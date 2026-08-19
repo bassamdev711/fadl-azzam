@@ -126,14 +126,14 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-4 left-4 z-[110] bg-white/80 backdrop-blur text-foreground/60 hover:text-foreground p-2 rounded-full transition-colors shadow"
+          className="absolute top-4 left-4 z-[110] bg-[#071a4d]/90 backdrop-blur text-surface/70 hover:text-surface p-2 rounded-full transition-colors shadow"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Image Side */}
-        <div className="w-full md:w-5/12 flex flex-col gap-3 bg-white p-4 md:p-6 shrink-0">
-          <div className="relative w-full aspect-square bg-white rounded-xl overflow-hidden border border-black/5 flex items-center justify-center">
+        <div className="w-full md:w-5/12 flex flex-col gap-3 bg-[#0b2a72] p-4 md:p-6 shrink-0">
+          <div className="relative w-full aspect-square bg-[#071a4d] rounded-xl overflow-hidden border border-white/10 flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeImage}
@@ -150,7 +150,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
                     fill
                     priority
                     sizes={getImageSizes('detail')}
-                    className="object-contain p-6 mix-blend-multiply"
+                    className="object-contain p-6"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
@@ -172,10 +172,10 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
                 <button
                   key={i}
                   onClick={() => setActiveImage(img)}
-                  className={`relative w-14 h-14 bg-white border shrink-0 rounded-lg overflow-hidden transition-all ${
+                  className={`relative w-14 h-14 bg-[#071a4d] border shrink-0 rounded-lg overflow-hidden transition-all ${
                     activeImage === img
                       ? 'border-brand scale-105 shadow-sm'
-                      : 'border-black/5 opacity-50 hover:opacity-100'
+                      : 'border-white/10 opacity-60 hover:opacity-100'
                   }`}
                 >
                   <Image
@@ -234,7 +234,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
                       className={`px-5 py-2 border rounded-full text-sm font-bold transition-all ${
                         selectedVariant?.id === v.id
                           ? 'bg-brand text-white border-brand shadow'
-                          : 'bg-white text-foreground border-black/10 hover:border-brand/50'
+                          : 'bg-[#123c8f] text-surface border-white/15 hover:border-accent/50'
                       }`}
                     >
                       {v.size}
@@ -244,7 +244,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
               </div>
             )}
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6 bg-white p-4 border border-black/5 rounded-xl">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6 bg-[#0d347f] p-4 border border-white/10 rounded-xl">
               {!hasVariants && product.size && (
                 <div className="flex flex-col">
                   <span className="text-foreground/40 text-[10px] font-bold uppercase tracking-wider mb-1">الحجم</span>
@@ -274,7 +274,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
             {/* Desktop Purchase Buttons */}
             <div className="hidden md:flex flex-col gap-3 mb-4">
               <div className="flex items-center gap-3">
-                <div className="flex items-center border border-black/10 bg-white h-14 w-32 rounded-xl shrink-0 overflow-hidden">
+                <div className="flex items-center border border-white/10 bg-[#071a4d] h-14 w-32 rounded-xl shrink-0 overflow-hidden">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
                     className="w-10 h-full flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors"
@@ -293,7 +293,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
                 <button
                   onClick={handleAddToCart}
                   disabled={currentStock <= 0}
-                  className="flex-1 bg-white border-2 border-brand text-brand font-bold h-14 flex items-center justify-center gap-2 hover:bg-brand/5 transition-all rounded-xl disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="flex-1 bg-[#123c8f] border-2 border-accent text-accent font-bold h-14 flex items-center justify-center gap-2 hover:bg-accent/15 transition-all rounded-xl disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <ShoppingBag size={18} />
                   أضف إلى السلة
@@ -329,7 +329,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
         </div>
 
         {/* Mobile Fixed Bottom Bar */}
-        <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-black/10 p-3 pb-safe flex flex-col gap-2 z-[120] shadow-[0_-10px_30px_rgba(0,0,0,0.1)]" dir="rtl">
+        <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#071a4d] border-t border-white/10 p-3 pb-safe flex flex-col gap-2 z-[120] shadow-[0_-10px_30px_rgba(0,0,0,0.35)]" dir="rtl">
           <button
             onClick={handleBuyNow}
             disabled={currentStock <= 0}
@@ -339,7 +339,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
             اشترِ الآن
           </button>
           <div className="flex items-center gap-2">
-            <div className="flex items-center border border-black/10 h-10 w-24 shrink-0 rounded-xl overflow-hidden bg-surface">
+            <div className="flex items-center border border-white/10 h-10 w-24 shrink-0 rounded-xl overflow-hidden bg-[#071a4d]">
               <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-10 h-full flex items-center justify-center text-foreground active:bg-black/5">
                 <Minus size={14} />
               </button>
@@ -351,7 +351,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
             <button
               onClick={handleAddToCart}
               disabled={currentStock <= 0}
-              className="flex-1 bg-white border border-brand text-brand h-10 font-bold hover:bg-brand/5 transition-colors rounded-xl flex items-center justify-center gap-2 text-sm disabled:opacity-40"
+              className="flex-1 bg-[#123c8f] border border-accent text-accent h-10 font-bold hover:bg-accent/15 transition-colors rounded-xl flex items-center justify-center gap-2 text-sm disabled:opacity-40"
             >
               <ShoppingBag size={16} />
               أضف للسلة
@@ -420,9 +420,9 @@ export default function ProductsClient({
                 <motion.div
                   key={`mobile-${product.id}`}
                   onClick={() => setSelectedId(product.id)}
-                  className="relative min-w-[58vw] h-[290px] snap-center bg-white shadow-md hover:shadow-xl border border-black/20 rounded-2xl overflow-hidden flex flex-col cursor-pointer group"
+                  className="relative min-w-[58vw] h-[290px] snap-center bg-[#0a2c7a] shadow-xl hover:shadow-2xl border border-white/10 rounded-2xl overflow-hidden flex flex-col cursor-pointer group"
                 >
-                  <div className="relative w-full h-[58%] bg-surface/50 p-4 flex items-center justify-center">
+                  <div className="relative w-full h-[58%] bg-[#123c8f] p-4 flex items-center justify-center">
                     <button 
                       className={`absolute top-4 right-4 z-20 transition-transform hover:scale-110 active:scale-95 drop-shadow-md ${
                         isFavorite(product.id) ? 'text-red-500' : 'text-white hover:text-red-500'
@@ -458,13 +458,13 @@ export default function ProductsClient({
                         priority={index === 0}
                         loading={index === 0 ? undefined : 'lazy'}
                         sizes={getImageSizes('card-mobile')}
-                        className="object-contain p-6 mix-blend-multiply"
+                        className="object-contain p-6"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-accent/30 text-4xl">متجرنا</div>
                     )}
                   </div>
-                  <div className="flex-1 flex flex-col items-center justify-center p-3 text-center bg-white z-10 border-t border-black/10">
+                  <div className="flex-1 flex flex-col items-center justify-center p-3 text-center bg-[#0a2c7a] z-10 border-t border-white/10">
                     <h3 className="text-base font-black text-foreground mb-0.5">{product.name}</h3>
                     <p className="text-accent text-[9px] tracking-widest uppercase mb-1.5">{product.engName}</p>
                     <div className="flex items-center gap-1.5 mb-2">
@@ -489,10 +489,10 @@ export default function ProductsClient({
                 <motion.div
                   key={`desktop-${product.id}`}
                   onClick={() => setSelectedId(product.id)}
-                  className="relative h-[550px] bg-white cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-500 border border-black/20 hover:border-brand/40 rounded-3xl flex flex-col overflow-hidden"
+                  className="relative h-[550px] bg-[#0a2c7a] cursor-pointer group shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-accent/40 rounded-3xl flex flex-col overflow-hidden"
                   whileHover={{ y: -5 }}
                 >
-                  <div className="relative w-full h-[65%] bg-surface/50 transition-colors duration-500 group-hover:bg-surface-alt flex items-center justify-center p-8">
+                  <div className="relative w-full h-[65%] bg-[#123c8f] transition-colors duration-500 group-hover:bg-[#1647a5] flex items-center justify-center p-8">
                     <button 
                       className={`absolute top-4 right-4 z-20 transition-all duration-300 drop-shadow-md hover:scale-110 active:scale-95 ${
                         isFavorite(product.id) ? 'text-red-500 opacity-100' : 'text-white hover:text-red-500 opacity-0 group-hover:opacity-100'
@@ -528,7 +528,7 @@ export default function ProductsClient({
                         priority={index === 0}
                         loading={index === 0 ? undefined : 'lazy'}
                         sizes={getImageSizes('card-hero')}
-                        className="object-contain p-8 mix-blend-multiply scale-95 group-hover:scale-105 transition-transform duration-700 ease-out"
+                        className="object-contain p-8 scale-95 group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-accent/20 text-6xl group-hover:text-accent/40 transition-colors">
@@ -541,7 +541,7 @@ export default function ProductsClient({
                       </div>
                     )}
                   </div>
-                  <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-white z-10 border-t border-black/10">
+                  <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-[#0a2c7a] z-10 border-t border-white/10">
                     <h3 className="text-2xl font-black text-foreground mb-2">{product.name}</h3>
                     <p className="text-accent text-xs tracking-[0.2em] uppercase">{product.engName}</p>
                     <div className="flex items-center gap-2 my-4">

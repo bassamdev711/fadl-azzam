@@ -44,8 +44,8 @@ export default function ProductCard({ product, currency, priority = false }: Pro
   };
 
   return (
-    <div className="relative bg-white cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-500 border border-black/10 rounded-xl md:rounded-2xl flex flex-col overflow-hidden h-auto md:h-[500px]">
-      <div className="relative w-full h-[180px] md:h-[60%] bg-surface/50 transition-colors duration-500 group-hover:bg-surface flex items-center justify-center">
+    <div className="relative bg-[#0a2c7a] cursor-pointer group shadow-[0_18px_45px_rgba(2,12,48,0.24)] hover:shadow-2xl transition-all duration-500 border border-white/10 rounded-xl md:rounded-2xl flex flex-col overflow-hidden h-auto md:h-[500px]">
+      <div className="relative w-full h-[180px] md:h-[60%] bg-[#0d347f] transition-colors duration-500 group-hover:bg-[#123c8f] flex items-center justify-center">
         <FavoriteButton 
           product={product}
           className="z-20 m-4 md:m-6"
@@ -69,7 +69,7 @@ export default function ProductCard({ product, currency, priority = false }: Pro
         )}
       </div>
       
-      <div className="flex-1 flex flex-col items-center justify-center p-3 md:p-6 text-center bg-white z-20 border-t border-black/5 relative">
+      <div className="flex-1 flex flex-col items-center justify-center p-3 md:p-6 text-center bg-[#0a2c7a] z-20 border-t border-white/10 relative">
         <h3 className="text-base md:text-2xl font-black text-foreground mb-0.5 md:mb-1">{product.name}</h3>
         <p className="text-accent text-[9px] md:text-[10px] tracking-[0.2em] uppercase mb-2 md:mb-4">
           {product.engName || product.brand || 'Featured product'}

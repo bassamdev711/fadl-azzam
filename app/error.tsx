@@ -17,11 +17,11 @@ export default function Error({
 
   return (
     <div className="min-h-[80vh] flex flex-col items-center justify-center p-6 text-center bg-surface">
-      <div className="bg-white p-10 rounded-2xl max-w-lg w-full shadow-lg border border-accent/20 relative overflow-hidden">
+      <div className="bg-[#0a2c7a] p-10 rounded-2xl max-w-lg w-full shadow-2xl border border-accent/30 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand via-accent to-brand"></div>
         
-        <div className="w-20 h-20 bg-brand/5 rounded-full flex items-center justify-center mx-auto mb-6 border border-brand/10">
+        <div className="w-20 h-20 bg-accent/15 rounded-full flex items-center justify-center mx-auto mb-6 border border-accent/30">
           <AlertCircle className="w-10 h-10 text-brand" />
         </div>
         

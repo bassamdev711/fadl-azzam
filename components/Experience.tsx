@@ -26,7 +26,7 @@ export default function Experience({
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 70]);
 
   return (
-    <section id="experience" className="relative overflow-hidden bg-white py-24 md:py-32" ref={containerRef} dir="rtl">
+    <section id="experience" className="relative overflow-hidden bg-[#081f5c] py-24 md:py-32" ref={containerRef} dir="rtl">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -48,7 +48,7 @@ export default function Experience({
                 {data.expBox1Desc || "نفهم احتياجك ونساعدك على مقارنة الخيارات المناسبة قبل اتخاذ القرار."}
               </p>
             </div>
-            <div className="mr-8 border-l-4 border-accent bg-[#eef4ff] p-7 shadow-sm md:p-10">
+            <div className="mr-8 border-l-4 border-accent bg-[#123c8f] p-7 shadow-sm md:p-10">
               <span className="mb-5 block text-sm font-black text-brand">02</span>
               <h3 className="mb-4 text-2xl font-black text-foreground">{data.expBox2Title || "نلتزم بالتنفيذ"}</h3>
               <p className="text-lg leading-8 text-foreground/70">

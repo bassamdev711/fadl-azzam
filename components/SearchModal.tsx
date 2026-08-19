@@ -103,12 +103,12 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="ابحث عن منتج، تصنيف، أو كلمة مفتاحية..."
-                  className="w-full bg-white border-2 border-brand/20 rounded-full py-3 md:py-4 pr-12 md:pr-14 pl-12 md:pl-14 text-base md:text-lg text-foreground focus:outline-none focus:border-brand transition-colors"
+                  className="w-full bg-[#071a4d] border-2 border-accent/30 rounded-full py-3 md:py-4 pr-12 md:pr-14 pl-12 md:pl-14 text-base md:text-lg text-surface placeholder:text-surface/40 focus:outline-none focus:border-accent transition-colors"
                 />
                 <button
                   type="button"
                   onClick={onClose}
-                  className="absolute left-4 p-2 bg-black/5 hover:bg-black/10 rounded-full transition-colors"
+                  className="absolute left-4 p-2 bg-white/10 hover:bg-accent/20 rounded-full transition-colors"
                 >
                   <X className="w-5 h-5 text-foreground" />
                 </button>
@@ -129,9 +129,9 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           key={product.id}
                           href={`/products/${product.slug}`}
                           onClick={onClose}
-                          className="flex items-center gap-3 p-2 md:p-3 rounded-xl hover:bg-white transition-colors border border-transparent hover:border-black/5 group"
+                          className="flex items-center gap-3 p-2 md:p-3 rounded-xl hover:bg-white/10 transition-colors border border-transparent hover:border-white/10 group"
                         >
-                          <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-lg border border-black/5 flex items-center justify-center relative overflow-hidden shrink-0">
+                          <div className="w-12 h-12 md:w-16 md:h-16 bg-[#071a4d] rounded-lg border border-white/10 flex items-center justify-center relative overflow-hidden shrink-0">
                             {product.imageUrl ? (
                               <Image src={product.imageUrl} alt={product.name} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                             ) : (
@@ -178,7 +178,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           <button 
                             key={term}
                             onClick={() => setQuery(term)}
-                            className="px-4 py-2 bg-white rounded-full text-sm font-medium hover:bg-brand hover:text-white transition-colors border border-black/5"
+                            className="px-4 py-2 bg-[#123c8f] text-surface rounded-full text-sm font-medium hover:bg-accent hover:text-brand transition-colors border border-white/10"
                           >
                             {term}
                           </button>

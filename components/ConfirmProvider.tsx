@@ -51,19 +51,19 @@ export function ConfirmProvider({ children }: { children: ReactNode }) {
       {children}
       {modal && (
         <div className="fixed inset-0 z-[99999] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity" onClick={handleCancel}>
-          <div dir="rtl" className="bg-white rounded-2xl p-6 shadow-2xl w-full max-w-sm transition-transform transform scale-100 animate-in fade-in zoom-in-95 duration-200" onClick={e => e.stopPropagation()}>
-            <h3 className="text-xl font-black text-gray-900 mb-2">{modal.title || 'تأكيد الإجراء'}</h3>
-            <p className="text-gray-600 text-sm mb-6 leading-relaxed">{modal.message}</p>
+          <div dir="rtl" className="bg-[#0a2c7a] border border-white/10 rounded-2xl p-6 shadow-2xl w-full max-w-sm transition-transform transform scale-100 animate-in fade-in zoom-in-95 duration-200" onClick={e => e.stopPropagation()}>
+            <h3 className="text-xl font-black text-surface mb-2">{modal.title || 'تأكيد الإجراء'}</h3>
+            <p className="text-surface/70 text-sm mb-6 leading-relaxed">{modal.message}</p>
             <div className="flex gap-3">
               <button 
                 onClick={handleCancel}
-                className="flex-1 px-4 py-3 rounded-xl font-bold text-sm bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                className="flex-1 px-4 py-3 rounded-xl font-bold text-sm bg-white/10 text-surface hover:bg-white/15 transition-colors"
               >
                 {modal.cancelText || 'إلغاء'}
               </button>
               <button 
                 onClick={handleConfirm}
-                className={`flex-1 px-4 py-3 rounded-xl font-bold text-sm transition-colors text-white shadow-sm ${modal.danger ? 'bg-red-600 hover:bg-red-700 shadow-red-600/20' : 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/20'}`}
+                className={`flex-1 px-4 py-3 rounded-xl font-bold text-sm transition-colors text-white shadow-sm ${modal.danger ? 'bg-red-600 hover:bg-red-700 shadow-red-600/20' : 'bg-accent text-brand hover:bg-accent-light shadow-accent/20'}`}
               >
                 {modal.confirmText || 'تأكيد'}
               </button>
