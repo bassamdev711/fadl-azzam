@@ -39,8 +39,8 @@ export default function Hero({
   return (
     <section id="hero" className="relative min-h-[100dvh] overflow-hidden bg-brand text-surface" dir="rtl">
       <Image
-        src="/brand/hero-facade.jpg"
-        alt="واجهة تجارية زرقاء بهوية فضل عزام"
+        src="/brand/hero-store-promo.webp"
+        alt="واجهة متجر فضل عزام للتجارة العامة والأجهزة المنزلية"
         fill
         priority
         sizes="100vw"
