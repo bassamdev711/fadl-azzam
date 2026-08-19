@@ -80,13 +80,19 @@ export default function Navbar({
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-l from-transparent via-accent/80 to-transparent" />
       <div className="relative mx-auto flex h-12 max-w-7xl items-center justify-between px-4 md:h-14 md:px-8">
         {/* Logo */}
-        <Link href="/" className="group relative z-50 flex items-center gap-2 md:gap-3">
-          <span className="h-7 w-px bg-accent/80 transition-colors duration-300 md:h-8" />
-          <span className="text-sm font-bold tracking-[0.22em] text-accent transition-colors duration-300 md:text-lg">
-            {storeNameLatin}
-          </span>
-          <span className="text-sm font-medium tracking-[0.14em] text-surface/95 transition-colors duration-300 md:text-base">
-            {storeName}
+        <Link
+          href="/"
+          aria-label={`${storeName} - ${storeNameLatin}`}
+          className="group relative z-50 flex items-center"
+        >
+          <span className="flex flex-col items-end leading-none" dir="rtl">
+            <span className="text-xl font-black tracking-tight text-surface transition-colors duration-300 md:text-[1.55rem]">
+              {storeName}
+            </span>
+            <span className="mt-1 h-[2px] w-10 bg-accent transition-all duration-300 group-hover:w-full" />
+            <span dir="ltr" className="mt-1 text-[9px] font-semibold tracking-[0.34em] text-accent/95 transition-colors duration-300 md:text-[10px]">
+              {storeNameLatin}
+            </span>
           </span>
         </Link>
 
