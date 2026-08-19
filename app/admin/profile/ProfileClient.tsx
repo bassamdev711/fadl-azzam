@@ -4,18 +4,20 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import ImageUpload from '../products/ImageUpload'
 import { updateAdminProfile } from './actions'
-import { CheckCircle2, User, Lock, AlertCircle, Image as ImageIcon } from 'lucide-react'
+import { CheckCircle2, User, Lock, AlertCircle, Image as ImageIcon, Mail } from 'lucide-react'
 
 type ProfileProps = {
   initialName: string
+  initialEmail: string
   initialAvatar: string | null
   initialTheme: string | null
 }
 
-export default function ProfileClient({ initialName, initialAvatar, initialTheme }: ProfileProps) {
+export default function ProfileClient({ initialName, initialEmail, initialAvatar, initialTheme }: ProfileProps) {
   const router = useRouter()
   
   const [name, setName] = useState(initialName)
+  const [email, setEmail] = useState(initialEmail)
   const [avatarUrl, setAvatarUrl] = useState(initialAvatar || '')
   const [themeBackground, setThemeBackground] = useState(initialTheme || '')
   
@@ -32,6 +34,14 @@ export default function ProfileClient({ initialName, initialAvatar, initialTheme
     setError('')
     setSuccess('')
     
+    const normalizedEmail = email.trim().toLowerCase()
+    const normalizedInitialEmail = initialEmail.trim().toLowerCase()
+
+    if (normalizedEmail !== normalizedInitialEmail && !currentPassword) {
+      setError('يجب إدخال كلمة المرور الحالية لتغيير البريد الإلكتروني')
+      return
+    }
+
     if (newPassword) {
       if (!currentPassword) {
         setError('يجب إدخال كلمة المرور الحالية')
@@ -41,8 +51,8 @@ export default function ProfileClient({ initialName, initialAvatar, initialTheme
         setError('كلمة المرور الجديدة غير متطابقة')
         return
       }
-      if (newPassword.length < 6) {
-        setError('كلمة المرور يجب أن لا تقل عن 6 أحرف')
+      if (newPassword.length < 12) {
+        setError('كلمة المرور يجب أن تتكون من 12 محرفًا على الأقل')
         return
       }
     }
@@ -50,9 +60,10 @@ export default function ProfileClient({ initialName, initialAvatar, initialTheme
     setLoading(true)
     const formData = new FormData()
     formData.append('name', name)
+    formData.append('email', normalizedEmail)
     formData.append('avatarUrl', avatarUrl)
     formData.append('themeBackground', themeBackground)
-    if (newPassword && currentPassword) {
+    if (currentPassword) {
       formData.append('currentPassword', currentPassword)
       formData.append('newPassword', newPassword)
     }
@@ -117,6 +128,23 @@ export default function ProfileClient({ initialName, initialAvatar, initialTheme
               </div>
 
               <div>
+                <label className="block text-sm font-bold text-deep-green mb-2">البريد الإلكتروني الإداري</label>
+                <div className="relative">
+                  <Mail className="absolute right-4 top-1/2 -translate-y-1/2 text-deep-green/40 w-5 h-5" />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full pl-4 pr-12 py-3 bg-ivory/30 border border-black/10 rounded-xl focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold text-deep-green transition-all ltr"
+                    autoComplete="username"
+                    dir="ltr"
+                    required
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-2">تغيير البريد يتطلب كلمة المرور الحالية وسيُنهي الجلسة الحالية.</p>
+              </div>
+
+              <div>
                 <label className="block text-sm font-bold text-deep-green mb-2">خلفية لوحة التحكم (Cover)</label>
                 <div className="relative">
                   <ImageIcon className="absolute right-4 top-1/2 -translate-y-1/2 text-deep-green/40 w-5 h-5" />
@@ -163,7 +191,7 @@ export default function ProfileClient({ initialName, initialAvatar, initialTheme
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     className="w-full pl-4 pr-12 py-3 bg-ivory/30 border border-black/10 rounded-xl focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold text-deep-green transition-all"
-                    placeholder="لا تقل عن 6 أحرف"
+                    placeholder="12 محرفًا على الأقل"
                     disabled={!currentPassword}
                   />
                 </div>

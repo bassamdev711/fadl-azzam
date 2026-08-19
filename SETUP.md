@@ -23,7 +23,9 @@ DATABASE_URL="postgresql://USER:PASSWORD@HOST-pooler.neon.tech/neondb?sslmode=re
 DIRECT_URL="postgresql://USER:PASSWORD@HOST.neon.tech/neondb?sslmode=require"
 
 # مصادقة لوحة الإدارة
-ADMIN_PASSWORD="your-admin-password"
+ADMIN_EMAIL="admin@example.com"
+ADMIN_PASSWORD="your-bootstrap-password"
+ADMIN_SETUP_ENABLED="true"
 JWT_SECRET="your-secret-key-min-32-chars"
 
 # تخزين الصور (Vercel Blob)
@@ -37,6 +39,8 @@ TIF_PROJECT_ID=""
 ### 2. متغيرات Vercel (Production) - تُضاف يدوياً في لوحة Vercel
 
 نفس المتغيرات أعلاه، بالإضافة إلى ضمان وجود `TIF_API_TOKEN` و `TIF_PROJECT_ID`.
+
+في قاعدة Neon الجديدة، استخدم `ADMIN_EMAIL` و`ADMIN_PASSWORD` و`ADMIN_SETUP_ENABLED=true` للدخول التمهيدي مرة واحدة. بعد إكمال نموذج التهيئة داخل لوحة التحكم، يُحفظ البريد في `AdminProfile` وتُحفظ كلمة المرور كـ hash مملح، ثم احذف `ADMIN_PASSWORD` أو عطّل `ADMIN_SETUP_ENABLED` من بيئة Production. لا تضع أي قيمة حقيقية في GitHub أو داخل ملفات المشروع.
 
 ---
 

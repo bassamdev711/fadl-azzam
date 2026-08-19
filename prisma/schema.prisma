@@ -340,6 +340,7 @@ model HomepageSettings {
 model AdminProfile {
   id              String   @id @default("singleton")
   name            String   @default("مدير المتجر")
+  email           String?  @unique
   avatarUrl       String?
   themeBackground String?
   passwordHash    String?

@@ -1,10 +1,10 @@
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
-import { jwtVerify } from 'jose'
 import AdminSidebar from './components/AdminSidebar'
 import SetupRedirect from './components/SetupRedirect'
 import prisma from '@/lib/prisma'
 import { getStoreConfig } from '@/lib/store-config'
+import { verifyAdmin } from '@/lib/auth'
 
 async function requireAdmin() {
   const cookieStore = await cookies()
@@ -14,14 +14,8 @@ async function requireAdmin() {
     redirect('/login')
   }
 
-  const JWT_SECRET = process.env.JWT_SECRET
-  if (!JWT_SECRET) {
-    redirect('/login')
-  }
-
   try {
-    const secret = new TextEncoder().encode(JWT_SECRET)
-    await jwtVerify(token, secret)
+    await verifyAdmin(token)
   } catch {
     redirect('/login')
   }
