@@ -37,25 +37,25 @@ export default function Hero({
   ];
 
   return (
-    <section id="hero" className="relative min-h-[100dvh] overflow-hidden bg-brand text-surface" dir="rtl">
+    <section id="hero" className="relative min-h-[100dvh] overflow-hidden bg-brand text-surface lg:h-[min(100dvh,56.25vw)] lg:min-h-0" dir="rtl">
       <Image
-        src="/brand/hero-store-promo.webp"
+        src="/brand/hero-store-promo-text-right.webp"
         alt="واجهة متجر فضل عزام للتجارة العامة والأجهزة المنزلية"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center"
+        className="object-cover object-right"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,12,45,0.36),rgba(4,20,72,0.9)_52%,rgba(5,18,62,0.98))]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_75%,rgba(63,124,255,0.46),transparent_34%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,12,45,0.06),rgba(4,20,72,0.04)_46%,rgba(5,18,62,0.3))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_75%,rgba(63,124,255,0.18),transparent_34%)]" />
 
-      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-7xl flex-col justify-between px-5 pb-8 pt-28 sm:px-8 lg:px-12 lg:pb-12 lg:pt-36">
+      <div className="relative z-10 mx-auto flex h-full min-h-[100dvh] max-w-7xl flex-col justify-between px-5 pb-8 pt-28 sm:px-8 lg:min-h-0 lg:px-12 lg:pb-12 lg:pt-36">
         <div className="flex items-start justify-between gap-6">
           <motion.div
             initial={{ opacity: 0, x: 28 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl"
+            className="max-w-3xl lg:max-w-[46%]"
           >
             <div className="mb-7 flex items-center gap-3 text-xs font-bold tracking-[0.26em] text-blue-200 sm:text-sm">
               <span className="h-px w-12 bg-blue-300" />
