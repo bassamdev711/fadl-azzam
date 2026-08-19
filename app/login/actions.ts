@@ -6,6 +6,7 @@ import prisma from '@/lib/prisma'
 import { verifyPassword } from '@/lib/hash'
 import { checkRateLimit } from '@/lib/rate-limit'
 import { ADMIN_COOKIE_NAME, ADMIN_JWT_CONFIG, getAdminJwtSecret } from '@/lib/auth'
+import { getAdminBootstrapEmail, normalizeEmail } from '@/lib/email'
 
 const LOGIN_DELAY_MS = 750
 
@@ -13,8 +14,9 @@ async function delay() {
   await new Promise((resolve) => setTimeout(resolve, LOGIN_DELAY_MS))
 }
 
-export async function login(password: string) {
-  const candidate = typeof password === 'string' ? password : ''
+export async function login(email: string, password: string) {
+  const candidateEmail = normalizeEmail(email)
+  const candidatePassword = typeof password === 'string' ? password : ''
   const headersList = await headers()
   const ip = headersList.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
 
@@ -31,23 +33,27 @@ export async function login(password: string) {
     return { success: false, error: 'تسجيل الدخول غير متاح حالياً' }
   }
 
-  const adminPassword = process.env.ADMIN_PASSWORD
+  if (!candidateEmail || !candidatePassword) {
+    await delay()
+    return { success: false, error: 'البريد الإلكتروني وكلمة المرور مطلوبان' }
+  }
+
   let isPasswordValid = false
 
   try {
     const adminProfile = await prisma.adminProfile.findUnique({
       where: { id: 'singleton' },
-      select: { isSetupComplete: true, passwordHash: true },
+      select: { email: true, isSetupComplete: true, passwordHash: true },
     })
 
-    if (adminProfile?.isSetupComplete && adminProfile.passwordHash) {
-      isPasswordValid = verifyPassword(candidate, adminProfile.passwordHash)
-    } else if (process.env.ADMIN_SETUP_ENABLED === 'true' && adminPassword) {
-      // The environment password is permitted only for an explicitly enabled first-time setup.
-      isPasswordValid = candidate === adminPassword
+    if (adminProfile?.isSetupComplete && adminProfile.email && adminProfile.passwordHash) {
+      isPasswordValid = candidateEmail === normalizeEmail(adminProfile.email) && verifyPassword(candidatePassword, adminProfile.passwordHash)
+    } else if (process.env.ADMIN_SETUP_ENABLED === 'true') {
+      const bootstrapEmail = getAdminBootstrapEmail()
+      const bootstrapPassword = process.env.ADMIN_PASSWORD || ''
+      isPasswordValid = Boolean(bootstrapEmail && bootstrapPassword) && candidateEmail === bootstrapEmail && candidatePassword === bootstrapPassword
     }
   } catch (error) {
-    // Never fall back to an environment password when the database is unavailable.
     console.error('Admin profile lookup failed:', error)
     await delay()
     return { success: false, error: 'تعذر التحقق من تسجيل الدخول حالياً' }
@@ -55,7 +61,7 @@ export async function login(password: string) {
 
   if (!isPasswordValid) {
     await delay()
-    return { success: false, error: 'كلمة المرور غير صحيحة' }
+    return { success: false, error: 'بيانات الدخول غير صحيحة' }
   }
 
   try {

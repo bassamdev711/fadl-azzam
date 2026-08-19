@@ -4,12 +4,13 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import ImageUpload from '../products/ImageUpload'
 import { setupAdminProfile } from '../profile/actions'
-import { CheckCircle2, User, Lock, AlertCircle } from 'lucide-react'
+import { CheckCircle2, User, Lock, AlertCircle, Mail } from 'lucide-react'
 
 export default function SetupClient({ storeName }: { storeName: string }) {
   const router = useRouter()
   
-  const [name, setName] = useState('مدير المتجر')
+  const [name, setName] = useState('مدير الموقع')
+  const [email, setEmail] = useState('')
   const [avatarUrl, setAvatarUrl] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -33,6 +34,7 @@ export default function SetupClient({ storeName }: { storeName: string }) {
     setLoading(true)
     const formData = new FormData()
     formData.append('name', name)
+    formData.append('email', email)
     formData.append('avatarUrl', avatarUrl)
     formData.append('password', password)
 
@@ -95,6 +97,24 @@ export default function SetupClient({ storeName }: { storeName: string }) {
                   required
                 />
               </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-bold text-deep-green mb-2">البريد الإلكتروني الإداري</label>
+              <div className="relative">
+                <Mail className="absolute right-4 top-1/2 -translate-y-1/2 text-deep-green/40 w-5 h-5" />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full pl-4 pr-12 py-4 bg-ivory/30 border border-black/10 rounded-xl focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold text-deep-green transition-all ltr"
+                  placeholder="admin@example.com"
+                  autoComplete="username"
+                  dir="ltr"
+                  required
+                />
+              </div>
+              <p className="text-xs text-gray-500 mt-2">سيُستخدم هذا البريد مع كلمة المرور للدخول إلى لوحة التحكم.</p>
             </div>
 
             <div>

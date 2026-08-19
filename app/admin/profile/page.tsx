@@ -12,7 +12,8 @@ export default async function ProfilePage() {
 
   return (
     <ProfileClient 
-      initialName={profile?.name || 'مدير المتجر'}
+      initialName={profile?.name || 'مدير الموقع'}
+      initialEmail={profile?.email || ''}
       initialAvatar={profile?.avatarUrl || null}
       initialTheme={profile?.themeBackground || null}
     />
