@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 interface SplashScreenProps {
@@ -12,21 +12,24 @@ export default function SplashScreen({
   storeName = "فضل عزام",
   storeNameLatin = "FADL AZZAM",
 }: SplashScreenProps) {
-  const [showSplash, setShowSplash] = useState(false);
+  // Start visible so the opening screen is mounted before the page content is revealed.
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     const splashKey = `brand_splash_seen:${storeNameLatin || storeName}`;
     const hasSeenSplash = sessionStorage.getItem(splashKey);
 
-    if (!hasSeenSplash) {
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const duration = prefersReducedMotion ? 250 : 900;
-
-      startTransition(() => setShowSplash(true));
-      sessionStorage.setItem(splashKey, "true");
-      const timer = setTimeout(() => setShowSplash(false), duration);
-      return () => clearTimeout(timer);
+    if (hasSeenSplash) {
+      const timer = window.setTimeout(() => setShowSplash(false), 0);
+      return () => window.clearTimeout(timer);
     }
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const duration = prefersReducedMotion ? 250 : 900;
+
+    sessionStorage.setItem(splashKey, "true");
+    const timer = window.setTimeout(() => setShowSplash(false), duration);
+    return () => window.clearTimeout(timer);
   }, [storeName, storeNameLatin]);
 
   return (
