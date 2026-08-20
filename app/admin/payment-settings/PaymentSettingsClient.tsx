@@ -47,12 +47,12 @@ export default function PaymentSettingsClient({
   const [settings, setSettings] = useState<PaymentSettings>(initialSettings)
   const [bankAccounts] = useState<BankAccount[]>(initialBankAccounts)
   const [wallets] = useState<DigitalWallet[]>(initialWallets)
-  
+
   const [isSaving, setIsSaving] = useState(false)
-  
+
   const [newBank, setNewBank] = useState({ bankName: '', accountName: '', accountNumber: '' })
   const [showAddBank, setShowAddBank] = useState(false)
-  
+
   const [newWallet, setNewWallet] = useState({ walletName: '', accountNumber: '' })
   const [showAddWallet, setShowAddWallet] = useState(false)
 
@@ -110,10 +110,10 @@ export default function PaymentSettingsClient({
           <h1 className="text-3xl font-bold text-gray-900 mb-2">إعدادات الدفع</h1>
           <p className="text-gray-500">قم بإدارة طرق الدفع المتاحة لعملائك.</p>
         </div>
-        <button 
+        <button
           onClick={handleSaveSettings}
           disabled={isSaving}
-          className="bg-emerald-800 text-white font-bold px-6 py-2.5 rounded-lg hover:bg-emerald-900 transition-colors shadow-sm flex items-center gap-2 disabled:opacity-50"
+          className="bg-brand text-white font-bold px-6 py-2.5 rounded-lg hover:bg-brand-hover transition-colors shadow-sm flex items-center gap-2 disabled:opacity-50"
         >
           <Save size={16} />
           {isSaving ? 'جاري الحفظ...' : 'حفظ التغييرات'}
@@ -121,10 +121,10 @@ export default function PaymentSettingsClient({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
+
         {/* Main Column */}
         <div className="lg:col-span-8 space-y-6">
-          
+
           {/* Bank Transfer */}
           <section className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
             <div className="p-6 border-b border-gray-100 bg-gray-50 flex justify-between items-center">
@@ -138,13 +138,13 @@ export default function PaymentSettingsClient({
                 </div>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
-                <input 
-                  type="checkbox" 
+                <input
+                  type="checkbox"
                   className="sr-only peer"
                   checked={settings.bankTransferEnabled}
                   onChange={(e) => setSettings({...settings, bankTransferEnabled: e.target.checked})}
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-800"></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand"></div>
               </label>
             </div>
 
@@ -188,18 +188,18 @@ export default function PaymentSettingsClient({
                   </div>
                 </div>
               ) : (
-                <button onClick={() => setShowAddBank(true)} className="w-full py-3 border border-dashed border-emerald-600 rounded-lg text-brand font-bold hover:bg-brand/5 transition-colors flex items-center justify-center gap-2">
+                <button onClick={() => setShowAddBank(true)} className="w-full py-3 border border-dashed border-brand rounded-lg text-brand font-bold hover:bg-brand/5 transition-colors flex items-center justify-center gap-2">
                   <Plus size={16} /> إضافة حساب بنكي جديد
                 </button>
               )}
 
               <div className="pt-4 border-t border-gray-200">
                 <label className="block text-sm font-bold text-gray-700 mb-2">تعليمات الدفع (تظهر للعميل)</label>
-                <textarea 
-                  value={settings.bankTransferInstructions || ''} 
+                <textarea
+                  value={settings.bankTransferInstructions || ''}
                   onChange={e => setSettings({...settings, bankTransferInstructions: e.target.value})}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-sm focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 resize-none" 
-                  rows={3} 
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand resize-none"
+                  rows={3}
                 />
               </div>
             </div>
@@ -217,16 +217,16 @@ export default function PaymentSettingsClient({
                 </div>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
-                <input 
-                  type="checkbox" 
+                <input
+                  type="checkbox"
                   className="sr-only peer"
                   checked={settings.walletsEnabled}
                   onChange={(e) => setSettings({...settings, walletsEnabled: e.target.checked})}
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-800"></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand"></div>
               </label>
             </div>
-            
+
             <div className={`p-6 space-y-4 transition-all ${!settings.walletsEnabled ? 'opacity-50 pointer-events-none' : ''}`}>
               <table className="w-full text-right border-collapse">
                 <thead>
@@ -259,18 +259,18 @@ export default function PaymentSettingsClient({
                   <button onClick={() => setShowAddWallet(false)} className="bg-gray-300 px-4 rounded-md font-bold">إلغاء</button>
                 </div>
               ) : (
-                <button onClick={() => setShowAddWallet(true)} className="px-4 py-2 border border-emerald-600 rounded-lg text-brand font-bold hover:bg-brand/5 text-sm flex items-center gap-2">
+                <button onClick={() => setShowAddWallet(true)} className="px-4 py-2 border border-brand rounded-lg text-brand font-bold hover:bg-brand/5 text-sm flex items-center gap-2">
                   <Plus size={16} /> إضافة محفظة
                 </button>
               )}
 
               <div className="pt-4 border-t border-gray-200 mt-4">
                 <label className="block text-sm font-bold text-gray-700 mb-2">تعليمات الدفع للمحافظ</label>
-                <textarea 
+                <textarea
                   value={settings.walletsInstructions || ''}
                   onChange={e => setSettings({...settings, walletsInstructions: e.target.value})}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-sm focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 resize-none" 
-                  rows={2} 
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand resize-none"
+                  rows={2}
                 />
               </div>
             </div>
@@ -279,7 +279,7 @@ export default function PaymentSettingsClient({
 
         {/* Sidebar Column */}
         <div className="lg:col-span-4 space-y-6">
-          
+
           {/* Currency Settings */}
           <section className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
             <div className="p-6">
@@ -295,12 +295,12 @@ export default function PaymentSettingsClient({
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">رمز العملة (مثال: ر.س, $, ر.ي)</label>
                 <div className="relative mb-2">
-                  <input 
-                    type="text" 
-                    value={settings.currency || ''} 
+                  <input
+                    type="text"
+                    value={settings.currency || ''}
                     onChange={e => setSettings({...settings, currency: e.target.value})}
                     placeholder="ر.س"
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-white text-right focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600" 
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-white text-right focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
                   />
                 </div>
                 <p className="text-xs text-gray-500">
@@ -321,34 +321,34 @@ export default function PaymentSettingsClient({
                   <h3 className="text-lg font-bold text-gray-900">الدفع عند الاستلام</h3>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer">
-                  <input 
-                    type="checkbox" 
+                  <input
+                    type="checkbox"
                     className="sr-only peer"
                     checked={settings.codEnabled}
                     onChange={(e) => setSettings({...settings, codEnabled: e.target.checked})}
                   />
-                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-800"></div>
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand"></div>
                 </label>
               </div>
 
               <div className={`transition-all ${!settings.codEnabled ? 'opacity-50 pointer-events-none' : ''}`}>
                 <label className="block text-sm font-bold text-gray-700 mb-2">رسوم إضافية (اختياري)</label>
                 <div className="relative mb-4">
-                  <input 
-                    type="number" 
-                    value={settings.codFee} 
+                  <input
+                    type="number"
+                    value={settings.codFee}
                     onChange={e => setSettings({...settings, codFee: e.target.value})}
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-white text-left font-mono pl-12" 
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-white text-left font-mono pl-12"
                     dir="ltr"
                   />
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold">{settings.currency || 'SAR'}</span>
                 </div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">تعليمات</label>
-                <textarea 
+                <textarea
                   value={settings.codInstructions || ''}
                   onChange={e => setSettings({...settings, codInstructions: e.target.value})}
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-white text-sm resize-none focus:outline-none focus:border-emerald-600" 
-                  rows={3} 
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-white text-sm resize-none focus:outline-none focus:border-brand"
+                  rows={3}
                 />
               </div>
             </div>

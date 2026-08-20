@@ -26,10 +26,10 @@ export default function OrderActionsClient({ orderId, currentStatus }: { orderId
     <div className="flex items-end gap-4 mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
       <div className="flex-grow">
         <label className="block text-sm font-bold text-gray-700 mb-2">تحديث حالة الطلب</label>
-        <select 
+        <select
           value={status}
           onChange={(e) => setStatus(e.target.value)}
-          className="w-full bg-white border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          className="w-full bg-white border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
         >
           <option value="AWAITING_PAYMENT">بانتظار الدفع</option>
           <option value="PENDING">قيد المراجعة</option>
@@ -39,7 +39,7 @@ export default function OrderActionsClient({ orderId, currentStatus }: { orderId
           <option value="CANCELLED">ملغي</option>
         </select>
       </div>
-      <button 
+      <button
         onClick={handleUpdate}
         disabled={isUpdating || status === currentStatus}
         className="bg-brand text-white px-6 py-2 rounded-md font-bold hover:bg-emerald-700 transition-colors disabled:opacity-50 flex items-center gap-2"

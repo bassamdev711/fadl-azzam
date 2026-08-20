@@ -42,14 +42,14 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <h1 className="text-3xl font-black text-center text-foreground mb-2">لوحة تحكم فضل عزام</h1>
-        <p className="text-center text-foreground/60 font-medium mb-8">
+        <h1 className="text-3xl font-black text-center text-[#071a4d] mb-2">لوحة تحكم فضل عزام</h1>
+        <p className="text-center text-[#071a4d]/65 font-medium mb-8">
           سجّل الدخول بالبريد الإلكتروني وكلمة المرور
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-bold text-foreground mb-2">
+            <label className="block text-sm font-bold text-[#071a4d] mb-2">
               البريد الإلكتروني
             </label>
             <div className="relative">
@@ -68,7 +68,7 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-bold text-foreground mb-2">
+            <label className="block text-sm font-bold text-[#071a4d] mb-2">
               كلمة المرور
             </label>
             <div className="relative">
@@ -102,7 +102,7 @@ export default function LoginPage() {
         </form>
       </div>
 
-      <p className="mt-8 text-sm text-foreground/40 font-medium">
+      <p className="mt-8 text-sm text-white/65 font-medium">
         هذه الصفحة مخصصة لمدير الموقع فقط.
       </p>
     </div>

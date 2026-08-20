@@ -36,11 +36,11 @@
     100% { transform: translateX(-100%); }
   }
 
-  /* ── أسماء بديلة متوافقة مع مكونات لوحة التحكم ── */
+  /* ── لوحة التحكم: أسطح بيضاء وهوية ملكية متناسقة ── */
   --color-emerald:    var(--brand-color);
-  --color-gold:       var(--brand-accent);
-  --color-ivory:      var(--brand-surface);
-  --color-deep-green: var(--brand-foreground);
+  --color-gold:       #D4AF37;
+  --color-ivory:      #FFFFFF;
+  --color-deep-green: var(--brand-surface);
 }
 
 :root {
@@ -190,11 +190,11 @@ body.is-admin {
   .btn-outline {
     @apply bg-transparent text-brand border border-brand/20 hover:bg-brand/5 hover:border-brand/40 hover:-translate-y-0.5;
   }
-  
+
   .btn-ghost {
     @apply bg-transparent text-foreground hover:bg-brand/5 hover:text-brand;
   }
-  
+
   .btn-danger {
     @apply bg-red-600 text-white shadow-md hover:bg-red-700 hover:-translate-y-0.5;
   }

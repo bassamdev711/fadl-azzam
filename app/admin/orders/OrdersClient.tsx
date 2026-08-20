@@ -137,9 +137,9 @@ export default function OrdersClient({ orders: initialOrders, stats }: { orders:
         <div className="p-3 md:p-4 border-b border-gray-100 bg-gray-50 flex flex-wrap gap-3">
           <div className="relative flex-1 min-w-[200px]">
             <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-            <input type="text" placeholder="البحث باسم العميل، الهاتف..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="w-full bg-white border border-gray-200 rounded-lg py-2 pr-9 pl-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all" />
+            <input type="text" placeholder="البحث باسم العميل، الهاتف..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="w-full bg-white border border-gray-200 rounded-lg py-2 pr-9 pl-3 text-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" />
           </div>
-          <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} className="bg-white border border-gray-200 rounded-lg py-2 px-3 text-sm font-bold text-gray-600 focus:outline-none focus:border-emerald-500 cursor-pointer">
+          <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} className="bg-white border border-gray-200 rounded-lg py-2 px-3 text-sm font-bold text-gray-600 focus:outline-none focus:border-brand cursor-pointer">
             {['الكل', 'جديد', 'قيد التجهيز', 'مشحون', 'مكتمل', 'ملغى'].map(s => <option key={s} value={s}>{s === 'الكل' ? 'حالة الطلب: الكل' : s}</option>)}
           </select>
         </div>
