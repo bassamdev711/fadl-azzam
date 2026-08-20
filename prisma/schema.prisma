@@ -321,7 +321,7 @@ model HomepageSettings {
   aboutTopTitle       String   @default("فضل عزام للتجارة العامة")
   aboutMainTitle      String   @default("حلول عملية بثقة")
   aboutQuote          String   @default("نربط احتياجك بالحل المناسب، ونبني كل تعامل على الوضوح والالتزام.")
-  aboutDescription    String   @default("نعمل على توفير خيارات عملية في الأجهزة المنزلية والطاقة الشمسية والتجهيزات التجارية، مع خدمة تفهم احتياجك وتتابعك بوضوح.")
+  aboutDescription    String   @default("نعمل على توفير خيارات عملية في الأجهزة المنزلية والطاقة الشمسية والتجهيزات التجارية، مع خدمة متميزة تفهم احتياجك بوضوح.")
 
   // Experience Section
   expTopTitle         String   @default("كيف نعمل")
@@ -329,10 +329,10 @@ model HomepageSettings {
   expBox1Title        String   @default("نستمع أولًا")
   expBox1Desc         String   @default("نفهم احتياجك ونساعدك على مقارنة الخيارات المناسبة قبل اتخاذ القرار.")
   expBox2Title        String   @default("نلتزم بالتنفيذ")
-  expBox2Desc         String   @default("نحافظ على وضوح التواصل والمتابعة من الاستفسار حتى التسليم.")
+  expBox2Desc         String   @default("نحافظ على وضوح التواصل ونقدم خدمة متميزة من الاستفسار حتى التسليم.")
 
   // Stats Section (Stored as JSON array to allow flexible stats)
-  statsJson           String   @default("[{\"value\":\"01\",\"label\":\"تجارة عامة\"},{\"value\":\"02\",\"label\":\"حلول عملية\"},{\"value\":\"03\",\"label\":\"توريد موثوق\"},{\"value\":\"04\",\"label\":\"متابعة مستمرة\"}]")
+  statsJson           String   @default("[{\"value\":\"01\",\"label\":\"تجارة عامة\"},{\"value\":\"02\",\"label\":\"حلول عملية\"},{\"value\":\"03\",\"label\":\"توريد موثوق\"},{\"value\":\"04\",\"label\":\"خدمة متميزة\"}]")
 
   updatedAt           DateTime @updatedAt
 }

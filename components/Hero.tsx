@@ -165,7 +165,7 @@ export default function Hero({
           <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-blue-100/75 sm:text-sm">
             <span>تجارة عامة</span>
             <span>توريد وتجهيز</span>
-            <span>خدمة ومتابعة</span>
+            <span>خدمة متميزة</span>
           </div>
           <button onClick={scrollToProducts} className="group flex items-center gap-2 text-xs font-bold text-white sm:text-sm">
             اكتشف المزيد

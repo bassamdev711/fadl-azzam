@@ -26,7 +26,7 @@ const HOMEPAGE_FIELDS = [
 type HomepageField = (typeof HOMEPAGE_FIELDS)[number]
 type HomepageUpdateInput = Partial<Record<HomepageField, string>>
 
-const SAFE_EXPERIENCE_BOX2_DESC = 'نحافظ على وضوح التواصل والمتابعة من الاستفسار حتى التسليم.'
+const SAFE_EXPERIENCE_BOX2_DESC = 'نحافظ على وضوح التواصل ونقدم خدمة متميزة من الاستفسار حتى التسليم.'
 const LEGACY_SERVICE_MARKER = ['بعد', 'البيع'].join(' ')
 
 function sanitizeHomepageUpdate(data: unknown): HomepageUpdateInput {
@@ -72,10 +72,24 @@ export async function getHomepageSettings() {
       })
     }
 
-    if (settings.expBox2Desc.includes(LEGACY_SERVICE_MARKER)) {
+    const normalizedData: Record<string, string> = {}
+
+    if (settings.expBox2Desc.includes('متابعة') || settings.expBox2Desc.includes(LEGACY_SERVICE_MARKER)) {
+      normalizedData.expBox2Desc = SAFE_EXPERIENCE_BOX2_DESC
+    }
+
+    if (settings.aboutDescription.includes('متابعة') || settings.aboutDescription.includes('تتابع')) {
+      normalizedData.aboutDescription = 'نعمل على توفير خيارات عملية في الأجهزة المنزلية والطاقة الشمسية والتجهيزات التجارية، مع خدمة متميزة تفهم احتياجك بوضوح.'
+    }
+
+    if (settings.statsJson.includes('متابعة')) {
+      normalizedData.statsJson = settings.statsJson.replaceAll('متابعة مستمرة', 'خدمة متميزة')
+    }
+
+    if (Object.keys(normalizedData).length > 0) {
       settings = await prisma.homepageSettings.update({
         where: { id: 'singleton' },
-        data: { expBox2Desc: SAFE_EXPERIENCE_BOX2_DESC },
+        data: normalizedData,
       })
     }
 

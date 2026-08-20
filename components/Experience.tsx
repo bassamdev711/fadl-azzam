@@ -52,7 +52,7 @@ export default function Experience({
               <span className="mb-5 block text-sm font-black text-brand">02</span>
               <h3 className="mb-4 text-2xl font-black text-foreground">{data.expBox2Title || "نلتزم بالتنفيذ"}</h3>
               <p className="text-lg leading-8 text-foreground/70">
-                {data.expBox2Desc || "نحافظ على وضوح التواصل والمتابعة من الاستفسار حتى التسليم."}
+                {data.expBox2Desc || "نحافظ على وضوح التواصل ونقدم خدمة متميزة من الاستفسار حتى التسليم."}
               </p>
             </div>
           </motion.div>

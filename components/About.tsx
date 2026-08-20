@@ -18,7 +18,7 @@ export default function About({
   data?: AboutData;
   brandName?: string;
 }) {
-  const commitments = ["خيارات عملية", "وضوح في التعامل", "متابعة مستمرة"];
+  const commitments = ["خيارات عملية", "وضوح في التعامل", "خدمة متميزة"];
 
   return (
     <section id="about" className="relative overflow-hidden bg-surface py-24 md:py-32" dir="rtl">
@@ -63,7 +63,7 @@ export default function About({
             {data.aboutQuote || "نربط احتياجك بالحل المناسب، ونبني كل تعامل على الوضوح والالتزام."}
           </blockquote>
           <p className="mt-7 max-w-2xl text-base leading-8 text-foreground/70 md:text-lg">
-            {data.aboutDescription || "نعمل على توفير خيارات عملية في الأجهزة المنزلية والطاقة الشمسية والتجهيزات التجارية، مع خدمة تفهم احتياجك وتتابعك بوضوح."}
+            {data.aboutDescription || "نعمل على توفير خيارات عملية في الأجهزة المنزلية والطاقة الشمسية والتجهيزات التجارية، مع خدمة متميزة تفهم احتياجك بوضوح."}
           </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             {commitments.map((commitment) => (
