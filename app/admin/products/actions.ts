@@ -8,6 +8,8 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { verifyAdmin } from '@/lib/auth';
 
+const MAX_ADDITIONAL_IMAGES = 2;
+
 function parseStringArray(value: FormDataEntryValue | null): string[] {
   if (typeof value !== 'string' || !value.trim()) return [];
   try {
@@ -123,7 +125,7 @@ function readProductFields(formData: FormData) {
     featured: formData.get('featured') === 'on',
     bestseller: formData.get('bestseller') === 'on',
     imageUrl: (formData.get('imageUrl') as string | null) || null,
-    extraImages: parseStringArray(formData.get('images')),
+    extraImages: parseStringArray(formData.get('images')).slice(0, MAX_ADDITIONAL_IMAGES),
     seoSearchPhrases: parseStringArray(formData.get('seoSearchPhrases')),
     seoScore: formData.get('seoScore') ? Number(formData.get('seoScore')) : null,
   };
