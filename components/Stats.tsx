@@ -50,7 +50,6 @@ export default function Stats({ data = {} }: { data?: StatsData }) {
               transition={{ duration: 0.8, delay: (index * 0.1) + 0.1 }}
               className="text-center px-4"
             >
-              <h4 className="text-4xl md:text-5xl font-black text-accent mb-3">{stat.value}</h4>
               <p className="text-sm md:text-base text-surface/80 font-medium">{stat.label}</p>
             </motion.div>
           ))}
