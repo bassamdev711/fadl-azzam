@@ -13,5 +13,9 @@ export default function PublicNavbar(props: PublicNavbarProps) {
     return null;
   }
 
-  return <Navbar {...props} />;
+  return (
+    <div data-public-navbar="true">
+      <Navbar {...props} />
+    </div>
+  );
 }
