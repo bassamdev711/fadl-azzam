@@ -84,12 +84,12 @@ export default function Navbar({
       className={`fixed w-full z-50 border-b transition-all duration-500 ${
         isScrolled
           ? "border-accent/30 bg-[#071a4d]/95 py-1 shadow-[0_12px_30px_rgba(3,12,45,0.28)] backdrop-blur-xl md:py-1.5"
-          : "border-accent/25 bg-gradient-to-l from-[#071a4d] via-[#123bb7] to-[#071a4d] py-1.5 shadow-[0_8px_24px_rgba(3,12,45,0.18)] md:py-2.5"
+          : "border-accent/25 bg-gradient-to-l from-[#071a4d] via-[#123bb7] to-[#071a4d] py-1 shadow-[0_8px_24px_rgba(3,12,45,0.18)] md:py-1.5"
       }`}
       dir="rtl"
     >
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-l from-transparent via-accent/80 to-transparent" />
-      <div className="site-container relative flex min-h-[var(--touch-target)] items-center justify-between py-1 md:min-h-12 md:py-1.5">
+      <div className="site-container relative flex min-h-[var(--touch-target)] items-center justify-between py-0.5 md:min-h-11 md:py-1">
         {/* Logo */}
         <Link
           href="/"
