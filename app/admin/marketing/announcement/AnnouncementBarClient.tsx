@@ -183,11 +183,11 @@ export default function AnnouncementBarClient({ initial }: AnnouncementBarPageCl
           <p className="text-xs font-bold text-gray-500 mb-3">ألوان جاهزة</p>
           <div className="flex flex-wrap gap-2">
             {[
-              { bg: '#1a544a', text: '#ffffff', label: 'لون العلامة' },
-              { bg: '#c9a756', text: '#1a1a1a', label: 'ذهبي' },
-              { bg: '#0f302a', text: '#ffffff', label: 'أخضر داكن' },
+              { bg: '#123CDE', text: '#ffffff', label: 'أزرق ملكي' },
+              { bg: '#D4AF37', text: '#071A4D', label: 'ذهبي' },
+              { bg: '#071A4D', text: '#ffffff', label: 'كحلي داكن' },
               { bg: '#dc2626', text: '#ffffff', label: 'أحمر' },
-              { bg: '#1e40af', text: '#ffffff', label: 'أزرق' },
+              { bg: '#5B86FF', text: '#071A4D', label: 'أزرق كهربائي' },
               { bg: '#000000', text: '#ffffff', label: 'أسود' },
             ].map((preset) => (
               <button
