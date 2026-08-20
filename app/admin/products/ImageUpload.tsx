@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { Upload, X, ImagePlus, Loader2 } from 'lucide-react'
 import { compressImageClientSide } from '@/lib/compress'
 
-const MAX_ADDITIONAL_IMAGES = 2
+const MAX_ADDITIONAL_IMAGES = 1
 
 interface ImageUploadProps {
   mainImage: string
@@ -67,7 +67,7 @@ export default function ImageUpload({
     const files = Array.from(e.target.files || [])
     if (!files.length) return
     if (additionalImages.length + files.length > MAX_ADDITIONAL_IMAGES) {
-      showToast('success', 'الحد الأقصى للصور الإضافية هو صورتان فقط')
+      showToast('success', 'المسموح صورتان إجمالًا: الصورة الرئيسية وصورة إضافية واحدة فقط')
       return
     }
     setUploadingExtra(true)
@@ -129,7 +129,7 @@ export default function ImageUpload({
       {!singleOnly && (
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            صور إضافية ({additionalImages.length}/{MAX_ADDITIONAL_IMAGES})
+            صور إضافية ({additionalImages.length}/{MAX_ADDITIONAL_IMAGES}) — الإجمالي المسموح: صورتان
           </label>
           <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
             {additionalImages.map((url, i) => (

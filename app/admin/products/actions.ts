@@ -8,7 +8,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { verifyAdmin } from '@/lib/auth';
 
-const MAX_ADDITIONAL_IMAGES = 2;
+const MAX_ADDITIONAL_IMAGES = 1;
 
 function parseStringArray(value: FormDataEntryValue | null): string[] {
   if (typeof value !== 'string' || !value.trim()) return [];
