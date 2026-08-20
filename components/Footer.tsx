@@ -81,7 +81,7 @@ export default async function Footer({
   const threads = contactSettings?.threadsUrl || null;
   const showThreads = Boolean(threads && contactSettings?.showThreads !== false);
   return (
-    <footer className="border-t border-[#D4AF37]/35 bg-gradient-to-l from-[#071a4d] via-[#123bb7] to-[#071a4d] pt-12 pb-8 text-white/80 shadow-[0_-10px_35px_rgba(7,26,77,0.28)] md:pt-20 md:pb-10" dir="rtl">
+    <footer className="border-t border-[#D4AF37]/35 bg-[#071a4d] pt-12 pb-8 text-white/80 shadow-[0_-10px_35px_rgba(7,26,77,0.28)] md:pt-20 md:pb-10" dir="rtl">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
           <div className="md:col-span-1">
