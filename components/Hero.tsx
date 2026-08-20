@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowDownLeft, ArrowLeft, CookingPot, Laptop, Sofa, SunMedium } from "lucide-react";
 
@@ -21,8 +22,19 @@ export default function Hero({
   brandName?: string;
   brandNameLatin?: string;
 }) {
+  const router = useRouter();
+
   const scrollToProducts = () => {
-    document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
+    const productsSection = document.getElementById("products");
+
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    // ProductsServer returns null when the database has no products yet.
+    // In that state there is no #products target, so navigate to the catalog page.
+    router.push("/products");
   };
 
   const scrollToAbout = () => {
