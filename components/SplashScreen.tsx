@@ -19,9 +19,12 @@ export default function SplashScreen({
     const hasSeenSplash = sessionStorage.getItem(splashKey);
 
     if (!hasSeenSplash) {
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const duration = prefersReducedMotion ? 250 : 900;
+
       startTransition(() => setShowSplash(true));
       sessionStorage.setItem(splashKey, "true");
-      const timer = setTimeout(() => setShowSplash(false), 1800);
+      const timer = setTimeout(() => setShowSplash(false), duration);
       return () => clearTimeout(timer);
     }
   }, [storeName, storeNameLatin]);
@@ -34,7 +37,7 @@ export default function SplashScreen({
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.45, ease: "easeInOut" }}
-          className="fixed inset-0 z-[99999] flex items-center justify-center overflow-hidden bg-[#061536]"
+          className="fixed inset-0 z-[99999] flex h-dvh max-h-dvh items-center justify-center overflow-hidden bg-[#061536]"
           dir="rtl"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(24,70,180,0.22),transparent_42%),linear-gradient(135deg,#061536_0%,#0a225d_52%,#061536_100%)]" />
@@ -86,7 +89,7 @@ export default function SplashScreen({
           <button
             type="button"
             onClick={() => setShowSplash(false)}
-            className="absolute bottom-8 z-10 rounded-full border border-accent/35 px-4 py-2 text-xs text-surface/65 transition-colors hover:border-accent hover:text-accent"
+            className="touch-target absolute bottom-[calc(1rem+env(safe-area-inset-bottom))] z-10 rounded-full border border-accent/35 px-4 py-2 text-xs text-surface/65 transition-colors hover:border-accent hover:text-accent"
           >
             تخطي
           </button>

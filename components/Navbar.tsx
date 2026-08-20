@@ -31,6 +31,17 @@ export default function Navbar({
   }, [cartIconRef]);
 
   useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -78,7 +89,7 @@ export default function Navbar({
       dir="rtl"
     >
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-l from-transparent via-accent/80 to-transparent" />
-      <div className="relative mx-auto flex h-10 max-w-7xl items-center justify-between px-4 md:h-12 md:px-8">
+      <div className="site-container relative flex min-h-[var(--touch-target)] items-center justify-between py-1 md:min-h-12 md:py-1.5">
         {/* Logo */}
         <Link
           href="/"
@@ -114,27 +125,27 @@ export default function Navbar({
         <div className="relative z-50 flex items-center gap-1.5 md:gap-2">
           <Link 
             href="/track" 
-            className="hidden h-8 w-8 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent sm:flex"
+            className="touch-target hidden h-10 w-10 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent sm:flex"
             aria-label="تتبع الطلب"
           >
             <Package className="w-[18px] h-[18px] md:w-5 md:h-5" strokeWidth={1.5} />
           </Link>
           <Link 
             href="/favorites" 
-            className="relative hidden h-8 w-8 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent md:flex"
+            className="touch-target relative hidden h-10 w-10 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent md:flex"
             aria-label="المفضلة"
           >
             <Heart className="w-[18px] h-[18px] md:w-5 md:h-5" strokeWidth={1.5} />
           </Link>
           <button 
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent"
+            className="touch-target flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent"
             aria-label="البحث"
             onClick={() => setIsSearchOpen(true)}
           >
             <Search className="w-[18px] h-[18px] md:w-5 md:h-5" strokeWidth={1.5} />
           </button>
           <div ref={localRef} className="relative hidden md:block">
-            <Link href="/cart" className="relative flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent" aria-label="سلة المشتريات">
+            <Link href="/cart" className="touch-target relative flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-accent transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent" aria-label="سلة المشتريات">
               <motion.div
                 animate={triggerBounce ? { scale: [1, 1.4, 0.9, 1.15, 1], rotate: [0, -8, 8, -4, 0] } : {}}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -177,7 +188,7 @@ export default function Navbar({
           opacity: isMobileMenuOpen ? 1 : 0,
           pointerEvents: isMobileMenuOpen ? "auto" : "none",
         }}
-        className="fixed inset-0 z-40 flex min-h-screen flex-col items-center justify-center bg-[#061536]/[0.98] backdrop-blur-2xl"
+        className="fixed inset-0 z-40 flex h-dvh max-h-dvh flex-col items-center justify-center overflow-y-auto bg-[#061536]/[0.98] pb-[var(--mobile-bottom-safe)] pt-24 backdrop-blur-2xl"
         dir="rtl"
       >
         <div className="flex flex-col items-center gap-5">
@@ -190,7 +201,7 @@ export default function Navbar({
             >
               <Link
                 href={link.href}
-                className="border-b border-transparent px-5 py-2 text-lg font-medium tracking-wider text-surface transition-colors hover:border-accent hover:text-accent"
+                className="touch-target flex items-center border-b border-transparent px-5 py-2 text-lg font-medium tracking-wider text-surface transition-colors hover:border-accent hover:text-accent"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}

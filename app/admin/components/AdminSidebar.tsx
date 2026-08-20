@@ -58,11 +58,11 @@ export default function AdminSidebar({
   ]
 
   return (
-    <div dir="rtl" className="flex flex-col flex-1 overflow-hidden bg-ivory font-sans text-deep-green w-full h-full">
+    <div dir="rtl" className="flex h-full w-full flex-1 flex-col overflow-hidden bg-ivory font-sans text-deep-green">
       {/* Mobile Header (Hamburger Menu) - Now a standard flex child, no sticky needed */}
-      <div className="md:hidden bg-[linear-gradient(135deg,#123CDE_0%,#0B2B9F_58%,#071A4D_100%)] border-b border-[#5B86FF]/40 flex items-center justify-between p-4 text-white w-full flex-shrink-0 z-40 shadow-[0_8px_24px_rgba(7,26,77,0.35)]">
+      <div className="z-40 flex min-h-16 w-full flex-shrink-0 items-center justify-between border-b border-[#5B86FF]/40 bg-[linear-gradient(135deg,#123CDE_0%,#0B2B9F_58%,#071A4D_100%)] px-4 py-3 text-white shadow-[0_8px_24px_rgba(7,26,77,0.35)] md:hidden">
         <div className="flex items-center gap-3">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none">
+          <button onClick={() => setIsOpen(!isOpen)} className="touch-target rounded-lg text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold" aria-label={isOpen ? 'إغلاق القائمة' : 'فتح القائمة'}>
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
           <div>
@@ -95,7 +95,7 @@ export default function AdminSidebar({
         {/* Sidebar Content */}
         <aside className={`
           absolute md:relative inset-y-0 right-0 z-50
-          w-64 bg-[linear-gradient(180deg,#123CDE_0%,#0B2B9F_55%,#071A4D_100%)] border-l border-[#5B86FF]/35 shadow-[0_18px_50px_rgba(7,26,77,0.42)] flex-shrink-0 text-white
+          w-[min(20rem,calc(100vw-1rem))] flex-shrink-0 bg-[linear-gradient(180deg,#123CDE_0%,#0B2B9F_55%,#071A4D_100%)] border-l border-[#5B86FF]/35 text-white shadow-[0_18px_50px_rgba(7,26,77,0.42)]
           transform transition-transform duration-300 ease-in-out h-full overflow-y-auto
           ${isOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}
         `}>
@@ -134,7 +134,7 @@ export default function AdminSidebar({
                   key={link.href}
                   href={link.href}
                   onClick={closeSidebar}
-                  className={`flex items-center gap-3 px-4 py-3 text-sm font-bold rounded-sm transition-colors ${
+                  className={`flex min-h-11 items-center gap-3 rounded-sm px-4 py-3 text-sm font-bold transition-colors ${
                     isActive
                     ? 'bg-[#5B86FF]/20 text-[#D4AF37] border-r-2 border-[#D4AF37] shadow-[inset_0_0_20px_rgba(91,134,255,0.18)]'
                     : 'text-white/85 hover:bg-white/10 hover:text-[#D4AF37] hover:border-r-2 hover:border-[#D4AF37]/70'
@@ -160,7 +160,7 @@ export default function AdminSidebar({
         </aside>
 
         {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto w-full relative pb-10">
+        <main className="relative flex-1 w-full overflow-x-hidden overflow-y-auto pb-10">
           {children}
         </main>
       </div>
