@@ -6,16 +6,21 @@ import prisma from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 
 export async function getCollections() {
-  await verifyAdmin();
+  await verifyAdmin()
 
-  return prisma.collection.findMany({
-    include: {
-      _count: {
-        select: { products: true }
-      }
-    },
-    orderBy: { createdAt: 'desc' }
-  })
+  try {
+    return await prisma.collection.findMany({
+      include: {
+        _count: {
+          select: { products: true }
+        }
+      },
+      orderBy: { createdAt: 'desc' }
+    })
+  } catch (error) {
+    console.error('Could not load collections for product form', error)
+    return []
+  }
 }
 
 export async function createCollection(data: { name: string, slug: string, description: string, isActive: boolean, imageUrl: string | null }) {
