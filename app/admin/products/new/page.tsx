@@ -39,7 +39,12 @@ export default function NewProductPage() {
 
   useEffect(() => {
     startTransition(() => {
-      void getCollections().then(data => setCollections(data))
+      void getCollections()
+        .then(data => setCollections(data))
+        .catch((error) => {
+          console.error('Could not load collections in product form', error)
+          setCollections([])
+        })
       // Auto-generate initial SKU
       generateSKU()
     })
