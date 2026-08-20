@@ -60,24 +60,25 @@ export default function Hero({
 
       <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(3,12,45,0.06),rgba(4,20,72,0.04)_46%,rgba(5,18,62,0.3))] lg:block" />
       <div className="absolute inset-0 hidden bg-[radial-gradient(circle_at_12%_75%,rgba(63,124,255,0.18),transparent_34%)] lg:block" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,9,31,0.16),rgba(2,9,31,0.02)_38%,rgba(2,9,31,0.06)_70%,rgba(2,9,31,0.28))] lg:hidden" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,40,0.28),rgba(3,15,40,0.04)_34%,rgba(2,10,27,0.18)_62%,rgba(2,10,27,0.72))] lg:hidden" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(90,146,255,0.16),transparent_38%)] lg:hidden" />
 
-      {/* Phone layout: the image reserves the top and bottom negative space; content stays live HTML. */}
-      <div className="relative z-10 flex min-h-[100dvh] flex-col justify-between px-5 pb-[calc(var(--mobile-bottom-nav-height)+2.25rem)] pt-28 sm:px-8 lg:hidden">
+      {/* Phone layout: restrained HTML copy over a spacious editorial composition. */}
+      <div className="relative z-10 min-h-[100dvh] lg:hidden">
         <motion.div
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="mx-auto w-full max-w-md text-center text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)]"
+          className="absolute inset-x-6 top-28 text-right text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] sm:inset-x-8 sm:top-32"
         >
-          <div className="font-sans text-base font-extrabold tracking-[0.2em] text-[#f4d36d]" dir="ltr">
-            {brandNameLatin}
+          <div className="mb-3 text-[10px] font-bold tracking-[0.22em] text-blue-200" dir="ltr">
+            GENERAL TRADING · PRACTICAL SOLUTIONS
           </div>
-          <h1 className="mt-1 text-4xl font-black leading-tight">{data.heroTitle || brandName}</h1>
-          <p className="mt-1 text-lg font-bold leading-relaxed text-white">
+          <h1 className="text-[2rem] font-extrabold leading-[1.12] tracking-[-0.05em] sm:text-[2.15rem]">{data.heroTitle || brandName}</h1>
+          <p className="mt-2 text-[1.15rem] font-medium leading-[1.35] tracking-[-0.04em] text-white/90 sm:text-xl">
             {data.heroSubtitle || "للتجارة العامة والحلول العملية"}
           </p>
-          <p className="mx-auto mt-3 max-w-sm whitespace-pre-line text-sm font-medium leading-7 text-white/95">
+          <p className="ml-auto mt-4 max-w-[18rem] whitespace-pre-line text-[0.78rem] font-normal leading-7 text-blue-50/80 sm:text-sm">
             {data.heroDescription || "توريد موثوق ومنتجات عملية للأعمال والمنازل، بخدمة واضحة تبدأ من احتياجك."}
           </p>
         </motion.div>
@@ -86,12 +87,12 @@ export default function Hero({
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25 }}
-          className="grid grid-cols-2 gap-3"
+          className="absolute inset-x-6 bottom-[calc(var(--mobile-bottom-nav-height)+1.55rem)] grid grid-cols-2 gap-2 sm:inset-x-8"
         >
-          <button onClick={scrollToProducts} className="btn btn-primary min-h-12 w-full rounded-2xl px-3 text-sm font-extrabold shadow-lg shadow-black/20">
+          <button onClick={scrollToProducts} className="btn btn-primary min-h-11 w-full rounded-xl px-2 text-[0.72rem] font-bold shadow-lg shadow-black/20 sm:text-xs">
             اكتشف منتجاتنا
           </button>
-          <button onClick={scrollToAbout} className="btn min-h-12 w-full rounded-2xl border border-white/35 bg-brand/90 px-3 text-sm font-extrabold text-white shadow-lg shadow-black/20 hover:bg-brand">
+          <button onClick={scrollToAbout} className="btn min-h-11 w-full rounded-xl border border-white/45 bg-brand/20 px-2 text-[0.72rem] font-bold text-white shadow-lg shadow-black/20 backdrop-blur-md hover:bg-brand/40 sm:text-xs">
             {data.heroSecondaryButton || "تعرف علينا"}
           </button>
         </motion.div>

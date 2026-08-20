@@ -59,7 +59,7 @@ export default function MobileBottomNav() {
   }
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[90] h-[var(--mobile-bottom-nav-height)] border-t border-black/10 bg-surface pb-[env(safe-area-inset-bottom)] shadow-[0_-5px_15px_rgba(0,0,0,0.05)] md:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-[90] h-[var(--mobile-bottom-nav-height)] border-t border-[#E1E7F5] bg-[#F7F9FF] pb-[env(safe-area-inset-bottom)] shadow-[0_-5px_15px_rgba(7,26,77,0.08)] md:hidden">
       <div className="flex h-full items-center justify-around px-2" dir="rtl">
         {navItems.map((item) => {
           const isActive = 
@@ -84,7 +84,7 @@ export default function MobileBottomNav() {
                       size={22}
                       strokeWidth={isActive ? 2.5 : 1.5}
                       className={`transition-colors duration-200 ${
-                        isActive ? "text-brand" : "text-foreground/40"
+                        isActive ? "text-[#123CDE]" : "text-[#71809D]"
                       }`}
                     />
                   </motion.div>
@@ -93,7 +93,7 @@ export default function MobileBottomNav() {
                     size={22}
                     strokeWidth={isActive ? 2.5 : 1.5}
                     className={`transition-colors duration-200 ${
-                      isActive ? "text-brand" : "text-foreground/40"
+                      isActive ? "text-[#123CDE]" : "text-[#71809D]"
                     }`}
                   />
                 )}
@@ -105,7 +105,7 @@ export default function MobileBottomNav() {
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0.5, opacity: 0 }}
                       className={`absolute -top-1.5 -right-2 text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center ${
-                        isActive ? "bg-[#D4AF37] text-[#071A4D]" : "bg-brand text-white"
+                        isActive ? "bg-[#071A4D] text-white" : "bg-[#123CDE] text-white"
                       }`}
                     >
                       {item.badge}
@@ -116,7 +116,7 @@ export default function MobileBottomNav() {
               
               <span
                 className={`text-[10px] font-bold transition-colors duration-200 ${
-                  isActive ? "text-brand" : "text-foreground/40"
+                  isActive ? "text-[#123CDE]" : "text-[#71809D]"
                 }`}
               >
                 {item.name}
