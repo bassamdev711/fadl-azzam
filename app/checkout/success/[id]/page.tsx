@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { CheckCircle2 } from 'lucide-react'
-import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import prisma from '@/lib/prisma'
 import { notFound } from 'next/navigation'
@@ -35,7 +34,6 @@ export default async function SuccessPage({
 
   return (
     <main className="min-h-screen bg-surface text-foreground font-sans flex flex-col" dir="rtl">
-      <Navbar />
 
       <div className="site-container flex flex-grow items-start justify-center py-28 md:py-40">
         <div className="w-full max-w-[640px] rounded-2xl border border-black/5 bg-white p-5 text-center shadow-sm sm:p-8 md:p-12">

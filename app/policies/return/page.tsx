@@ -1,5 +1,4 @@
 import prisma from '@/lib/prisma'
-import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { notFound } from 'next/navigation'
 
@@ -14,7 +13,6 @@ export default async function ReturnPolicyPage() {
 
   return (
     <main className="min-h-screen bg-surface text-foreground font-sans flex flex-col">
-      <Navbar />
       
       <div className="flex-grow pt-32 pb-20 px-6" dir="rtl">
         <div className="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-black/5">

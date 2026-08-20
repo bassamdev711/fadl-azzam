@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { Metadata } from 'next'
 import prisma from '@/lib/prisma'
-import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ProductDetailClient from './ProductDetailClient'
 import ProductReviews from '@/components/ProductReviews'
@@ -72,7 +71,6 @@ export default async function ProductDetailPage({
 
   return (
     <main className="min-h-screen bg-surface text-foreground font-sans">
-      <Navbar storeName="فضل عزام" storeNameLatin="FADL AZZAM" />
 
       {/* Breadcrumb */}
       <div className="site-container pt-24 pb-4" dir="rtl">

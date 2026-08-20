@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic'
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
@@ -43,7 +42,6 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-surface text-foreground overflow-hidden font-sans">
-      <Navbar storeName={store.name} storeNameLatin={store.nameLatin} />
       
       {/* 1. Store Identity */}
       <Hero data={safeSettings} brandName={store.name} brandNameLatin={store.nameLatin} />
