@@ -130,15 +130,15 @@ export default function ProductDetailClient({ product }: { product: Product }) {
 
   return (
     <>
-      <div className="relative bg-surface text-foreground pb-16" dir="rtl">
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
+      <div className="relative bg-surface pb-20 text-foreground" dir="rtl">
+        <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
           
           {/* ======= Left: Image Gallery ======= */}
-          <div className="w-full lg:w-5/12 flex flex-col gap-3">
+          <div className="flex w-full flex-col gap-3 lg:col-span-5">
             
             {/* Main Image Stage */}
             <div 
-              className="w-full mx-auto aspect-square max-h-[400px] md:max-h-[550px] bg-white relative overflow-hidden border border-black/5 flex items-center justify-center cursor-zoom-in group rounded-lg"
+              className="relative mx-auto flex aspect-square max-h-[360px] w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-2xl border border-black/5 bg-white group sm:max-h-[440px] md:max-h-[550px]"
               onClick={() => setLightboxOpen(true)}
             >
               <AnimatePresence mode="wait">
@@ -178,7 +178,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                   <button
                     key={i}
                     onClick={() => setActiveImage(img)}
-                    className={`relative w-16 h-16 bg-white border shrink-0 transition-all rounded-md overflow-hidden ${
+                    className={`relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border bg-white transition-all ${
                       activeImage === img ? 'border-brand shadow-sm scale-105' : 'border-black/5 opacity-60 hover:opacity-100 hover:border-black/20'
                     }`}
                   >
@@ -199,7 +199,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
           </div>
 
           {/* ======= Right: Product Info ======= */}
-          <div className="w-full lg:w-7/12 flex flex-col text-right">
+          <div className="flex w-full flex-col text-right lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -240,7 +240,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                           setSelectedVariant(variant)
                           setQuantity(1)
                         }}
-                        className={`px-6 py-2 border rounded-full text-sm font-bold transition-all ${
+                        className={`min-h-11 rounded-full border px-5 py-2 text-sm font-bold transition-all ${
                           selectedVariant?.id === variant.id
                             ? 'bg-brand text-surface border-brand shadow-md'
                             : 'bg-white text-foreground border-black/10 hover:border-brand/50'

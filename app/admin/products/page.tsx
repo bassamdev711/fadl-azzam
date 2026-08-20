@@ -43,7 +43,7 @@ export default async function ProductsPage() {
       </div>
 
       <div className="bg-white shadow-sm rounded-lg border border-gray-200 overflow-hidden">
-        <div className="overflow-x-auto">
+        <div className="hidden overflow-x-auto md:block">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
@@ -117,6 +117,45 @@ export default async function ProductsPage() {
             </tbody>
           </table>
         </div>
+      </div>
+
+      <div className="space-y-3 md:hidden">
+        {products.length === 0 ? (
+          <div className="rounded-xl border border-gray-200 bg-white p-6 text-center text-sm text-gray-500">
+            لا توجد منتجات حتى الآن أو أن قاعدة البيانات غير متصلة.
+          </div>
+        ) : (
+          products.map((product) => (
+            <article key={product.id} className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+              <div className="flex items-start gap-3">
+                {product.imageUrl ? (
+                  <Image src={product.imageUrl} alt={product.name} width={64} height={64} className="h-16 w-16 shrink-0 rounded-lg object-cover" />
+                ) : (
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-xs text-gray-500">بدون</div>
+                )}
+                <div className="min-w-0 flex-1">
+                  <h3 className="truncate text-base font-bold text-gray-900">{product.name}</h3>
+                  <p className="mt-1 truncate text-xs text-gray-500">{product.brand || 'بدون ماركة'}</p>
+                  <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-gray-600">
+                    <span className="font-bold text-gray-900">{Number(product.price).toFixed(2)} ر.ي</span>
+                    <span>المخزون: {product.stock}</span>
+                    <span className={`rounded-full px-2 py-1 font-semibold ${product.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                      {product.isActive ? 'فعال' : 'غير فعال'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 flex gap-2 border-t border-gray-100 pt-3">
+                <Link href={`/admin/products/${product.id}/edit`} className="btn btn-outline min-h-11 flex-1 gap-2 text-sm">
+                  <Edit className="h-4 w-4" /> تعديل
+                </Link>
+                <div className="flex min-h-11 items-center">
+                  <DeleteButton id={product.id} />
+                </div>
+              </div>
+            </article>
+          ))
+        )}
       </div>
     </div>
   )

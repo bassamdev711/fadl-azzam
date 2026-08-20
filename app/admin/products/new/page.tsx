@@ -59,6 +59,7 @@ export default function NewProductPage() {
 
       <form action={createProduct} className="space-y-6">
         {/* Hidden image fields */}
+        <input type="hidden" name="slug" value={slug} />
         <input type="hidden" name="imageUrl" value={mainImage} />
         <input type="hidden" name="images" value={JSON.stringify(extraImages)} />
         <input type="hidden" name="seoSearchPhrases" value={JSON.stringify(seoPhrases)} />

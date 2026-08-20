@@ -29,20 +29,20 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#071a4d] flex flex-col justify-center items-center p-4 font-sans text-white" dir="rtl">
-      <Link href="/" className="btn btn-ghost btn-sm absolute top-8 right-8 gap-2 text-white/70 hover:text-accent">
+    <div className="min-h-screen bg-[#071a4d] flex flex-col justify-center items-center px-4 py-20 font-sans text-white" dir="rtl">
+      <Link href="/" className="btn btn-ghost btn-sm absolute right-4 top-4 gap-2 text-white/70 hover:text-accent sm:right-8 sm:top-8">
         <ArrowRight size={20} />
         العودة للموقع
       </Link>
 
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-accent/20 p-8">
+      <div className="w-full max-w-md rounded-2xl border border-accent/20 bg-white p-5 shadow-xl sm:p-8">
         <div className="flex justify-center mb-6">
           <div className="w-16 h-16 bg-brand/10 rounded-full flex items-center justify-center border border-brand/20">
             <ShieldCheck className="w-8 h-8 text-brand" />
           </div>
         </div>
 
-        <h1 className="text-3xl font-black text-center text-[#071a4d] mb-2">لوحة تحكم فضل عزام</h1>
+        <h1 className="text-center text-2xl font-black text-[#071a4d] mb-2 sm:text-3xl">لوحة تحكم فضل عزام</h1>
         <p className="text-center text-[#071a4d]/65 font-medium mb-8">
           سجّل الدخول بالبريد الإلكتروني وكلمة المرور
         </p>
@@ -58,7 +58,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-4 pr-12 py-3 bg-surface/50 border border-foreground/10 rounded-xl focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent text-foreground transition-all ltr"
+                className="h-11 w-full rounded-xl border border-foreground/10 bg-surface/50 pl-4 pr-12 text-foreground transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent ltr"
                 placeholder="admin@example.com"
                 autoComplete="username"
                 dir="ltr"
@@ -77,7 +77,7 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-4 pr-12 py-3 bg-surface/50 border border-foreground/10 rounded-xl focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent text-foreground transition-all ltr"
+                className="h-11 w-full rounded-xl border border-foreground/10 bg-surface/50 pl-4 pr-12 text-foreground transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent ltr"
                 placeholder="أدخل كلمة المرور"
                 autoComplete="current-password"
                 dir="ltr"

@@ -254,7 +254,7 @@ export default function CheckoutClient() {
   }
 
   return (
-    <div className="flex-grow pt-20 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
+    <div className="site-container flex-grow py-28 md:py-32">
       <div className="mb-4 md:mb-8">
           <Link href="/cart" className="inline-flex items-center text-foreground/60 hover:text-brand transition-colors font-bold gap-2 text-sm">
             <ArrowRight size={15} />
@@ -271,7 +271,7 @@ export default function CheckoutClient() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-16">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-12 lg:gap-16">
           
           {/* Right Column: Form */}
           <div className="md:col-span-7 order-2 md:order-1">
@@ -292,7 +292,7 @@ export default function CheckoutClient() {
                       onChange={handleChange}
                       required
                       placeholder="أدخل اسمك الكامل"
-                      className="bg-transparent border-b border-black/20 pb-3 outline-none focus:border-brand transition-colors"
+                      className="h-11 w-full rounded-xl border border-black/10 bg-white px-3 text-sm outline-none transition-colors focus:border-brand"
                     />
                   </div>
                   
@@ -306,7 +306,7 @@ export default function CheckoutClient() {
                       required
                       dir="ltr"
                       placeholder="05XXXXXXXX"
-                      className="bg-transparent border-b border-black/20 pb-3 outline-none focus:border-brand transition-colors text-right"
+                      className="h-11 w-full rounded-xl border border-black/10 bg-white px-3 text-sm text-right outline-none transition-colors focus:border-brand"
                     />
                   </div>
 
@@ -317,7 +317,7 @@ export default function CheckoutClient() {
                       value={formData.governorate}
                       onChange={handleChange}
                       required
-                      className="bg-transparent border-b border-black/20 pb-3 outline-none focus:border-brand transition-colors appearance-none"
+                      className="h-11 w-full rounded-xl border border-black/10 bg-white px-3 text-sm outline-none transition-colors focus:border-brand appearance-none"
                     >
                       <option value="إب">إب</option>
                     </select>
@@ -331,7 +331,7 @@ export default function CheckoutClient() {
                       onChange={handleChange}
                       required
                       disabled={shippingCities.length === 0}
-                      className="bg-transparent border-b border-black/20 pb-3 outline-none focus:border-brand transition-colors appearance-none disabled:opacity-60"
+                      className="h-11 w-full rounded-xl border border-black/10 bg-white px-3 text-sm outline-none transition-colors focus:border-brand appearance-none disabled:opacity-60"
                     >
                       <option value="" disabled>اختر المدينة</option>
                       {shippingCities.map((city: ShippingCity) => (
@@ -349,7 +349,7 @@ export default function CheckoutClient() {
                       onChange={handleChange}
                       required
                       placeholder="اسم الشارع، رقم المبنى، الحي"
-                      className="bg-transparent border-b border-black/20 pb-3 outline-none focus:border-brand transition-colors"
+                      className="h-11 w-full rounded-xl border border-black/10 bg-white px-3 text-sm outline-none transition-colors focus:border-brand"
                     />
                   </div>
                 </div>
@@ -368,7 +368,7 @@ export default function CheckoutClient() {
                     </div>
                   )}
                   {paymentSettings.settings?.bankTransferEnabled && paymentSettings.bankAccounts.length > 0 && (
-                    <label className={`flex items-start p-3 md:p-6 border ${formData.paymentMethod === 'bank_transfer' ? 'border-brand bg-white shadow-sm' : 'border-black/10'} cursor-pointer transition-all hover:bg-black/5`}>
+                    <label className={`flex items-start gap-3 rounded-2xl border p-4 md:p-6 ${formData.paymentMethod === 'bank_transfer' ? 'border-brand bg-white shadow-sm' : 'border-black/10'} cursor-pointer transition-all hover:bg-black/5`}>
                       <input 
                         type="radio" 
                         name="paymentMethod" 
@@ -458,7 +458,7 @@ export default function CheckoutClient() {
                                   value={transactionId}
                                   onChange={(e) => setTransactionId(e.target.value)}
                                   placeholder="أدخل رقم العملية المرجعي"
-                                  className="w-full bg-surface-alt border border-black/10 rounded-md p-2 text-sm outline-none focus:border-brand transition-colors"
+                                  className="h-11 w-full rounded-xl border border-black/10 bg-surface-alt px-3 text-sm outline-none transition-colors focus:border-brand"
                                 />
                               </div>
                             </div>
@@ -469,7 +469,7 @@ export default function CheckoutClient() {
                   )}
 
                   {paymentSettings.settings?.walletsEnabled && paymentSettings.digitalWallets.length > 0 && (
-                    <label className={`flex items-start p-3 md:p-6 border ${formData.paymentMethod === 'wallets' ? 'border-brand bg-white shadow-sm' : 'border-black/10'} cursor-pointer transition-all hover:bg-black/5`}>
+                    <label className={`flex items-start gap-3 rounded-2xl border p-4 md:p-6 ${formData.paymentMethod === 'wallets' ? 'border-brand bg-white shadow-sm' : 'border-black/10'} cursor-pointer transition-all hover:bg-black/5`}>
                       <input 
                         type="radio" 
                         name="paymentMethod" 
@@ -555,7 +555,7 @@ export default function CheckoutClient() {
                                   value={transactionId}
                                   onChange={(e) => setTransactionId(e.target.value)}
                                   placeholder="أدخل رقم العملية المرجعي"
-                                  className="w-full bg-surface-alt border border-black/10 rounded-md p-2 text-sm outline-none focus:border-brand transition-colors"
+                                  className="h-11 w-full rounded-xl border border-black/10 bg-surface-alt px-3 text-sm outline-none transition-colors focus:border-brand"
                                 />
                               </div>
                             </div>
@@ -600,7 +600,7 @@ export default function CheckoutClient() {
 
           {/* Left Column: Order Summary */}
           <aside className="md:col-span-5 order-1 md:order-2 relative">
-            <div className="sticky top-20 md:top-32 bg-surface-alt p-4 md:p-8 border border-black/5 shadow-sm">
+            <div className="rounded-2xl border border-black/5 bg-surface-alt p-4 shadow-sm md:p-8 lg:sticky lg:top-32">
               <h2 className="text-xl font-bold text-foreground mb-6 border-b border-black/5 pb-4">ملخص الطلب</h2>
               
               <div className="space-y-3 md:space-y-4 mb-5 md:mb-8">
@@ -623,7 +623,7 @@ export default function CheckoutClient() {
                           <button 
                             type="button"
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                            className="p-1 hover:bg-black/5 transition-colors text-foreground"
+                            className="touch-target rounded-lg p-1 text-foreground transition-colors hover:bg-black/5"
                           >
                             <Minus size={14} />
                           </button>
@@ -631,7 +631,7 @@ export default function CheckoutClient() {
                           <button 
                             type="button"
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                            className="p-1 hover:bg-black/5 transition-colors text-foreground"
+                            className="touch-target rounded-lg p-1 text-foreground transition-colors hover:bg-black/5"
                           >
                             <Plus size={14} />
                           </button>
@@ -639,7 +639,7 @@ export default function CheckoutClient() {
                         <button 
                           type="button"
                           onClick={() => removeFromCart(item.id)}
-                          className="text-red-500 hover:text-red-700 transition-colors"
+                          className="touch-target rounded-full text-red-500 transition-colors hover:bg-red-50 hover:text-red-700"
                         >
                           <Trash2 size={16} />
                         </button>

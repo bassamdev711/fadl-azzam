@@ -4,6 +4,7 @@ import { useState, useTransition } from 'react'
 import { saveAnnouncementBar, toggleAnnouncementBar } from './actions'
 import { Bell, BellOff, Eye } from 'lucide-react'
 import { useToast } from '@/components/ToastProvider'
+import { ensureAccessibleTextColor } from '@/lib/color-contrast'
 
 interface AnnouncementBarPageClientProps {
   initial: {
@@ -25,6 +26,8 @@ export default function AnnouncementBarClient({ initial }: AnnouncementBarPageCl
     bgColor: initial.bgColor,
     textColor: initial.textColor,
   })
+
+  const previewTextColor = ensureAccessibleTextColor(preview.bgColor, preview.textColor)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -71,7 +74,7 @@ export default function AnnouncementBarClient({ initial }: AnnouncementBarPageCl
           <span className="text-xs text-gray-500 font-medium">معاينة مباشرة</span>
         </div>
         <div
-          style={{ backgroundColor: preview.bgColor, color: preview.textColor }}
+          style={{ backgroundColor: preview.bgColor, color: previewTextColor }}
           className="py-2.5 px-4 text-center text-sm font-medium flex items-center justify-center gap-3 transition-colors duration-300"
         >
           <span>{preview.message || 'اكتب رسالتك هنا...'}</span>

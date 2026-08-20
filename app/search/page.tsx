@@ -63,7 +63,7 @@ export default async function SearchPage({
     <main className="min-h-screen bg-surface text-foreground flex flex-col font-sans" dir="rtl">
       <Navbar />
 
-      <div className="flex-grow pt-32 pb-24 px-6 max-w-7xl mx-auto w-full">
+      <div className="site-container flex-grow py-28 md:py-32">
         <div className="mb-10 text-center">
           <h1 className="text-3xl md:text-4xl font-black text-foreground mb-4">
             {query ? `نتائج البحث عن "${query}"` : 'البحث'}
@@ -85,14 +85,14 @@ export default async function SearchPage({
             <p className="text-foreground/60 text-center max-w-md">يرجى تحديث الصفحة والمحاولة لاحقاً.</p>
           </div>
         ) : products.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="responsive-grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {products.map((product) => (
               <Link 
                 key={product.id} 
                 href={`/products/${product.slug}`}
                 className="group flex flex-col"
               >
-                <div className="relative aspect-[4/5] bg-white border border-black/5 rounded-2xl overflow-hidden mb-4 p-6">
+                <div className="relative mb-4 aspect-[4/5] overflow-hidden rounded-2xl border border-black/5 bg-white p-4 sm:p-6">
                   {product.imageUrl ? (
                     <Image 
                       src={product.imageUrl} 

@@ -87,12 +87,12 @@ export default async function ProductsPage({
     <main className="min-h-screen bg-surface text-foreground font-sans flex flex-col" dir="rtl">
       <Navbar storeName="فضل عزام" storeNameLatin="FADL AZZAM" />
 
-      <div className="flex-grow pt-16 md:pt-20 pb-24 relative">
+      <div className="flex-grow pt-24 md:pt-28 pb-24 relative">
         {/* Quick Filter Chips — Responsive & Sticky */}
         <CategoryFilterChips filters={chipFilters} activeCollection={collection} />
 
         {/* Product Grid */}
-        <section className="px-3 md:px-12 max-w-7xl mx-auto">
+        <section className="site-container">
           {dataLoadFailed ? (
             <div className="text-center py-20 text-foreground/60 text-lg">
               تعذر تحميل المنتجات حالياً. يرجى تحديث الصفحة والمحاولة لاحقاً.
@@ -102,7 +102,7 @@ export default async function ProductsPage({
               لا توجد منتجات في هذه المجموعة حالياً
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8">
+            <div className="responsive-grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {products.map((product, index) => (
                 <ProductCard 
                   key={product.id}

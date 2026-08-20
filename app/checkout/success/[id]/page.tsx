@@ -37,31 +37,31 @@ export default async function SuccessPage({
     <main className="min-h-screen bg-surface text-foreground font-sans flex flex-col" dir="rtl">
       <Navbar />
 
-      <div className="flex-grow pt-40 pb-24 px-6 max-w-7xl mx-auto w-full flex justify-center items-start">
-        <div className="w-full max-w-[640px] bg-white shadow-sm p-12 text-center border border-black/5">
-          <CheckCircle2 className="w-20 h-20 text-brand mx-auto mb-6" />
-          <h1 className="text-4xl font-black text-foreground mb-4">تم استلام طلبك بنجاح!</h1>
+      <div className="site-container flex flex-grow items-start justify-center py-28 md:py-40">
+        <div className="w-full max-w-[640px] rounded-2xl border border-black/5 bg-white p-5 text-center shadow-sm sm:p-8 md:p-12">
+          <CheckCircle2 className="mx-auto mb-6 h-16 w-16 text-brand sm:h-20 sm:w-20" />
+          <h1 className="mb-4 text-2xl font-black text-foreground sm:text-3xl md:text-4xl">تم استلام طلبك بنجاح!</h1>
 
-          <div className="bg-surface-alt p-6 mb-8 mt-6">
+          <div className="mb-8 mt-6 rounded-xl bg-surface-alt p-4 sm:p-6">
             <p className="text-lg mb-2">رقم الطلب الخاص بك هو:</p>
             <p className="font-bold text-xl text-brand tracking-widest">{orderReference}</p>
           </div>
 
-          <p className="text-foreground/70 mb-10 leading-relaxed text-lg">
+          <p className="mb-10 text-base leading-relaxed text-foreground/70 sm:text-lg">
             سنقوم بمراجعة طلبك وتجهيزه بأسرع وقت ممكن. يمكنك تتبع حالة طلبك في أي وقت من خلال صفحة تتبع الطلبات. شكرًا لثقتك بنا!
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href={trackingHref}
-              className="btn btn-outline btn-lg"
+              className="btn btn-outline btn-lg min-h-12 w-full sm:w-auto"
             >
               تتبع طلبك الآن
             </Link>
 
             <Link
               href="/"
-              className="btn btn-primary btn-lg"
+              className="btn btn-primary btn-lg min-h-12 w-full sm:w-auto"
             >
               العودة للرئيسية
             </Link>
