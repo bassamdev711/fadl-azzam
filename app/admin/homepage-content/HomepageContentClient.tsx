@@ -29,11 +29,26 @@ type HomepageSettings = {
 type EditableHomepageField = Exclude<keyof HomepageSettings, 'id' | 'updatedAt'>
 type HomepageTab = 'HERO' | 'ABOUT' | 'EXP' | 'STATS'
 
+function parseStats(value: string | undefined): { value: string; label: string }[] {
+  if (!value) return []
+  try {
+    const parsed: unknown = JSON.parse(value)
+    if (!Array.isArray(parsed)) return []
+    return parsed
+      .filter((entry): entry is { value: string; label: string } => {
+        if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return false
+        const record = entry as Record<string, unknown>
+        return typeof record.value === 'string' && typeof record.label === 'string'
+      })
+      .slice(0, 20)
+  } catch {
+    return []
+  }
+}
+
 export default function HomepageContentClient({ initialData }: { initialData: HomepageSettings | null }) {
   const [formData, setFormData] = useState<HomepageSettings>(initialData ?? {} as HomepageSettings)
-  const [stats, setStats] = useState<{value: string, label: string}[]>(
-    initialData?.statsJson ? JSON.parse(initialData.statsJson) : []
-  )
+  const [stats, setStats] = useState<{value: string, label: string}[]>(parseStats(initialData?.statsJson))
   const [isSaving, setIsSaving] = useState(false)
   const [activeTab, setActiveTab] = useState<'HERO' | 'ABOUT' | 'EXP' | 'STATS'>('HERO')
   const { showToast } = useToast()
@@ -50,20 +65,24 @@ export default function HomepageContentClient({ initialData }: { initialData: Ho
 
   const handleSave = async () => {
     setIsSaving(true)
-    const finalData = {
-      ...formData,
-      statsJson: JSON.stringify(stats)
-    }
+    try {
+      const finalData = {
+        ...formData,
+        statsJson: JSON.stringify(stats)
+      }
 
-    const res = await updateHomepageSettings(finalData)
-    
-    if (res.success) {
-      showToast('success', 'تم حفظ التعديلات بنجاح. ستظهر فوراً في المتجر.')
-    } else {
-      showToast('error', res.error || 'حدث خطأ أثناء الحفظ')
+      const res = await updateHomepageSettings(finalData)
+      if (res.success) {
+        showToast('success', 'تم حفظ التعديلات بنجاح. ستظهر فوراً في المتجر.')
+      } else {
+        showToast('error', res.error || 'حدث خطأ أثناء الحفظ')
+      }
+    } catch (error) {
+      console.error('Error saving homepage settings:', error)
+      showToast('error', 'تعذر حفظ التعديلات حالياً. حاول مجدداً.')
+    } finally {
+      setIsSaving(false)
     }
-    
-    setIsSaving(false)
   }
 
   return (

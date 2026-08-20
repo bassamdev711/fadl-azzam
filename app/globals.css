@@ -40,7 +40,7 @@
   --color-emerald:    var(--brand-color);
   --color-gold:       #D4AF37;
   --color-ivory:      #FFFFFF;
-  --color-deep-green: var(--brand-surface);
+  --color-deep-green: #071A4D;
 }
 
 :root {
@@ -69,6 +69,11 @@ body {
 body.is-admin {
   height: 100dvh;
   overflow: hidden;
+}
+
+/* لا نعرض شريط إعلان المتجر داخل لوحة التحكم؛ يمنع تسرّب ألوان الإعلان القديمة إلى الهوية الملكية للإدارة. */
+body.is-admin #announcement-bar {
+  display: none;
 }
 
 .text-gradient {
