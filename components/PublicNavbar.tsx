@@ -9,7 +9,7 @@ type PublicNavbarProps = ComponentProps<typeof Navbar>;
 export default function PublicNavbar(props: PublicNavbarProps) {
   const pathname = usePathname();
 
-  if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+  if (pathname === "/login" || pathname === "/admin" || pathname.startsWith("/admin/")) {
     return null;
   }
 
