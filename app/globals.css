@@ -355,3 +355,8 @@ body.has-mobile-bottom-nav {
   background-color: var(--brand-surface);
 }
 
+/* The storefront header must never appear inside the admin shell, including before client hydration. */
+body:has(.admin-shell) [data-public-navbar="true"] {
+  display: none;
+}
+

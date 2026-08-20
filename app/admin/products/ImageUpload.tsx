@@ -7,6 +7,8 @@ import Image from 'next/image'
 import { Upload, X, ImagePlus, Loader2 } from 'lucide-react'
 import { compressImageClientSide } from '@/lib/compress'
 
+const MAX_ADDITIONAL_IMAGES = 1
+
 interface ImageUploadProps {
   mainImage: string
   additionalImages?: string[]
@@ -64,8 +66,8 @@ export default function ImageUpload({
   const handleExtraUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || [])
     if (!files.length) return
-    if (additionalImages.length + files.length > 5) {
-      showToast('success', 'الحد الأقصى للصور الإضافية هو 5 صور')
+    if (additionalImages.length + files.length > MAX_ADDITIONAL_IMAGES) {
+      showToast('success', 'المسموح صورتان إجمالًا: الصورة الرئيسية وصورة إضافية واحدة فقط')
       return
     }
     setUploadingExtra(true)
@@ -127,7 +129,7 @@ export default function ImageUpload({
       {!singleOnly && (
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            صور إضافية ({additionalImages.length}/5)
+            صور إضافية ({additionalImages.length}/{MAX_ADDITIONAL_IMAGES}) — الإجمالي المسموح: صورتان
           </label>
           <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
             {additionalImages.map((url, i) => (
@@ -142,7 +144,7 @@ export default function ImageUpload({
                 </button>
               </div>
             ))}
-            {additionalImages.length < 5 && (
+            {additionalImages.length < MAX_ADDITIONAL_IMAGES && (
               <button
                 type="button"
                 onClick={() => extraInputRef.current?.click()}

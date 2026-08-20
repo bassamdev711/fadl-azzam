@@ -83,7 +83,7 @@ import { ConfirmProvider } from "@/components/ConfirmProvider";
 import { CurrencyProvider } from "@/components/CurrencyProvider";
 import { FavoritesProvider } from "@/components/FavoritesProvider";
 import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
+import PublicNavbar from "@/components/PublicNavbar";
 import VisitorTracker from "@/components/VisitorTracker";
 import SplashScreen from "@/components/SplashScreen";
 import MobileBottomNav from "@/components/MobileBottomNav";
@@ -194,7 +194,7 @@ export default async function RootLayout({
                   <CartProvider>
                     <FavoritesProvider>
                       <AnnouncementBar />
-                      <Navbar storeName={store.name} storeNameLatin={store.nameLatin} />
+                      <PublicNavbar storeName={store.name} storeNameLatin={store.nameLatin} />
                       {children}
                       <MobileBottomNav />
 

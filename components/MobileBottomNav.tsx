@@ -43,7 +43,7 @@ export default function MobileBottomNav() {
     },
   ];
 
-  const showsBottomNav = Boolean(pathname) && !pathname.startsWith("/admin") && !pathname.startsWith("/checkout");
+  const showsBottomNav = Boolean(pathname) && pathname !== "/login" && !pathname.startsWith("/admin") && !pathname.startsWith("/checkout");
 
   useEffect(() => {
     document.body.classList.toggle("has-mobile-bottom-nav", showsBottomNav);
@@ -53,7 +53,7 @@ export default function MobileBottomNav() {
     };
   }, [showsBottomNav]);
 
-  // Don't render the bottom nav on admin pages or checkout
+  // Don't render the bottom nav on login, admin pages, or checkout
   if (!showsBottomNav) {
     return null;
   }
