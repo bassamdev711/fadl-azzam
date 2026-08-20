@@ -10,7 +10,6 @@ import { useCartAnimation } from "./CartAnimationProvider";
 
 export default function Navbar({
   storeName = 'فضل عزام',
-  storeNameLatin = 'FADL AZZAM',
 }: {
   storeName?: string
   storeNameLatin?: string
@@ -93,16 +92,12 @@ export default function Navbar({
         {/* Logo */}
         <Link
           href="/"
-          aria-label={`${storeName} - ${storeNameLatin}`}
+          aria-label={storeName}
           className="group relative z-50 flex items-center"
         >
           <span className="flex flex-col items-end leading-none" dir="rtl">
             <span className="text-lg font-black tracking-tight text-surface transition-colors duration-300 md:text-[1.4rem]">
               {storeName}
-            </span>
-            <span className="mt-1 h-[2px] w-full bg-[#D4AF37]" />
-            <span dir="ltr" className="mt-1 text-[8px] font-semibold tracking-[0.3em] text-[#D4AF37]/95 transition-colors duration-300 md:text-[9px]">
-              {storeNameLatin}
             </span>
           </span>
         </Link>
