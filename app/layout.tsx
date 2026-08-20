@@ -93,6 +93,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const store = await getStoreConfig()
+  const shareDescription = store.description.includes('المجالس العربية')
+    ? store.description
+    : `${store.description} والمجالس العربية.`
   let currency = "ر.س"
   let contactSettings: {
     phoneNumber: string | null
