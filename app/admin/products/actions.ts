@@ -23,9 +23,9 @@ function parseStringArray(value: FormDataEntryValue | null): string[] {
 function createSlugCandidate(value: string | null, name: string): string {
   const source = (value?.trim() || name.trim()).toLowerCase();
   const slug = source
-    .normalize('NFKC')
-    .replace(/\s+/gu, '-')
-    .replace(/[^\p{L}\p{N}-]/gu, '')
+    .normalize('NFKD')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '');
   return slug || `product-${Date.now()}`;
