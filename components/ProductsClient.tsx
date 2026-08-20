@@ -420,9 +420,9 @@ export default function ProductsClient({
                 <motion.div
                   key={`mobile-${product.id}`}
                   onClick={() => setSelectedId(product.id)}
-                  className="relative h-[290px] w-[min(72vw,18rem)] min-w-[min(72vw,18rem)] shrink-0 snap-center overflow-hidden rounded-2xl border border-black/20 bg-white shadow-md transition-shadow hover:shadow-xl flex flex-col cursor-pointer group"
+                  className="relative h-[260px] w-[min(68vw,16rem)] min-w-[min(68vw,16rem)] shrink-0 snap-center overflow-hidden rounded-2xl border border-black/20 bg-white shadow-md transition-shadow hover:shadow-xl flex flex-col cursor-pointer group"
                 >
-                  <div className="relative w-full h-[58%] bg-surface/50 p-4 flex items-center justify-center">
+                  <div className="relative w-full h-[54%] bg-surface/50 p-3 flex items-center justify-center">
                     <button 
                       className={`touch-target absolute right-3 top-3 z-20 flex items-center justify-center transition-transform hover:scale-110 active:scale-95 drop-shadow-md ${
                         isFavorite(product.id) ? 'text-red-500' : 'text-white hover:text-red-500'
@@ -458,14 +458,14 @@ export default function ProductsClient({
                         priority={index === 0}
                         loading={index === 0 ? undefined : 'lazy'}
                         sizes={getImageSizes('card-mobile')}
-                        className="object-contain p-6 mix-blend-multiply"
+                        className="object-contain p-4 mix-blend-multiply"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-accent/30 text-4xl">متجرنا</div>
                     )}
                   </div>
-                  <div className="flex-1 flex flex-col items-center justify-center p-3 text-center bg-white z-10 border-t border-black/10">
-                    <h3 className="text-base font-black text-foreground mb-0.5">{product.name}</h3>
+                  <div className="flex-1 flex flex-col items-center justify-center p-2.5 text-center bg-white z-10 border-t border-black/10">
+                    <h3 className="text-sm font-black text-foreground mb-0.5">{product.name}</h3>
                     <p className="text-accent text-[9px] tracking-widest uppercase mb-1.5">{product.engName}</p>
                     <div className="flex items-center gap-1.5 mb-2">
                       <p className="text-brand font-bold text-sm">{product.price}</p>
@@ -484,15 +484,15 @@ export default function ProductsClient({
             </div>
 
             {/* Desktop Grid */}
-            <div className="hidden md:grid grid-cols-3 gap-8">
+            <div className="hidden md:grid grid-cols-3 gap-6">
               {products.map((product, index) => (
                 <motion.div
                   key={`desktop-${product.id}`}
                   onClick={() => setSelectedId(product.id)}
-                  className="relative h-[550px] bg-white cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-500 border border-black/20 hover:border-brand/40 rounded-3xl flex flex-col overflow-hidden"
+                  className="relative h-[420px] bg-white cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-500 border border-black/20 hover:border-brand/40 rounded-3xl flex flex-col overflow-hidden"
                   whileHover={{ y: -5 }}
                 >
-                  <div className="relative w-full h-[65%] bg-surface/50 transition-colors duration-500 group-hover:bg-surface-alt flex items-center justify-center p-8">
+                  <div className="relative w-full h-[58%] bg-surface/50 transition-colors duration-500 group-hover:bg-surface-alt flex items-center justify-center p-5">
                     <button 
                       className={`absolute top-4 right-4 z-20 transition-all duration-300 drop-shadow-md hover:scale-110 active:scale-95 ${
                         isFavorite(product.id) ? 'text-red-500 opacity-100' : 'text-white hover:text-red-500 opacity-0 group-hover:opacity-100'
@@ -528,7 +528,7 @@ export default function ProductsClient({
                         priority={index === 0}
                         loading={index === 0 ? undefined : 'lazy'}
                         sizes={getImageSizes('card-hero')}
-                        className="object-contain p-8 mix-blend-multiply scale-95 group-hover:scale-105 transition-transform duration-700 ease-out"
+                        className="object-contain p-5 mix-blend-multiply scale-95 group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-accent/20 text-6xl group-hover:text-accent/40 transition-colors">
@@ -541,11 +541,11 @@ export default function ProductsClient({
                       </div>
                     )}
                   </div>
-                  <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-white z-10 border-t border-black/10">
-                    <h3 className="text-2xl font-black text-foreground mb-2">{product.name}</h3>
+                  <div className="flex-1 flex flex-col items-center justify-center p-5 text-center bg-white z-10 border-t border-black/10">
+                    <h3 className="text-xl font-black text-foreground mb-1.5">{product.name}</h3>
                     <p className="text-accent text-xs tracking-[0.2em] uppercase">{product.engName}</p>
-                    <div className="flex items-center gap-2 my-4">
-                      <p className="text-brand font-bold text-lg">{product.price}</p>
+                    <div className="flex items-center gap-2 my-3">
+                      <p className="text-brand font-bold text-base">{product.price}</p>
                       {product.compareAtPrice && (
                         <p className="text-foreground/40 line-through text-sm">
                           {Number(product.compareAtPrice).toLocaleString('ar-SA')} {currency}
