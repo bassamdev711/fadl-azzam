@@ -38,18 +38,67 @@ export default function Hero({
 
   return (
     <section id="hero" className="relative min-h-[100dvh] overflow-hidden bg-brand text-surface lg:h-[min(100dvh,56.25vw)] lg:min-h-0" dir="rtl">
+      {/* Desktop artwork remains unchanged on large screens. */}
       <Image
         src="/brand/hero-store-promo-text-right.webp"
         alt="واجهة متجر فضل عزام للتجارة العامة والأجهزة المنزلية"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-right"
+        className="hidden object-cover object-right lg:block"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,12,45,0.06),rgba(4,20,72,0.04)_46%,rgba(5,18,62,0.3))]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_75%,rgba(63,124,255,0.18),transparent_34%)]" />
 
-      <div className="relative z-10 mx-auto flex h-full min-h-[100dvh] max-w-7xl flex-col justify-between px-5 pb-8 pt-28 sm:px-8 lg:min-h-0 lg:px-12 lg:pb-12 lg:pt-36">
+      {/* A dedicated 9:16 composition is used only on phones. */}
+      <Image
+        src="/brand/hero-mobile-storefront.png"
+        alt="معرض فضل عزام للتجارة العامة والتجهيزات المنزلية"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center lg:hidden"
+      />
+
+      <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(3,12,45,0.06),rgba(4,20,72,0.04)_46%,rgba(5,18,62,0.3))] lg:block" />
+      <div className="absolute inset-0 hidden bg-[radial-gradient(circle_at_12%_75%,rgba(63,124,255,0.18),transparent_34%)] lg:block" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,9,31,0.16),rgba(2,9,31,0.02)_38%,rgba(2,9,31,0.06)_70%,rgba(2,9,31,0.28))] lg:hidden" />
+
+      {/* Phone layout: the image reserves the top and bottom negative space; content stays live HTML. */}
+      <div className="relative z-10 flex min-h-[100dvh] flex-col justify-between px-5 pb-[calc(var(--mobile-bottom-nav-height)+1rem)] pt-28 sm:px-8 lg:hidden">
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="mx-auto w-full max-w-md text-center text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)]"
+        >
+          <div className="font-sans text-base font-extrabold tracking-[0.2em] text-[#f4d36d]" dir="ltr">
+            {brandNameLatin}
+          </div>
+          <h1 className="mt-1 text-4xl font-black leading-tight">{data.heroTitle || brandName}</h1>
+          <p className="mt-1 text-lg font-bold leading-relaxed text-white">
+            {data.heroSubtitle || "للتجارة العامة والحلول العملية"}
+          </p>
+          <p className="mx-auto mt-3 max-w-sm whitespace-pre-line text-sm font-medium leading-7 text-white/95">
+            {data.heroDescription || "توريد موثوق ومنتجات عملية للأعمال والمنازل، بخدمة واضحة تبدأ من احتياجك."}
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="grid grid-cols-2 gap-3"
+        >
+          <button onClick={scrollToProducts} className="btn btn-primary min-h-12 w-full rounded-2xl px-3 text-sm font-extrabold shadow-lg shadow-black/20">
+            {data.heroPrimaryButton || "اكتشف منتجاتنا"}
+          </button>
+          <button onClick={scrollToAbout} className="btn min-h-12 w-full rounded-2xl border border-white/35 bg-brand/90 px-3 text-sm font-extrabold text-white shadow-lg shadow-black/20 hover:bg-brand">
+            {data.heroSecondaryButton || "تعرف علينا"}
+          </button>
+        </motion.div>
+      </div>
+
+      {/* Existing desktop layout remains isolated from the phone composition. */}
+      <div className="relative z-10 mx-auto hidden h-full min-h-[100dvh] max-w-7xl flex-col justify-between px-5 pb-8 pt-28 sm:px-8 lg:flex lg:min-h-0 lg:px-12 lg:pb-12 lg:pt-36">
         <div className="flex items-start justify-between gap-6">
           <motion.div
             initial={{ opacity: 0, x: 28 }}
