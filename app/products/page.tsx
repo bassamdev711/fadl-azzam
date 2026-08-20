@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import prisma from '@/lib/prisma'
-import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { getCurrency } from '@/lib/currency'
 import ProductCard from '@/components/ProductCard'
@@ -85,7 +84,6 @@ export default async function ProductsPage({
 
   return (
     <main className="min-h-screen bg-surface text-foreground font-sans flex flex-col" dir="rtl">
-      <Navbar storeName="فضل عزام" storeNameLatin="FADL AZZAM" />
 
       <div className="flex-grow pt-20 md:pt-24 pb-24 relative">
         {/* Quick Filter Chips — Responsive & Sticky */}

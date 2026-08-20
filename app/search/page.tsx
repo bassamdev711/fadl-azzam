@@ -2,7 +2,6 @@ import prisma from '@/lib/prisma'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Search, Filter } from 'lucide-react'
-import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { getCurrency } from '@/lib/currency'
 import { Prisma } from '@prisma/client'
@@ -61,7 +60,6 @@ export default async function SearchPage({
 
   return (
     <main className="min-h-screen bg-surface text-foreground flex flex-col font-sans" dir="rtl">
-      <Navbar />
 
       <div className="site-container flex-grow py-28 md:py-32">
         <div className="mb-10 text-center">
