@@ -87,7 +87,7 @@ export default async function ProductsPage({
     <main className="min-h-screen bg-surface text-foreground font-sans flex flex-col" dir="rtl">
       <Navbar storeName="فضل عزام" storeNameLatin="FADL AZZAM" />
 
-      <div className="flex-grow pt-24 md:pt-28 pb-24 relative">
+      <div className="flex-grow pt-20 md:pt-24 pb-24 relative">
         {/* Quick Filter Chips — Responsive & Sticky */}
         <CategoryFilterChips filters={chipFilters} activeCollection={collection} />
 
