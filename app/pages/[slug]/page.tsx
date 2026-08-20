@@ -1,7 +1,6 @@
 import React from 'react'
 import { notFound } from 'next/navigation'
 import prisma from '@/lib/prisma'
-import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { getStoreConfig } from '@/lib/store-config'
 
@@ -33,7 +32,6 @@ export default async function LegalPage({ params }: { params: Promise<{ slug: st
 
   return (
     <main className="min-h-screen bg-surface text-foreground font-sans flex flex-col" dir="rtl">
-      <Navbar />
       
       <div className="flex-grow pt-32 pb-24 px-6 max-w-4xl mx-auto w-full">
         <h1 className="text-4xl md:text-5xl font-black text-foreground mb-12 border-b border-black/10 pb-8">

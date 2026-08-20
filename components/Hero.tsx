@@ -16,11 +16,9 @@ type HeroData = {
 export default function Hero({
   data = {},
   brandName = "فضل عزام",
-  brandNameLatin = "FADL AZZAM",
 }: {
   data?: HeroData;
   brandName?: string;
-  brandNameLatin?: string;
 }) {
   const router = useRouter();
 
@@ -83,10 +81,10 @@ export default function Hero({
           transition={{ duration: 0.7 }}
           className="absolute inset-x-6 top-28 text-right text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] sm:inset-x-8 sm:top-32"
         >
-          <div className="mb-3 text-[10px] font-bold tracking-[0.22em] text-blue-200" dir="ltr">
-            GENERAL TRADING · PRACTICAL SOLUTIONS
+          <div className="mb-4 flex items-baseline justify-end gap-2 text-right">
+            <span className="text-lg font-black leading-tight text-white">{brandName}</span>
+            <span className="text-sm font-bold leading-tight text-[#D4AF37]">للتجارة العامة</span>
           </div>
-          <h1 className="text-[2rem] font-extrabold leading-[1.12] tracking-[-0.05em] sm:text-[2.15rem]">{data.heroTitle || brandName}</h1>
           <p className="mt-2 text-[1.15rem] font-medium leading-[1.35] tracking-[-0.04em] text-white/90 sm:text-xl">
             {data.heroSubtitle || "للتجارة العامة والحلول العملية"}
           </p>
@@ -119,13 +117,10 @@ export default function Hero({
             transition={{ duration: 0.8 }}
             className="max-w-3xl lg:max-w-[46%]"
           >
-            <div className="mb-7 flex items-center gap-3 text-xs font-bold tracking-[0.26em] text-blue-200 sm:text-sm">
-              <span className="h-px w-12 bg-blue-300" />
-              <span>{brandNameLatin}</span>
+            <div className="mb-7 flex items-baseline gap-3 text-right">
+              <span className="text-2xl font-black leading-tight text-white sm:text-3xl">{brandName}</span>
+              <span className="text-lg font-bold leading-tight text-[#D4AF37] sm:text-xl">للتجارة العامة</span>
             </div>
-            <h1 className="max-w-2xl text-5xl font-black leading-[1.05] tracking-tight text-white sm:text-7xl lg:text-8xl">
-              {data.heroTitle || brandName}
-            </h1>
             <p className="mt-5 max-w-2xl text-2xl font-bold leading-tight text-blue-100 sm:text-4xl">
               {data.heroSubtitle || "للتجارة العامة والحلول العملية"}
             </p>

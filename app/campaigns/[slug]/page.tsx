@@ -1,6 +1,5 @@
 import prisma from '@/lib/prisma'
 import { notFound } from 'next/navigation'
-import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CampaignBanner from '@/components/CampaignBanner'
 import ProductsClient from '@/components/ProductsClient'
@@ -94,7 +93,6 @@ export default async function CampaignPage({ params }: { params: Promise<{ slug:
 
   return (
     <main className="min-h-screen bg-surface text-foreground overflow-hidden font-sans">
-      <Navbar />
       
       <div className="pt-20">
         <CampaignBanner campaign={campaignForBanner} />

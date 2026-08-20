@@ -96,11 +96,8 @@ export default function Navbar({
           className="group relative z-50 flex items-center"
         >
           <span className="flex flex-col items-end leading-none" dir="rtl">
-            <span dir="ltr" className="text-[8px] font-bold tracking-[0.24em] text-[#D4AF37] transition-colors duration-300 md:text-[9px]">
-              FADL AZZAM
-            </span>
-            <span className="mt-0.5 text-lg font-black tracking-tight text-surface transition-colors duration-300 md:text-[1.4rem]">
-              {storeName} <span className="text-[10px] font-bold text-[#D4AF37] md:text-xs">للتجارة العامة</span>
+            <span className="text-lg font-black tracking-tight text-surface transition-colors duration-300 md:text-[1.4rem]">
+              {storeName}
             </span>
           </span>
         </Link>
