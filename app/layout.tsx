@@ -16,6 +16,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = store.nameLatin && store.name !== store.nameLatin
     ? `${store.name} | ${store.nameLatin}`
     : store.name
+  const shareDescription = store.description.includes('المجالس العربية')
+    ? store.description
+    : `${store.description} والمجالس العربية.`
+  const brandIcon = '/brand/favicon-fadl-azzam.svg?v=2'
 
   return {
     metadataBase: getSiteUrl(store.storeUrl),
@@ -23,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
       default: title,
       template: `%s | ${store.name}`,
     },
-    description: store.description,
+    description: shareDescription,
     applicationName: store.name,
     keywords: [
       'فضل عزام',
@@ -33,6 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'الطاقة الشمسية',
       'حلول وتجهيزات تجارية',
       'توريد منتجات',
+      'المجالس العربية',
     ],
     category: 'business',
     creator: store.name,
@@ -45,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: 'ar_YE',
       siteName: store.name,
       title,
-      description: store.description,
+      description: shareDescription,
       images: [{
         url: store.ogImageUrl || '/brand/hero-facade.jpg',
         width: 1200,
@@ -56,16 +61,16 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: 'summary_large_image',
       title,
-      description: store.description,
+      description: shareDescription,
       images: [store.ogImageUrl || '/brand/hero-facade.jpg'],
     },
     verification: {
       google: 'NCVmwPE86l-HLKPT47EhXHhIKv0_Eb_tNh0bG6jtNEg',
     },
     icons: {
-      icon: store.faviconUrl ?? '/brand/favicon-store.png',
-      shortcut: store.faviconUrl ?? '/brand/favicon-store.png',
-      apple: store.faviconUrl ?? '/brand/favicon-store.png',
+      icon: brandIcon,
+      shortcut: brandIcon,
+      apple: brandIcon,
     },
   }
 }
@@ -153,7 +158,7 @@ export default async function RootLayout({
     "@type": ["Store", "LocalBusiness"],
     name: store.name,
     alternateName: store.nameLatin,
-    description: store.description,
+    description: shareDescription,
     url: getSiteUrl(store.storeUrl),
     image: store.ogImageUrl || new URL('brand/hero-facade.jpg', getSiteUrl(store.storeUrl)).toString(),
     ...(contactSettings?.showPhoneNumber !== false && contactSettings?.phoneNumber

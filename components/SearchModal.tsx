@@ -175,7 +175,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         عمليات بحث شائعة
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {['الطاقة الشمسية', 'ألواح شمسية', 'بطاريات الطاقة', 'إنفرترات', 'منظمات الشحن', 'حلول الطاقة'].map((term) => (
+                        {['الطاقة الشمسية', 'ألواح شمسية', 'بطاريات الطاقة', 'إنفرترات', 'منظمات الشحن', 'حلول الطاقة', 'المجالس العربية'].map((term) => (
                           <button 
                             key={term}
                             onClick={() => setQuery(term)}

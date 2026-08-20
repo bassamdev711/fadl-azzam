@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">فضل عزام</title>
+  <desc id="desc">شعار فضل عزام للتجارة العامة وحلول الطاقة</desc>
+  <rect width="512" height="512" rx="112" fill="#0f5b4f"/>
+  <circle cx="256" cy="164" r="76" fill="#d6ad60" opacity="0.96"/>
+  <path d="M160 304c28-46 66-69 96-69s68 23 96 69v56H160z" fill="#fff" opacity="0.98"/>
+  <text x="256" y="421" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="54" font-weight="700" fill="#fff">فضل عزام</text>
+</svg>
