@@ -91,9 +91,6 @@ export default async function Footer({
                   {storeName}
                 </span>
                 <span className="mt-2 h-[2px] w-full bg-[#D4AF37]" />
-                <span dir="ltr" className="mt-2 text-xl font-black tracking-[0.18em] text-[#D4AF37]/95 transition-colors duration-300 md:text-2xl">
-                  {storeNameLatin}
-                </span>
               </span>
             </Link>
             <p className="text-sm leading-relaxed text-white/80 mb-6">
