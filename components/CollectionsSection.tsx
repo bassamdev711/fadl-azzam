@@ -64,7 +64,7 @@ export default async function CollectionsSection({ brandName = 'فضل عزام'
             <Link 
               key={collection.id} 
               href={`/products?collection=${collection.slug}`}
-              className="group relative h-[200px] md:h-[400px] overflow-hidden rounded-xl md:rounded-3xl bg-[#0d347f] border border-white/10 shadow-[0_16px_36px_rgba(2,12,48,0.2)] hover:shadow-2xl transition-shadow duration-300"
+              className="group relative h-[200px] md:h-[400px] overflow-hidden rounded-xl md:rounded-3xl bg-black/5 border border-black/20 shadow-md hover:shadow-xl transition-shadow duration-300"
             >
               {getCategoryImage(collection) ? (
                 <Image 

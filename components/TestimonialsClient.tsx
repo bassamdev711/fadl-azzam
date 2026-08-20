@@ -106,7 +106,7 @@ export default function TestimonialsClient({
         )}
 
         {localReviews.length === 0 ? (
-          <div className="text-center py-6 md:py-12 text-surface/70 bg-[#0a2c7a] border border-white/10">
+          <div className="text-center py-6 md:py-12 text-foreground/60 bg-white border border-black/5">
             <p>كن أول من يشاركنا مراجعته!</p>
           </div>
         ) : (
@@ -119,7 +119,7 @@ export default function TestimonialsClient({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
-              className="bg-[#0a2c7a] p-8 md:p-10 shadow-[0_16px_40px_rgba(2,12,48,0.2)] border border-white/10 flex flex-col justify-between"
+              className="bg-surface p-8 md:p-10 shadow-sm border border-black/5 flex flex-col justify-between"
             >
               <div>
                 <div className="text-accent text-2xl mb-6">&quot;</div>
@@ -132,7 +132,7 @@ export default function TestimonialsClient({
                   {review.content}
                 </p>
               </div>
-              <div className="border-t border-white/10 pt-6 flex items-center gap-3">
+              <div className="border-t border-black/5 pt-6 flex items-center gap-3">
                 <div className="w-10 h-10 bg-brand/10 rounded-full flex items-center justify-center text-brand font-bold">
                   {review.name.charAt(0)}
                 </div>
@@ -150,10 +150,10 @@ export default function TestimonialsClient({
 
             {localReviews.length > 3 && (
               <div className="flex justify-center gap-4 mt-12">
-                <button onClick={nextSlide} className="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center text-surface hover:bg-brand hover:text-white hover:border-accent transition-colors">
+                <button onClick={nextSlide} className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-foreground hover:bg-brand hover:text-white hover:border-brand transition-colors">
                   <ChevronRight size={24} />
                 </button>
-                <button onClick={prevSlide} className="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center text-surface hover:bg-brand hover:text-white hover:border-accent transition-colors">
+                <button onClick={prevSlide} className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-foreground hover:bg-brand hover:text-white hover:border-brand transition-colors">
                   <ChevronLeft size={24} />
                 </button>
               </div>

@@ -113,7 +113,7 @@ export default function ContactClient({ contactData }: { contactData?: ContactDa
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-[#0a2c7a] p-8 md:p-12 shadow-2xl border border-white/10"
+            className="bg-white p-8 md:p-12 shadow-sm border border-black/5"
           >
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -124,7 +124,7 @@ export default function ContactClient({ contactData }: { contactData?: ContactDa
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-[#071a4d] border border-white/10 text-surface px-4 py-3 focus:outline-none focus:border-accent/70 transition-colors"
+                    className="w-full bg-surface-alt border border-black/5 text-foreground px-4 py-3 focus:outline-none focus:border-brand/30 transition-colors"
                   />
                 </div>
                 <div>
@@ -134,7 +134,7 @@ export default function ContactClient({ contactData }: { contactData?: ContactDa
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full bg-[#071a4d] border border-white/10 text-surface px-4 py-3 focus:outline-none focus:border-accent/70 transition-colors"
+                    className="w-full bg-surface-alt border border-black/5 text-foreground px-4 py-3 focus:outline-none focus:border-brand/30 transition-colors"
                     dir="ltr"
                   />
                 </div>
@@ -147,7 +147,7 @@ export default function ContactClient({ contactData }: { contactData?: ContactDa
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-[#071a4d] border border-white/10 text-surface px-4 py-3 focus:outline-none focus:border-accent/70 transition-colors"
+                  className="w-full bg-surface-alt border border-black/5 text-foreground px-4 py-3 focus:outline-none focus:border-brand/30 transition-colors"
                   dir="ltr"
                 />
               </div>
@@ -159,14 +159,14 @@ export default function ContactClient({ contactData }: { contactData?: ContactDa
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full bg-[#071a4d] border border-white/10 text-surface px-4 py-3 focus:outline-none focus:border-accent/70 transition-colors resize-none"
+                  className="w-full bg-surface-alt border border-black/5 text-foreground px-4 py-3 focus:outline-none focus:border-brand/30 transition-colors resize-none"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-accent text-brand font-bold py-4 hover:bg-accent-light transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full bg-brand text-surface font-bold py-4 hover:bg-foreground transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "جاري الإرسال..." : "إرسال الرسالة"}
               </button>

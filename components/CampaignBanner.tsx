@@ -74,14 +74,14 @@ export default function CampaignBanner({ campaign }: { campaign: Campaign }) {
           </div>
           <h2 className="text-3xl md:text-5xl font-black tracking-tight">{campaign.title}</h2>
           {campaign.description && (
-            <p className="text-lg text-surface/75 max-w-2xl">{campaign.description}</p>
+            <p className="text-lg text-gray-300 max-w-2xl">{campaign.description}</p>
           )}
           
           {campaign.slug && (
             <div className="pt-4">
               <Link 
                 href={`/campaigns/${campaign.slug}`}
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-accent text-brand font-bold rounded-full hover:bg-accent-light transition-colors shadow-[0_8px_24px_rgba(91,134,255,0.28)]"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-black font-bold rounded-full hover:bg-gray-100 transition-colors"
               >
                 تسوّق عروض الحملة
                 <ArrowLeft size={18} />
@@ -111,7 +111,7 @@ function TimeUnit({ value, label }: { value: number, label: string }) {
       <span className="text-xl sm:text-2xl md:text-3xl font-black tabular-nums tracking-tight">
         {value.toString().padStart(2, '0')}
       </span>
-      <span className="text-[9px] sm:text-[10px] md:text-xs text-surface/60 font-medium mt-1 uppercase tracking-wider">{label}</span>
+      <span className="text-[9px] sm:text-[10px] md:text-xs text-gray-400 font-medium mt-1 uppercase tracking-wider">{label}</span>
     </div>
   )
 }
