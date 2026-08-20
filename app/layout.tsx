@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const shareDescription = store.description.includes('المجالس العربية')
     ? store.description
     : `${store.description} والمجالس العربية.`
-  const brandIcon = '/brand/favicon-fadl-azzam.svg?v=2'
+  const brandIcon = store.faviconUrl || '/brand/favicon-fadl-azzam.svg?v=2'
 
   return {
     metadataBase: getSiteUrl(store.storeUrl),

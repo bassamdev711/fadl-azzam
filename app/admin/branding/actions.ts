@@ -106,7 +106,8 @@ export async function uploadOgImage(formData: FormData) {
       create: { id: 'singleton', ogImageUrl: blob.url, updatedAt: new Date() }
     })
 
-    revalidatePath('/')
+    revalidatePath('/', 'layout')
+    revalidatePath('/admin/branding')
     return { success: true, url: blob.url }
   } catch (error) {
     console.error('OG Image upload error:', error)
@@ -131,7 +132,8 @@ export async function uploadFavicon(formData: FormData) {
       create: { id: 'singleton', faviconUrl: blob.url, updatedAt: new Date() }
     })
 
-    revalidatePath('/')
+    revalidatePath('/', 'layout')
+    revalidatePath('/admin/branding')
     return { success: true, url: blob.url }
   } catch (error) {
     console.error('Favicon upload error:', error)
