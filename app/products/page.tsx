@@ -47,6 +47,7 @@ export default async function ProductsPage({
         ...(collection ? { collection: { slug: collection } } : {}),
       },
       orderBy: [{ featured: 'desc' }, { createdAt: 'desc' }],
+      take: 100,
       select: {
         id: true,
         slug: true,

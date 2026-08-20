@@ -25,7 +25,12 @@ export default async function Footer({
   const currentYear = new Date().getFullYear();
   
   let legalPages: Array<{ id: string; slug: string; title: string }> = []
-  let settings: { showShippingInFooter: boolean; showReturnInFooter: boolean } | null = null
+  let settings: {
+    showShippingInFooter: boolean
+    showReturnInFooter: boolean
+    shippingPolicyContent: string | null
+    returnPolicyContent: string | null
+  } | null = null
   let contactSettings: {
     phoneNumber: string | null
     showPhoneNumber: boolean
@@ -52,7 +57,15 @@ export default async function Footer({
         orderBy: { createdAt: 'asc' },
         select: { id: true, slug: true, title: true },
       }),
-      prisma.storeSettings.findUnique({ where: { id: 'singleton' } }),
+      prisma.storeSettings.findUnique({
+        where: { id: 'singleton' },
+        select: {
+          showShippingInFooter: true,
+          showReturnInFooter: true,
+          shippingPolicyContent: true,
+          returnPolicyContent: true,
+        },
+      }),
       prisma.contactSettings.findUnique({ where: { id: 'singleton' } }),
     ])
     legalPages = dbLegalPages
@@ -79,6 +92,8 @@ export default async function Footer({
   const showTelegram = Boolean(telegram && contactSettings?.showTelegram !== false);
   const threads = contactSettings?.threadsUrl || null;
   const showThreads = Boolean(threads && contactSettings?.showThreads !== false);
+  const showShippingPolicy = Boolean(settings?.showShippingInFooter && settings.shippingPolicyContent?.trim());
+  const showReturnPolicy = Boolean(settings?.showReturnInFooter && settings.returnPolicyContent?.trim());
   return (
     <footer className="border-t border-[#D4AF37]/35 bg-[#071a4d] pt-12 pb-8 text-white/80 shadow-[0_-10px_35px_rgba(7,26,77,0.28)] md:pt-20 md:pb-10" dir="rtl">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -176,14 +191,14 @@ export default async function Footer({
                   </Link>
                 </li>
               ))}
-              {settings?.showShippingInFooter && (
+              {showShippingPolicy && (
                 <li>
                   <Link href="/policies/shipping" className="text-sm text-white/80 hover:text-accent transition-colors">
                     سياسة الشحن والتوصيل
                   </Link>
                 </li>
               )}
-              {settings?.showReturnInFooter && (
+              {showReturnPolicy && (
                 <li>
                   <Link href="/policies/return" className="text-sm text-white/80 hover:text-accent transition-colors">
                     سياسة الاسترجاع
@@ -236,12 +251,12 @@ export default async function Footer({
                 {page.title}
               </Link>
             ))}
-            {settings?.showShippingInFooter && (
+            {showShippingPolicy && (
               <Link href="/policies/shipping" className="hover:text-accent transition-colors">
                 سياسة الشحن
               </Link>
             )}
-            {settings?.showReturnInFooter && (
+            {showReturnPolicy && (
               <Link href="/policies/return" className="hover:text-accent transition-colors">
                 سياسة الاسترجاع
               </Link>

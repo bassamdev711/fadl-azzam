@@ -297,6 +297,10 @@ export async function createOrder(
     const errorCode = typeof error === 'object' && error !== null && 'code' in error
       ? (error as { code?: unknown }).code
       : undefined
+    const errorMessage = error instanceof Error ? error.message : ''
+    if (errorMessage === 'STOCK_UNAVAILABLE') {
+      return { success: false, error: 'تعذر إتمام الطلب لأن مخزون أحد المنتجات تغير للتو. راجع السلة وحاول مرة أخرى.' }
+    }
     if (errorCode === 'P2002') {
       return { success: false, error: 'تم استلام الطلب مسبقاً. يرجى تحديث الصفحة.' }
     }

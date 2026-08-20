@@ -21,11 +21,12 @@ export const dynamic = 'force-dynamic'
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: { q: string }
+  searchParams: Promise<{ q?: string }>
 }) {
   const currency = await getCurrency()
 
-  const query = searchParams.q || ''
+  const { q } = await searchParams
+  const query = q?.trim().slice(0, 100) || ''
   
   let products: SearchProduct[] = []
   let dataLoadFailed = false
@@ -42,6 +43,7 @@ export default async function SearchPage({
             { seoSearchPhrases: { hasSome: [query, query.trim(), query.toLowerCase()] } }
           ]
         },
+        take: 50,
         select: {
           id: true,
           name: true,

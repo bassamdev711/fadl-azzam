@@ -50,9 +50,10 @@ export async function POST(req: NextRequest) {
       const today = new Date()
       today.setHours(0, 0, 0, 0)
 
-      await prisma.dailyStats.updateMany({
+      await prisma.dailyStats.upsert({
         where: { date: today },
-        data: { pageViews: { increment: 1 } }
+        update: { pageViews: { increment: 1 } },
+        create: { date: today, pageViews: 1, visitorsCount: 0 },
       })
 
       return NextResponse.json({ success: true, newVisitor: false })

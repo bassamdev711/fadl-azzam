@@ -29,6 +29,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchProduct[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [hasError, setHasError] = useState(false)
   const router = useRouter()
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -50,16 +51,21 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     const fetchResults = async () => {
       if (!query.trim()) {
         setResults([])
+        setHasError(false)
         return
       }
 
       setIsLoading(true)
+      setHasError(false)
       try {
         const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`)
+        if (!res.ok) throw new Error(`Search request failed with status ${res.status}`)
         const data = await res.json()
         setResults(data.products || [])
       } catch (error) {
         console.error('Search error:', error)
+        setResults([])
+        setHasError(true)
       } finally {
         setIsLoading(false)
       }
@@ -120,6 +126,11 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <div className="flex flex-col items-center justify-center h-40 text-brand">
                     <Loader2 className="w-8 h-8 animate-spin mb-4" />
                     <p className="text-sm font-bold animate-pulse">جاري البحث...</p>
+                  </div>
+                ) : hasError ? (
+                  <div className="flex flex-col items-center justify-center h-40 text-center px-4">
+                    <p className="text-lg font-bold text-foreground mb-2">تعذر تنفيذ البحث حالياً</p>
+                    <p className="text-sm text-foreground/60">يرجى المحاولة مرة أخرى بعد قليل.</p>
                   </div>
                 ) : query && results.length > 0 ? (
                   <div>

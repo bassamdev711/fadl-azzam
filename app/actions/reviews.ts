@@ -90,10 +90,8 @@ export async function updateReviewStatus(id: string, status: 'APPROVED' | 'REJEC
 
     revalidatePath('/')
     if (review.productId) {
-      revalidatePath(`/product/${review.productId}`) // We don't have the slug here directly, might need to revalidate all products or specific one if needed
-      // To be safe, just revalidate product page pattern if possible, or fetch the slug
       const product = await prisma.product.findUnique({ where: { id: review.productId }})
-      if (product) revalidatePath(`/product/${product.slug}`)
+      if (product) revalidatePath(`/products/${product.slug}`)
     }
 
     revalidatePath('/admin/reviews')
@@ -115,7 +113,7 @@ export async function deleteReview(id: string) {
     revalidatePath('/')
     if (review.productId) {
       const product = await prisma.product.findUnique({ where: { id: review.productId }})
-      if (product) revalidatePath(`/product/${product.slug}`)
+      if (product) revalidatePath(`/products/${product.slug}`)
     }
     revalidatePath('/admin/reviews')
 
