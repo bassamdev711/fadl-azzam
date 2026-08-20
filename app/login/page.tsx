@@ -29,8 +29,8 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-surface flex flex-col justify-center items-center p-4 font-sans text-foreground" dir="rtl">
-      <Link href="/" className="btn btn-ghost btn-sm absolute top-8 right-8 gap-2 text-foreground/50 hover:text-accent">
+    <div className="min-h-screen bg-[#071a4d] flex flex-col justify-center items-center p-4 font-sans text-white" dir="rtl">
+      <Link href="/" className="btn btn-ghost btn-sm absolute top-8 right-8 gap-2 text-white/70 hover:text-accent">
         <ArrowRight size={20} />
         العودة للموقع
       </Link>
