@@ -70,6 +70,7 @@ export default function EditProductClient({ product, collections = [] }: { produ
 
       <form action={updateProduct} className="space-y-6">
         <input type="hidden" name="id" value={product.id} />
+        <input type="hidden" name="slug" value={slug} />
         <input type="hidden" name="imageUrl" value={mainImage} />
         <input type="hidden" name="images" value={JSON.stringify(extraImages)} />
         <input type="hidden" name="seoSearchPhrases" value={JSON.stringify(seoPhrases)} />
