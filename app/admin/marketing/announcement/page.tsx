@@ -24,7 +24,7 @@ export default async function AnnouncementBarPage() {
     message: bar?.message ?? 'مرحباً بكم في متجرنا',
     linkText: bar?.linkText ?? '',
     linkUrl: bar?.linkUrl ?? '',
-    bgColor: bar?.bgColor ?? '#123CDE',
+    bgColor: bar?.bgColor ?? '#1a544a',
     textColor: bar?.textColor ?? '#ffffff',
     isActive: bar?.isActive ?? false,
   }
