@@ -89,7 +89,7 @@ export default function Hero({
           className="grid grid-cols-2 gap-3"
         >
           <button onClick={scrollToProducts} className="btn btn-primary min-h-12 w-full rounded-2xl px-3 text-sm font-extrabold shadow-lg shadow-black/20">
-            {data.heroPrimaryButton || "اكتشف منتجاتنا"}
+            اكتشف منتجاتنا
           </button>
           <button onClick={scrollToAbout} className="btn min-h-12 w-full rounded-2xl border border-white/35 bg-brand/90 px-3 text-sm font-extrabold text-white shadow-lg shadow-black/20 hover:bg-brand">
             {data.heroSecondaryButton || "تعرف علينا"}
