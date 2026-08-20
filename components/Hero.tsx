@@ -81,7 +81,7 @@ export default function Hero({
           transition={{ duration: 0.7 }}
           className="absolute inset-x-6 top-28 text-right text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] sm:inset-x-8 sm:top-32"
         >
-          <div className="mb-4 flex items-baseline justify-end gap-2 text-right">
+          <div dir="rtl" className="mb-4 flex w-full flex-row items-baseline justify-start gap-2 text-right">
             <span className="text-lg font-black leading-tight text-white">{brandName}</span>
             <span className="text-sm font-bold leading-tight text-[#D4AF37]">للتجارة العامة</span>
           </div>
@@ -117,7 +117,7 @@ export default function Hero({
             transition={{ duration: 0.8 }}
             className="max-w-3xl lg:max-w-[46%]"
           >
-            <div className="mb-7 flex items-baseline gap-3 text-right">
+            <div dir="rtl" className="mb-7 flex w-full flex-row items-baseline justify-start gap-3 text-right">
               <span className="text-2xl font-black leading-tight text-white sm:text-3xl">{brandName}</span>
               <span className="text-lg font-bold leading-tight text-[#D4AF37] sm:text-xl">للتجارة العامة</span>
             </div>
