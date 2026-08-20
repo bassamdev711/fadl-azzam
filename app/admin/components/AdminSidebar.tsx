@@ -58,7 +58,7 @@ export default function AdminSidebar({
   ]
 
   return (
-    <div dir="rtl" data-admin-shell="true" className="flex h-full w-full flex-1 flex-col overflow-hidden bg-ivory font-sans text-deep-green">
+    <div dir="rtl" data-admin-shell="true" className="admin-shell flex h-full w-full flex-1 flex-col overflow-hidden bg-ivory font-sans text-deep-green">
       {/* Mobile Header (Hamburger Menu) - Now a standard flex child, no sticky needed */}
       <div className="z-40 flex min-h-16 w-full flex-shrink-0 items-center justify-between border-b border-[#5B86FF]/40 bg-[linear-gradient(135deg,#123CDE_0%,#0B2B9F_58%,#071A4D_100%)] px-4 py-3 text-white shadow-[0_8px_24px_rgba(7,26,77,0.35)] md:hidden">
         <div className="flex items-center gap-3">
