@@ -178,31 +178,6 @@ export default function AnnouncementBarClient({ initial }: AnnouncementBarPageCl
           </label>
         </div>
 
-        {/* Color Presets */}
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-          <p className="text-xs font-bold text-gray-500 mb-3">ألوان جاهزة</p>
-          <div className="flex flex-wrap gap-2">
-            {[
-              { bg: '#1a544a', text: '#ffffff', label: 'لون العلامة' },
-              { bg: '#c9a756', text: '#1a1a1a', label: 'ذهبي' },
-              { bg: '#0f302a', text: '#ffffff', label: 'أخضر داكن' },
-              { bg: '#dc2626', text: '#ffffff', label: 'أحمر' },
-              { bg: '#1e40af', text: '#ffffff', label: 'أزرق' },
-              { bg: '#000000', text: '#ffffff', label: 'أسود' },
-            ].map((preset) => (
-              <button
-                key={preset.bg}
-                type="button"
-                onClick={() => setPreview(p => ({ ...p, bgColor: preset.bg, textColor: preset.text }))}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 hover:border-gray-400 transition-colors"
-                style={{ backgroundColor: preset.bg, color: preset.text }}
-              >
-                {preset.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* Actions */}
         <div className="flex justify-end gap-3">
           <button
