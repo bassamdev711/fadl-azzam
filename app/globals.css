@@ -72,7 +72,8 @@ body.is-admin {
 }
 
 /* لا نعرض شريط إعلان المتجر داخل لوحة التحكم؛ يمنع تسرّب ألوان الإعلان القديمة إلى الهوية الملكية للإدارة. */
-body.is-admin #announcement-bar {
+body.is-admin #announcement-bar,
+body:has([data-admin-shell]) #announcement-bar {
   display: none;
 }
 
