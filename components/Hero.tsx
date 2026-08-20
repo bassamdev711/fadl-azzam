@@ -71,8 +71,9 @@ export default function Hero({
           transition={{ duration: 0.7 }}
           className="absolute inset-x-6 top-28 text-right text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] sm:inset-x-8 sm:top-32"
         >
-          <div className="mb-3 text-[10px] font-bold tracking-[0.22em] text-blue-200" dir="ltr">
-            GENERAL TRADING · PRACTICAL SOLUTIONS
+          <div className="mb-4 flex flex-col items-end gap-1 text-right">
+            <span dir="ltr" className="text-[10px] font-bold tracking-[0.22em] text-[#D4AF37]">{brandNameLatin}</span>
+            <span className="text-lg font-black leading-tight text-white">{brandName} <span className="text-sm font-bold text-[#D4AF37]">للتجارة العامة</span></span>
           </div>
           <h1 className="text-[2rem] font-extrabold leading-[1.12] tracking-[-0.05em] sm:text-[2.15rem]">{data.heroTitle || brandName}</h1>
           <p className="mt-2 text-[1.15rem] font-medium leading-[1.35] tracking-[-0.04em] text-white/90 sm:text-xl">
@@ -107,9 +108,9 @@ export default function Hero({
             transition={{ duration: 0.8 }}
             className="max-w-3xl lg:max-w-[46%]"
           >
-            <div className="mb-7 flex items-center gap-3 text-xs font-bold tracking-[0.26em] text-blue-200 sm:text-sm">
-              <span className="h-px w-12 bg-blue-300" />
-              <span>{brandNameLatin}</span>
+            <div className="mb-7 flex flex-col items-start gap-1 text-right">
+              <span dir="ltr" className="text-xs font-bold tracking-[0.26em] text-[#D4AF37] sm:text-sm">{brandNameLatin}</span>
+              <span className="text-xl font-black leading-tight text-white sm:text-2xl">{brandName} <span className="text-base font-bold text-[#D4AF37] sm:text-lg">للتجارة العامة</span></span>
             </div>
             <h1 className="max-w-2xl text-5xl font-black leading-[1.05] tracking-tight text-white sm:text-7xl lg:text-8xl">
               {data.heroTitle || brandName}
