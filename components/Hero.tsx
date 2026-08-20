@@ -63,7 +63,7 @@ export default function Hero({
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,9,31,0.16),rgba(2,9,31,0.02)_38%,rgba(2,9,31,0.06)_70%,rgba(2,9,31,0.28))] lg:hidden" />
 
       {/* Phone layout: the image reserves the top and bottom negative space; content stays live HTML. */}
-      <div className="relative z-10 flex min-h-[100dvh] flex-col justify-between px-5 pb-[calc(var(--mobile-bottom-nav-height)+1rem)] pt-28 sm:px-8 lg:hidden">
+      <div className="relative z-10 flex min-h-[100dvh] flex-col justify-between px-5 pb-[calc(var(--mobile-bottom-nav-height)+2.25rem)] pt-28 sm:px-8 lg:hidden">
         <motion.div
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
