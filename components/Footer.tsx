@@ -81,13 +81,17 @@ export default async function Footer({
   const threads = contactSettings?.threadsUrl || null;
   const showThreads = Boolean(threads && contactSettings?.showThreads !== false);
   return (
-    <footer className="border-t border-[#D4AF37]/35 bg-[linear-gradient(135deg,#123CDE_0%,#0B2B9F_52%,#071A4D_100%)] pt-12 pb-8 text-white/80 shadow-[0_-10px_35px_rgba(7,26,77,0.28)] md:pt-20 md:pb-10" dir="rtl">
+    <footer className="border-t border-[#D4AF37]/35 bg-[#071a4d] pt-12 pb-8 text-white/80 shadow-[0_-10px_35px_rgba(7,26,77,0.28)] md:pt-20 md:pb-10" dir="rtl">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
           <div className="md:col-span-1">
-            <Link href="/" className="inline-block mb-6">
-              <span className="text-3xl font-bold tracking-widest text-accent">{storeNameLatin}</span>
-              <span className="text-2xl font-light text-white ml-2 tracking-[0.2em]">{storeName}</span>
+            <Link href="/" aria-label={`${storeName} - ${storeNameLatin}`} className="group mb-6 inline-flex">
+              <span className="flex flex-col items-end leading-none" dir="rtl">
+                <span className="text-2xl font-black tracking-tight text-white transition-colors duration-300 md:text-3xl">
+                  {storeName}
+                </span>
+                <span className="mt-2 h-[2px] w-full bg-[#D4AF37]" />
+              </span>
             </Link>
             <p className="text-sm leading-relaxed text-white/80 mb-6">
               فضل عزام للتجارة العامة؛ خيارات عملية، توريد موثوق، وتواصل واضح للأعمال والمنازل.

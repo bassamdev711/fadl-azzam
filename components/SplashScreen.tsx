@@ -73,7 +73,7 @@ export default function SplashScreen({
               initial={{ width: 0, opacity: 0 }}
               animate={{ width: "5rem", opacity: 1 }}
               transition={{ delay: 0.48, duration: 0.55, ease: "easeOut" }}
-              className="mt-4 h-[2px] bg-accent"
+              className="mt-4 h-[2px] bg-[#D4AF37]"
             />
 
             <motion.p

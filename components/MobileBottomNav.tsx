@@ -105,7 +105,7 @@ export default function MobileBottomNav() {
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0.5, opacity: 0 }}
                       className={`absolute -top-1.5 -right-2 text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center ${
-                        isActive ? "bg-accent text-brand" : "bg-brand text-white"
+                        isActive ? "bg-[#D4AF37] text-[#071A4D]" : "bg-brand text-white"
                       }`}
                     >
                       {item.badge}

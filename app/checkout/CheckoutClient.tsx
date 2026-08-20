@@ -590,7 +590,7 @@ export default function CheckoutClient() {
               <button 
                 type="submit" 
                 disabled={isSubmitting || !hasAvailablePaymentMethod || !hasAvailableCity}
-                className="btn btn-primary w-full btn-lg gap-3 group !bg-accent !text-foreground hover:!bg-accent/90 border border-black/10 disabled:opacity-50 disabled:cursor-not-allowed md:h-16 h-14 md:text-lg"
+                className="btn btn-primary w-full btn-lg gap-3 group !bg-brand !text-white hover:!bg-brand-hover border border-[#D4AF37]/60 disabled:opacity-50 disabled:cursor-not-allowed md:h-16 h-14 md:text-lg"
               >
                 {isSubmitting ? 'جاري تأكيد الطلب...' : 'تأكيد الطلب الآن'}
                 {!isSubmitting && <ArrowLeft size={20} className="group-hover:-translate-x-2 transition-transform" />}
