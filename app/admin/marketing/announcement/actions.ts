@@ -3,6 +3,7 @@
 import prisma from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 import { verifyAdmin } from '@/lib/auth'
+import { ensureAccessibleTextColor, normalizeHexColor } from '@/lib/color-contrast'
 
 // ── حفظ/تحديث شريط الإعلانات ──────────────────────────────
 export async function saveAnnouncementBar(formData: FormData) {
@@ -10,8 +11,8 @@ export async function saveAnnouncementBar(formData: FormData) {
   const message = formData.get('message') as string
   const linkText = formData.get('linkText') as string | null
   const linkUrl = formData.get('linkUrl') as string | null
-  const bgColor = formData.get('bgColor') as string
-  const textColor = formData.get('textColor') as string
+  const bgColor = normalizeHexColor(formData.get('bgColor') as string, '#123cde')
+  const textColor = ensureAccessibleTextColor(bgColor, formData.get('textColor') as string)
   const isActive = formData.get('isActive') === 'on'
 
   await prisma.announcementBar.upsert({
@@ -20,8 +21,8 @@ export async function saveAnnouncementBar(formData: FormData) {
       message,
       linkText: linkText || null,
       linkUrl: linkUrl || null,
-      bgColor: bgColor || '#1a544a',
-      textColor: textColor || '#ffffff',
+      bgColor,
+      textColor,
       isActive,
     },
     create: {
@@ -29,8 +30,8 @@ export async function saveAnnouncementBar(formData: FormData) {
       message,
       linkText: linkText || null,
       linkUrl: linkUrl || null,
-      bgColor: bgColor || '#1a544a',
-      textColor: textColor || '#ffffff',
+      bgColor,
+      textColor,
       isActive,
     }
   })
@@ -48,6 +49,8 @@ export async function toggleAnnouncementBar(isActive: boolean) {
     create: {
       id: 'singleton',
       message: 'مرحباً بكم في متجرنا',
+      bgColor: '#123cde',
+      textColor: '#ffffff',
       isActive,
     }
   })

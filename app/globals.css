@@ -40,7 +40,8 @@
   --color-emerald:    var(--brand-color);
   --color-gold:       #D4AF37;
   --color-ivory:      #FFFFFF;
-  --color-deep-green: #071A4D;
+  /* Admin foreground token: dark on ivory/white admin surfaces. */
+  --color-deep-green: var(--brand-foreground);
 }
 
 :root {
@@ -303,5 +304,48 @@ body.has-mobile-bottom-nav {
   .btn-danger {
     @apply bg-red-600 text-white shadow-md hover:bg-red-700 hover:-translate-y-0.5;
   }
+}
+
+/*
+  Admin contrast foundation.
+  Keep form controls readable even when individual routes omit a text utility.
+  Color and checkbox/radio inputs retain their native visual treatment.
+*/
+.admin-shell input:not([type='color']):not([type='checkbox']):not([type='radio']),
+.admin-shell textarea,
+.admin-shell select {
+  color: var(--brand-foreground);
+  background-color: var(--brand-surface);
+  border-color: color-mix(in srgb, var(--brand-foreground) 22%, white);
+  caret-color: var(--brand-color);
+}
+
+.admin-shell input:not([type='color']):not([type='checkbox']):not([type='radio'])::placeholder,
+.admin-shell textarea::placeholder {
+  color: color-mix(in srgb, var(--brand-foreground) 58%, white);
+  opacity: 1;
+}
+
+.admin-shell input:not([type='color']):not([type='checkbox']):not([type='radio']):focus,
+.admin-shell textarea:focus,
+.admin-shell select:focus {
+  outline: none;
+  border-color: var(--brand-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-color) 18%, transparent);
+}
+
+.admin-shell input:disabled,
+.admin-shell textarea:disabled,
+.admin-shell select:disabled,
+.admin-shell button:disabled {
+  color: color-mix(in srgb, var(--brand-foreground) 62%, white);
+  background-color: color-mix(in srgb, var(--brand-surface) 88%, var(--brand-foreground));
+  border-color: color-mix(in srgb, var(--brand-foreground) 14%, white);
+  cursor: not-allowed;
+}
+
+.admin-shell option {
+  color: var(--brand-foreground);
+  background-color: var(--brand-surface);
 }
 
