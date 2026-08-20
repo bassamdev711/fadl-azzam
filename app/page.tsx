@@ -46,7 +46,7 @@ export default async function Home() {
       <Navbar storeName={store.name} storeNameLatin={store.nameLatin} />
       
       {/* 1. Store Identity */}
-      <Hero data={safeSettings} brandName={store.name} brandNameLatin={store.nameLatin} />
+      <Hero data={safeSettings} brandName={store.name} />
       
       {/* Campaign Banner (if any) */}
       {activeCampaign && <CampaignBanner campaign={activeCampaign} />}
