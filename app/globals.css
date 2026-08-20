@@ -46,6 +46,16 @@
 :root {
   --background: var(--color-surface);
   --foreground: var(--color-foreground);
+
+  /* Responsive system tokens — one source of truth for every route */
+  --site-header-height: 5.25rem;
+  --site-content-max: 90rem;
+  --site-gutter: 1rem;
+  --site-section-y: clamp(3.5rem, 7vw, 7rem);
+  --mobile-bottom-nav-height: 4.25rem;
+  --mobile-bottom-safe: calc(var(--mobile-bottom-nav-height) + env(safe-area-inset-bottom));
+  --mobile-cta-safe: 6.75rem;
+  --touch-target: 2.75rem;
 }
 
 body {
@@ -104,11 +114,101 @@ body.is-admin {
   }
 }
 
+/* ══════════════════════════════════════════════
+   Responsive primitives — use these patterns instead of page-specific patches
+   ══════════════════════════════════════════════ */
+.site-container {
+  width: min(100%, var(--site-content-max));
+  margin-inline: auto;
+  padding-inline: var(--site-gutter);
+}
+
+.site-section {
+  padding-block: var(--site-section-y);
+}
+
+.safe-bottom {
+  padding-bottom: var(--mobile-bottom-safe);
+}
+
+.safe-cta-bottom {
+  padding-bottom: var(--mobile-cta-safe);
+}
+
+body.has-mobile-bottom-nav {
+  padding-bottom: var(--mobile-bottom-safe);
+}
+
+@media (min-width: 768px) {
+  body.has-mobile-bottom-nav { padding-bottom: 0; }
+}
+
+.touch-target {
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
+}
+
+.scroll-rail {
+  display: flex;
+  max-width: 100%;
+  gap: 0.75rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: none;
+  padding-inline: var(--site-gutter);
+}
+
+.scroll-rail::-webkit-scrollbar { display: none; }
+.scroll-rail > * { scroll-snap-align: start; min-width: 0; }
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.responsive-form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.responsive-media {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 /* Utility: prevent horizontal overflow on a specific container */
 .mobile-contain {
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
+
+@media (min-width: 640px) {
+  :root { --site-gutter: 1.5rem; }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --site-gutter: 2rem;
+    --mobile-bottom-safe: 0px;
+    --mobile-cta-safe: 0px;
+  }
+
+  .responsive-form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1280px) {
+  :root { --site-gutter: 3rem; }
+}
+
+@media (max-width: 639px) {
+  .responsive-grid { gap: 0.625rem; }
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

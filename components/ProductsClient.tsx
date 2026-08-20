@@ -120,13 +120,13 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 60 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="relative w-full md:max-w-5xl max-h-[95dvh] bg-surface md:rounded-2xl overflow-y-auto no-scrollbar shadow-2xl flex flex-col md:flex-row"
+        className="relative flex max-h-[95dvh] w-full flex-col overflow-y-auto bg-surface shadow-2xl no-scrollbar md:max-w-5xl md:flex-row md:rounded-2xl"
         dir="rtl"
       >
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-4 left-4 z-[110] bg-white/80 backdrop-blur text-foreground/60 hover:text-foreground p-2 rounded-full transition-colors shadow"
+          className="touch-target absolute left-4 top-4 z-[110] rounded-full bg-white/80 p-2 text-foreground/60 shadow backdrop-blur transition-colors hover:text-foreground"
         >
           <X className="w-5 h-5" />
         </button>
@@ -193,7 +193,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
         </div>
 
         {/* Info Side */}
-        <div className="w-full md:w-7/12 flex flex-col justify-start p-8 md:p-12 bg-surface border-t md:border-t-0 md:border-r border-black/10 pb-40 md:pb-10">
+        <div className="safe-cta-bottom flex w-full flex-col justify-start border-t border-black/10 bg-surface p-5 md:w-7/12 md:border-r md:border-t-0 md:p-12 md:pb-10">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -329,7 +329,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
         </div>
 
         {/* Mobile Fixed Bottom Bar */}
-        <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-black/10 p-3 pb-safe flex flex-col gap-2 z-[120] shadow-[0_-10px_30px_rgba(0,0,0,0.1)]" dir="rtl">
+        <div className="fixed inset-x-0 bottom-0 z-[120] flex flex-col gap-2 border-t border-black/10 bg-white p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] shadow-[0_-10px_30px_rgba(0,0,0,0.1)] md:hidden" dir="rtl">
           <button
             onClick={handleBuyNow}
             disabled={currentStock <= 0}
@@ -385,9 +385,9 @@ export default function ProductsClient({
   return (
     <section
       id={type || 'products'}
-      className={`py-10 md:py-24 px-4 md:px-6 ${type === 'offers' ? 'bg-surface-alt' : 'bg-surface'} relative overflow-hidden`}
+      className={`site-section ${type === 'offers' ? 'bg-surface-alt' : 'bg-surface'} relative overflow-hidden`}
     >
-      <div className="max-w-7xl mx-auto" dir="rtl">
+      <div className="site-container" dir="rtl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -415,16 +415,16 @@ export default function ProductsClient({
         ) : (
           <div className="relative">
             {/* Mobile Slider */}
-            <div className="flex md:hidden overflow-x-auto snap-x snap-mandatory gap-4 pb-6 no-scrollbar px-2">
+            <div className="scroll-rail -mx-[var(--site-gutter)] md:hidden gap-4 pb-6">
               {products.map((product, index) => (
                 <motion.div
                   key={`mobile-${product.id}`}
                   onClick={() => setSelectedId(product.id)}
-                  className="relative min-w-[58vw] h-[290px] snap-center bg-white shadow-md hover:shadow-xl border border-black/20 rounded-2xl overflow-hidden flex flex-col cursor-pointer group"
+                  className="relative h-[290px] w-[min(72vw,18rem)] min-w-[min(72vw,18rem)] shrink-0 snap-center overflow-hidden rounded-2xl border border-black/20 bg-white shadow-md transition-shadow hover:shadow-xl flex flex-col cursor-pointer group"
                 >
                   <div className="relative w-full h-[58%] bg-surface/50 p-4 flex items-center justify-center">
                     <button 
-                      className={`absolute top-4 right-4 z-20 transition-transform hover:scale-110 active:scale-95 drop-shadow-md ${
+                      className={`touch-target absolute right-3 top-3 z-20 flex items-center justify-center transition-transform hover:scale-110 active:scale-95 drop-shadow-md ${
                         isFavorite(product.id) ? 'text-red-500' : 'text-white hover:text-red-500'
                       }`}
                       onClick={(e) => { 

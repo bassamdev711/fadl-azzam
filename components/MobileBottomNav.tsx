@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 import Link from "next/link";
 import { Home, LayoutGrid, Heart, ShoppingCart, Package } from "lucide-react";
 import { useCart } from "./CartProvider";
@@ -42,14 +43,24 @@ export default function MobileBottomNav() {
     },
   ];
 
+  const showsBottomNav = Boolean(pathname) && !pathname.startsWith("/admin") && !pathname.startsWith("/checkout");
+
+  useEffect(() => {
+    document.body.classList.toggle("has-mobile-bottom-nav", showsBottomNav);
+
+    return () => {
+      document.body.classList.remove("has-mobile-bottom-nav");
+    };
+  }, [showsBottomNav]);
+
   // Don't render the bottom nav on admin pages or checkout
-  if (pathname?.startsWith("/admin") || pathname?.startsWith("/checkout")) {
+  if (!showsBottomNav) {
     return null;
   }
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-[90] bg-surface border-t border-black/10 shadow-[0_-5px_15px_rgba(0,0,0,0.05)] pb-[env(safe-area-inset-bottom)]">
-      <div className="flex justify-around items-center h-16 px-2" dir="rtl">
+    <div className="fixed inset-x-0 bottom-0 z-[90] h-[var(--mobile-bottom-nav-height)] border-t border-black/10 bg-surface pb-[env(safe-area-inset-bottom)] shadow-[0_-5px_15px_rgba(0,0,0,0.05)] md:hidden">
+      <div className="flex h-full items-center justify-around px-2" dir="rtl">
         {navItems.map((item) => {
           const isActive = 
             item.href === "/" ? pathname === "/" : pathname?.startsWith(item.href);
@@ -60,7 +71,7 @@ export default function MobileBottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className="relative flex flex-col items-center justify-center w-full h-full gap-1"
+              className="touch-target relative flex h-full min-h-[var(--touch-target)] w-full flex-col items-center justify-center gap-1"
             >
               <div className="relative">
                 {item.isCart ? (

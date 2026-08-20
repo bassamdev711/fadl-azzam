@@ -60,7 +60,7 @@ export default function CategoryFilterChips({ filters, activeCollection }: Categ
   return (
     <div
       className={`sticky z-40 transition-all duration-500 ease-in-out bg-surface/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.03)] border-b border-black/5 ${
-        isVisible ? 'top-14 md:top-[68px]' : '-top-[200px]'
+        isVisible ? 'top-14 md:top-[68px]' : '-translate-y-full'
       }`}
     >
       {/*
@@ -72,19 +72,14 @@ export default function CategoryFilterChips({ filters, activeCollection }: Categ
       <div
         ref={scrollRef}
         dir="rtl"
-        className="w-full overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing"
+        className="scroll-rail w-full cursor-grab active:cursor-grabbing"
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseLeave}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
       >
         <div
-          className="flex items-start gap-5 md:gap-8 py-4 md:py-6"
-          style={{
-            width: 'max-content',
-            paddingRight: 'max(1rem, calc((100vw - 80rem) / 2 + 1rem))',
-            paddingLeft:  'max(1rem, calc((100vw - 80rem) / 2 + 1rem))',
-          }}
+          className="flex w-max min-w-full items-start gap-4 py-3 md:gap-8 md:py-5"
         >
           {filters.map((f) => {
             const isActive = f.href === '/products'
@@ -96,11 +91,11 @@ export default function CategoryFilterChips({ filters, activeCollection }: Categ
                 key={f.href}
                 href={f.href}
                 draggable={false}
-                className="flex flex-col items-center gap-2 group shrink-0"
+                className="touch-target flex shrink-0 flex-col items-center gap-2 group"
                 onClick={(e) => { if (isDragging) e.preventDefault(); }}
               >
                 <div
-                  className={`relative w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center overflow-hidden border-[3px] transition-all duration-300 pointer-events-none ${
+                  className={`pointer-events-none relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-[3px] transition-all duration-300 md:h-20 md:w-20 ${
                     isActive
                       ? 'border-brand shadow-[0_0_15px_rgba(32,37,34,0.1)] scale-105'
                       : 'border-transparent bg-black/5 group-hover:border-brand/30 group-hover:scale-105'

@@ -30,8 +30,8 @@ export default function FavoritesClient() {
   }
 
   return (
-    <div className="min-h-screen bg-surface-alt pt-20 md:pt-32 pb-16 md:pb-24 px-3 md:px-4" dir="rtl">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-surface-alt pb-24 pt-24 md:py-32" dir="rtl">
+      <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,18 +70,18 @@ export default function FavoritesClient() {
             </Link>
           </motion.div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
+          <div className="responsive-grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {favorites.map((product, index) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="relative bg-white cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-500 border border-black/10 rounded-xl md:rounded-2xl flex flex-col overflow-hidden h-auto md:h-[500px]"
+                className="relative flex h-auto cursor-pointer flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-all duration-500 group hover:shadow-xl md:h-[500px]"
               >
-                <div className="relative w-full h-[155px] md:h-[65%] bg-surface/50 transition-colors duration-500 group-hover:bg-surface flex items-center justify-center p-4 md:p-8">
+                <div className="relative flex h-52 w-full items-center justify-center bg-surface/50 p-4 transition-colors duration-500 group-hover:bg-surface sm:h-64 md:h-[65%] md:p-8">
                   <button 
-                    className="absolute top-4 left-4 z-20 text-red-500 transition-transform hover:scale-110 active:scale-95"
+                    className="touch-target absolute left-3 top-3 z-20 rounded-full text-red-500 transition-transform hover:bg-red-50 hover:scale-110 active:scale-95"
                     onClick={(e) => { 
                       e.preventDefault();
                       toggleFavorite(product);

@@ -5,16 +5,11 @@ import {
   Activity,
   AlertTriangle,
   BarChart,
-  CheckCircle2,
   Database,
   Eye,
   Gauge,
   ImageIcon,
-  Info,
-  MessageCircle,
-  Phone,
   Server,
-  ShoppingBag,
   Users,
 } from 'lucide-react'
 import { getAnalyticsData } from './actions'
@@ -79,20 +74,12 @@ export default function AnalyticsPage() {
   if (!data) return <div className="rounded-xl bg-red-50 text-red-700 p-5">فشل في جلب بيانات الاستخدام.</div>
 
   const unreadLimit = data.usage.resources.filter((resource) => getPercentage(resource) >= 70)
-  const supportPhone = data.contact.phoneNumber || data.contact.whatsappNumber
-  const currentPlan = data.usage.plan
-  const currentSubscription = data.usage.subscription
-  const isLegacyFallback = Boolean(data.usage.fallback)
 
   return (
     <div className="max-w-6xl mx-auto space-y-8">
       <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">الإحصائيات والاستهلاك</h1>
-          <p className="text-gray-500 text-sm mt-1">متابعة أداء المتجر وحدود الخطة دون خلطها مع إحصائيات العملاء.</p>
-        </div>
-        <div className="rounded-full bg-brand/10 text-brand px-4 py-2 text-sm font-bold flex items-center gap-2 w-fit">
-          <CheckCircle2 size={17} /> {data.usage.plan.name}
         </div>
       </header>
 
@@ -118,56 +105,13 @@ export default function AnalyticsPage() {
 
       <section>
         <div className="flex items-center justify-between gap-3 mb-4">
-          <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2"><Gauge className="w-5 h-5 text-brand" /> حدود الخطة الحالية</h2>
-          <span className="text-xs text-gray-500">تتجدد الخطة يدويًا من المالك</span>
+          <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2"><Gauge className="w-5 h-5 text-brand" /> حدود الاستخدام</h2>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {data.usage.resources.map((resource) => <ResourceCard key={resource.resource} resource={resource} />)}
         </div>
       </section>
 
-      <section className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-        <div className="flex items-start gap-3">
-          <Info className="text-brand shrink-0 mt-0.5" size={21} />
-          <div>
-            <h2 className="font-bold text-gray-900">كيف نقرأ الأرقام؟</h2>
-            <p className="text-sm text-gray-600 mt-2 leading-7">قاعدة البيانات مقاسة من PostgreSQL، والملفات مقاسة من Vercel Blob عند توفر رمز التخزين أو من سجل الرفع المحلي. نقل البيانات تقديري حاليًا من مشاهدات الصفحات، لذلك لا يُعرض على أنه رقم رسمي من Vercel ولا يُستخدم وحده لإيقاف المتجر.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-        <div className="flex items-start gap-3 mb-5">
-          <ShoppingBag className="w-5 h-5 text-brand mt-0.5" />
-          <div>
-            <h2 className="text-lg font-semibold text-gray-800">خطتك الحالية</h2>
-            <p className="text-sm text-gray-500 mt-1">تابع استهلاك متجرك واطلب الترقية عند الحاجة.</p>
-          </div>
-        </div>
-        {isLegacyFallback && <div className="rounded-xl border border-blue-100 bg-blue-50 text-blue-800 p-4 text-sm leading-7 mb-5">يتم عرض القياسات الأساسية مؤقتًا. سيُحدّث النظام التفاصيل تلقائيًا عند تفعيل القياس التفصيلي، ولن يتوقف متجرك بسبب ذلك.</div>}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="rounded-xl bg-gray-50 p-4"><p className="text-xs text-gray-500">الخطة الحالية</p><p className="font-bold text-gray-900 mt-2">{currentPlan.name}</p></div>
-          <div className="rounded-xl bg-gray-50 p-4"><p className="text-xs text-gray-500">حالة الخدمة</p><p className="font-bold text-gray-900 mt-2">{getSubscriptionStatusLabel(currentSubscription.status)}</p></div>
-          {currentSubscription.renewsAt && <div className="rounded-xl bg-gray-50 p-4"><p className="text-xs text-gray-500">التجديد المتوقع</p><p className="font-bold text-gray-900 mt-2">{formatDate(currentSubscription.renewsAt)}</p></div>}
-        </div>
-        {currentSubscription.notes && !isLegacyFallback && <p className="text-sm text-gray-600 mt-5">{currentSubscription.notes}</p>}
-        {supportPhone && <div className="mt-5 rounded-xl border border-brand/10 bg-brand/5 p-4"><p className="text-sm text-gray-700">لترقية الحصة أو تجديد الخطة، تواصل مع مالك المنصة مباشرة.</p><ContactButtons phone={supportPhone} /></div>}
-      </section>
-
-      <section>
-        <div className="flex items-center gap-2 mb-4"><ShoppingBag className="w-5 h-5 text-brand" /><h2 className="text-lg font-semibold text-gray-800">الترقية والدعم</h2></div>
-        {data.usage.availablePlans.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-          {data.usage.availablePlans.map((plan) => (
-            <div key={plan.id} className={`rounded-2xl border p-6 ${plan.id === currentPlan.id ? 'border-brand bg-brand/5' : 'border-gray-100 bg-white'} shadow-sm`}>
-              <div className="flex items-start justify-between gap-3"><div><h3 className="font-bold text-gray-900">{plan.name}</h3><p className="text-sm text-gray-500 mt-1">{plan.id === currentPlan.id ? 'خطتك الحالية' : 'متاحة للترقية'}</p></div>{plan.id === currentPlan.id && <CheckCircle2 className="text-brand" size={21} />}</div>
-              <p className="text-2xl font-black text-gray-900 mt-5">{plan.price === '0' ? 'مجانية' : `${plan.price} ${plan.currencyCode}`}<span className="text-sm font-medium text-gray-500">{plan.price === '0' ? '' : ' / شهر'}</span></p>
-              <p className="text-sm text-gray-600 mt-4">صور وملفات: <strong>{formatBytes(plan.blobLimitBytes)}</strong></p><p className="text-sm text-gray-600 mt-1">قاعدة البيانات: <strong>{formatBytes(plan.databaseLimitBytes)}</strong></p><p className="text-sm text-gray-600 mt-1">نقل البيانات: <strong>{formatBytes(plan.bandwidthLimitBytes)}</strong></p>
-              {plan.id !== currentPlan.id && supportPhone && <ContactButtons phone={supportPhone} />}
-            </div>
-          ))}
-        </div> : <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-sm text-gray-600">لا توجد خطط إضافية معروضة حاليًا. إذا احتجت مساحة أكبر أو نقل بيانات إضافيًا، تواصل مع مالك المنصة.</div>}
-        <div className="mt-5 rounded-xl bg-gray-50 border border-gray-100 p-4 text-sm text-gray-600">الترقية والتجديد يتمان بالتنسيق مع مالك المنصة. ستبقى واجهة المتجر وبياناتك متاحة، ويتم إيقاف الرفع الجديد فقط عند بلوغ حد التخزين حتى تتم معالجة الخطة.</div>
-      </section>
     </div>
   )
 }
@@ -192,28 +136,9 @@ function ResourceCard({ resource }: { resource: ResourceData }) {
   )
 }
 
-function ContactButtons({ phone }: { phone: string }) {
-  const digits = phone.replace(/[^\d]/g, '')
-  return <div className="flex flex-wrap gap-2 mt-5"><a href={`tel:${phone}`} className="inline-flex items-center gap-2 rounded-lg bg-brand text-white px-3 py-2 text-sm font-bold"><Phone size={15} /> اتصال</a>{digits && <a href={`https://wa.me/${digits}`} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 text-white px-3 py-2 text-sm font-bold"><MessageCircle size={15} /> واتساب</a>}</div>
-}
-
 function getPercentage(resource: ResourceData) {
   if (resource.limitBytes <= 0) return 0
   return (resource.usedBytes / resource.limitBytes) * 100
-}
-
-function getSubscriptionStatusLabel(status: string) {
-  if (status === 'GRACE') return 'فترة سماح'
-  if (status === 'SUSPENDED') return 'الرفع موقوف مؤقتًا'
-  if (status === 'CANCELLED') return 'منتهية'
-  return 'فعالة'
-}
-
-function formatDate(value: Date | string | null) {
-  if (!value) return ''
-  const date = new Date(value)
-  if (Number.isNaN(date.getTime())) return ''
-  return new Intl.DateTimeFormat('ar', { dateStyle: 'medium', timeStyle: 'short' }).format(date)
 }
 
 function formatBytes(bytes: number) {

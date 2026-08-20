@@ -170,7 +170,7 @@ export default async function RootLayout({
 
   return (
     <html lang="ar" dir="rtl" className={`${tajawal.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans bg-surface text-foreground overflow-x-hidden pb-16 md:pb-0">
+      <body className="min-h-full flex flex-col font-sans bg-surface text-foreground overflow-x-hidden">
         <SplashScreen storeName={store.name} storeNameLatin={store.nameLatin} />
         <script
           type="application/ld+json"

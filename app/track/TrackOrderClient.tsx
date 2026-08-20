@@ -123,7 +123,7 @@ export default function TrackOrderClient() {
   }
 
   return (
-    <div className="flex-grow pt-20 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-5xl mx-auto w-full">
+    <div className="site-container flex-grow py-28 md:py-32">
       <h1 className="text-2xl md:text-5xl font-black text-foreground mb-3 md:mb-4 text-center">تتبع الطلب</h1>
       <p className="text-center text-sm md:text-base text-foreground/60 mb-6 md:mb-12 max-w-xl mx-auto">
         اختر طريقة التتبع التي تفضلها لمعرفة حالة طلبك بكل سهولة.
@@ -131,20 +131,20 @@ export default function TrackOrderClient() {
 
       {/* TABS */}
       {viewState === 'FORM' && (
-        <div className="bg-white p-4 md:p-10 shadow-sm border border-black/5 mb-6 md:mb-12">
+        <div className="mb-6 rounded-2xl border border-black/5 bg-white p-4 shadow-sm md:mb-12 md:p-10">
           
-          <div className="flex justify-center mb-5 md:mb-8 border-b border-black/10 gap-2">
+          <div className="flex flex-wrap justify-center gap-1 border-b border-black/10 mb-5 md:mb-8">
             <button 
               type="button"
               onClick={() => { setMethod('PHONE'); setError(''); }}
-              className={`pb-3 md:pb-4 px-4 md:px-6 font-bold text-base md:text-lg transition-colors border-b-2 flex items-center gap-1.5 md:gap-2 ${method === 'PHONE' ? 'border-accent text-foreground' : 'border-transparent text-gray-600 hover:text-foreground'}`}
+              className={`min-h-11 px-3 md:px-6 pb-3 md:pb-4 font-bold text-sm md:text-lg transition-colors border-b-2 flex items-center gap-1.5 md:gap-2 ${method === 'PHONE' ? 'border-accent text-foreground' : 'border-transparent text-gray-600 hover:text-foreground'}`}
             >
               <Phone size={17} className="md:w-5 md:h-5" /> بالهاتف ورقم الطلب
             </button>
             <button 
               type="button"
               onClick={() => { setMethod('ORDER_ID'); setError(''); }}
-              className={`pb-3 md:pb-4 px-4 md:px-6 font-bold text-base md:text-lg transition-colors border-b-2 flex items-center gap-1.5 md:gap-2 ${method === 'ORDER_ID' ? 'border-accent text-foreground' : 'border-transparent text-gray-600 hover:text-foreground'}`}
+              className={`min-h-11 px-3 md:px-6 pb-3 md:pb-4 font-bold text-sm md:text-lg transition-colors border-b-2 flex items-center gap-1.5 md:gap-2 ${method === 'ORDER_ID' ? 'border-accent text-foreground' : 'border-transparent text-gray-600 hover:text-foreground'}`}
             >
               <Search size={17} className="md:w-5 md:h-5" /> برقم الطلب
             </button>
@@ -164,7 +164,7 @@ export default function TrackOrderClient() {
                     placeholder="رقم الجوال المستخدم في الطلب"
                     dir="ltr"
                     required
-                    className="w-full bg-surface/50 border border-black/10 rounded-none py-3 md:py-4 pr-11 pl-4 focus:outline-none focus:border-accent transition-colors text-right text-base md:text-lg"
+                    className="h-11 w-full rounded-xl border border-black/10 bg-surface/50 pr-11 pl-4 text-right text-sm md:text-base outline-none transition-colors focus:border-accent"
                   />
                 </div>
                     <p className="text-xs text-gray-500 mt-2">أدخل رقم الهاتف ورقم الطلب معًا للتحقق من ملكية الطلب.</p>
@@ -178,7 +178,7 @@ export default function TrackOrderClient() {
                       onChange={(e) => setOrderId(e.target.value)}
                       placeholder="أدخل رقم الطلب"
                       required
-                      className="w-full bg-surface/50 border border-black/10 rounded-none py-3 md:py-4 pr-11 pl-4 focus:outline-none focus:border-accent transition-colors text-right text-base md:text-lg"
+                      className="h-11 w-full rounded-xl border border-black/10 bg-surface/50 pr-11 pl-4 text-right text-sm md:text-base outline-none transition-colors focus:border-accent"
                     />
                   </div>
                 </div>
@@ -194,7 +194,7 @@ export default function TrackOrderClient() {
                     onChange={(e) => setOrderId(e.target.value)}
                     placeholder="أدخل رقم الطلب (مثال: STORE-2026-ABC123)"
                     required
-                    className="w-full bg-surface/50 border border-black/10 rounded-none py-3 md:py-4 pr-11 pl-4 focus:outline-none focus:border-accent transition-colors text-right text-base md:text-lg"
+                    className="h-11 w-full rounded-xl border border-black/10 bg-surface/50 pr-11 pl-4 text-right text-sm md:text-base outline-none transition-colors focus:border-accent"
                   />
                 </div>
               </div>
@@ -220,7 +220,7 @@ export default function TrackOrderClient() {
 
       {/* LIST OF ORDERS (For Phone Method) */}
       {viewState === 'LIST' && ordersList.length > 0 && (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl mx-auto">
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 w-full max-w-4xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold text-foreground">الطلبات المرتبطة برقم هاتفك</h2>
             <button onClick={handleBackToForm} className="btn btn-outline btn-sm gap-2 text-sm">
@@ -233,7 +233,7 @@ export default function TrackOrderClient() {
               <div 
                 key={ord.id} 
                 onClick={() => handleSelectOrder(ord)}
-                className="bg-white p-6 border border-black/10 shadow-sm hover:border-accent hover:shadow-md transition-all cursor-pointer group flex flex-col"
+                className="group flex cursor-pointer flex-col rounded-2xl border border-black/10 bg-white p-4 shadow-sm transition-all hover:border-accent hover:shadow-md md:p-6"
               >
                 <div className="flex justify-between items-start mb-4">
                   <div>

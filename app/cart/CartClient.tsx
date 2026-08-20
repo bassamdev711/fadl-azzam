@@ -25,7 +25,7 @@ export default function CartClient() {
   // Avoid hydration mismatch by only rendering after hydration.
   if (!mounted) {
     return (
-      <div className="flex-grow flex items-center justify-center pt-32 pb-24 min-h-[60vh]">
+      <div className="site-container flex min-h-[60vh] flex-grow items-center justify-center py-28 md:py-32">
         <div className="w-10 h-10 border-4 border-brand border-t-transparent rounded-full animate-spin"></div>
       </div>
     )
@@ -33,7 +33,7 @@ export default function CartClient() {
 
   return (
     <div className="min-h-screen bg-surface text-foreground font-sans flex flex-col" dir="rtl">
-      <div className="flex-grow pt-20 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
+      <div className="site-container flex-grow py-28 md:py-32">
         
         <div className="mb-6 md:mb-12">
           <h1 className="text-xl md:text-5xl font-black text-foreground mb-1.5 md:mb-3">حقيبة التسوق</h1>
@@ -41,19 +41,19 @@ export default function CartClient() {
         </div>
 
         {cartItems.length === 0 ? (
-          <div className="text-center py-20 bg-white border border-black/5 flex flex-col items-center">
+          <div className="flex flex-col items-center rounded-2xl border border-black/5 bg-white px-4 py-20 text-center">
             <p className="text-xl text-foreground/50 mb-6">حقيبة التسوق فارغة</p>
             <Link href="/products" className="btn btn-primary btn-lg rounded-sm">
               متابعة التسوق
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-12">
             
             {/* Cart Items */}
             <div className="lg:col-span-8 flex flex-col space-y-3 md:space-y-6">
               {cartItems.map((item) => (
-                <div key={item.id} className="flex flex-row items-center p-2.5 md:p-6 bg-white border border-black/5 gap-3 md:gap-6 group hover:shadow-md transition-shadow">
+                <div key={item.id} className="flex flex-row items-start gap-3 rounded-2xl border border-black/5 bg-white p-3 transition-shadow hover:shadow-md md:items-center md:gap-6 md:p-6 group">
                   <div className="w-16 h-20 md:w-32 md:h-40 bg-surface-alt shrink-0 relative flex items-center justify-center border border-black/5 overflow-hidden">
                     {item.imageUrl ? (
                       <Image 
@@ -74,7 +74,7 @@ export default function CartClient() {
                         <Link href={`/products/${item.slug}`} className="text-sm md:text-xl font-black text-foreground hover:text-brand transition-colors line-clamp-2 md:line-clamp-1">
                           {item.name}
                         </Link>
-                        <button onClick={() => removeFromCart(item.id)} aria-label="إزالة" className="text-foreground/40 hover:text-red-500 transition-colors shrink-0 mr-2 md:mr-0">
+                        <button onClick={() => removeFromCart(item.id)} aria-label="إزالة" className="touch-target -m-1 shrink-0 rounded-full text-foreground/40 transition-colors hover:bg-red-50 hover:text-red-500 md:m-0">
                           <X size={18} strokeWidth={2} className="w-4 h-4 md:w-5 md:h-5" />
                         </button>
                       </div>
@@ -82,14 +82,14 @@ export default function CartClient() {
                     </div>
                     
                     <div className="flex justify-between items-end mt-2 md:mt-0">
-                      <div className="flex items-center border border-black/10 rounded-none h-8 md:h-10 w-24 md:w-28 overflow-hidden bg-surface">
-                        <button onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))} className="w-1/3 h-full flex items-center justify-center text-foreground hover:bg-black/5">
+                      <div className="flex h-11 w-28 items-center overflow-hidden rounded-xl border border-black/10 bg-surface md:h-10">
+                        <button onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))} className="touch-target flex h-full w-1/3 items-center justify-center text-foreground transition-colors hover:bg-black/5">
                           <Minus size={12} className="md:w-3.5 md:h-3.5" />
                         </button>
                         <div className="w-1/3 h-full flex items-center justify-center font-bold text-xs md:text-sm">
                           {item.quantity}
                         </div>
-                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="w-1/3 h-full flex items-center justify-center text-foreground hover:bg-black/5">
+                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="touch-target flex h-full w-1/3 items-center justify-center text-foreground transition-colors hover:bg-black/5">
                           <Plus size={12} className="md:w-3.5 md:h-3.5" />
                         </button>
                       </div>
@@ -104,7 +104,7 @@ export default function CartClient() {
 
             {/* Order Summary */}
             <div className="lg:col-span-4">
-              <div className="bg-white border border-black/5 p-3 md:p-8 sticky top-20 md:top-32 shadow-sm">
+              <div className="rounded-2xl border border-black/5 bg-white p-4 shadow-sm md:p-8 lg:sticky lg:top-32">
                 <h2 className="text-base md:text-2xl font-black text-foreground mb-3 md:mb-6 border-b border-black/5 pb-3">ملخص الطلب</h2>
 
                 {/* Coupon Input */}
@@ -126,7 +126,7 @@ export default function CartClient() {
                       </button>
                     </div>
                   ) : (
-                    <div className="flex gap-2 overflow-hidden">
+                    <div className="flex min-w-0 gap-2">
                       <input
                         type="text"
                         value={couponCode}

@@ -75,8 +75,8 @@ export default async function ProductDetailPage({
       <Navbar storeName="فضل عزام" storeNameLatin="FADL AZZAM" />
 
       {/* Breadcrumb */}
-      <div className="pt-20 lg:pt-24 pb-2 px-6" dir="rtl">
-        <div className="max-w-5xl mx-auto">
+      <div className="site-container pt-24 pb-4" dir="rtl">
+        <div className="w-full">
           <nav className="flex items-center gap-2 text-xs text-foreground/50 font-medium">
             <Link href="/" className="hover:text-brand transition-colors">الرئيسية</Link>
             <ChevronRight className="w-3 h-3 rotate-180" />
@@ -88,8 +88,8 @@ export default async function ProductDetailPage({
       </div>
 
       {/* Product Detail */}
-      <section className="py-2 px-6">
-        <div className="max-w-5xl mx-auto">
+      <section className="pb-10 pt-2">
+        <div className="w-full">
           <ProductDetailClient
             product={{
               ...product,
@@ -110,10 +110,10 @@ export default async function ProductDetailPage({
 
       {/* Related Products */}
       {related.length > 0 && (
-        <section className="py-20 px-6 border-t border-black/5 bg-white" dir="rtl">
-          <div className="max-w-7xl mx-auto">
+        <section className="border-t border-black/5 bg-white py-16 md:py-20" dir="rtl">
+          <div className="site-container">
             <h2 className="text-2xl md:text-3xl font-black text-foreground mb-6 md:mb-10 text-center">قد يعجبك أيضاً</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+            <div className="responsive-grid grid-cols-2 md:grid-cols-4">
               {related.map((p) => (
                 <ProductCard 
                   key={p.id}
