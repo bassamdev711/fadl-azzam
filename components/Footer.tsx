@@ -81,15 +81,15 @@ export default async function Footer({
   const threads = contactSettings?.threadsUrl || null;
   const showThreads = Boolean(threads && contactSettings?.showThreads !== false);
   return (
-    <footer className="bg-brand border-t border-accent/10 text-surface/80 pt-12 pb-8 md:pt-20 md:pb-10" dir="rtl">
+    <footer className="border-t border-[#D4AF37]/35 bg-[linear-gradient(135deg,#123CDE_0%,#0B2B9F_52%,#071A4D_100%)] pt-12 pb-8 text-white/80 shadow-[0_-10px_35px_rgba(7,26,77,0.28)] md:pt-20 md:pb-10" dir="rtl">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
           <div className="md:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <span className="text-3xl font-bold tracking-widest text-accent">{storeNameLatin}</span>
-              <span className="text-2xl font-light text-surface ml-2 tracking-[0.2em]">{storeName}</span>
+              <span className="text-2xl font-light text-white ml-2 tracking-[0.2em]">{storeName}</span>
             </Link>
-            <p className="text-sm leading-relaxed text-surface/80 mb-6">
+            <p className="text-sm leading-relaxed text-white/80 mb-6">
               فضل عزام للتجارة العامة؛ خيارات عملية، توريد موثوق، وتواصل واضح للأعمال والمنازل.
             </p>
             <div className="flex gap-4">
@@ -99,7 +99,7 @@ export default async function Footer({
                   target="_blank"
                   rel="noreferrer"
                   aria-label="حسابنا على انستقرام"
-                  className="w-10 h-10 rounded-full border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-brand transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-[#D4AF37]/45 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#071A4D] transition-all duration-300"
                 >
                   <InstagramIcon size={18} />
                 </a>
@@ -110,7 +110,7 @@ export default async function Footer({
                   target="_blank"
                   rel="noreferrer"
                   aria-label="حسابنا على فيسبوك"
-                  className="w-10 h-10 rounded-full border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-brand transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-[#D4AF37]/45 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#071A4D] transition-all duration-300"
                 >
                   <FacebookIcon size={18} />
                 </a>
@@ -121,7 +121,7 @@ export default async function Footer({
                   target="_blank"
                   rel="noreferrer"
                   aria-label="حسابنا على تويتر إكس"
-                  className="w-10 h-10 rounded-full border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-brand transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-[#D4AF37]/45 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#071A4D] transition-all duration-300"
                 >
                   <XIcon size={18} />
                 </a>
@@ -132,7 +132,7 @@ export default async function Footer({
                   target="_blank"
                   rel="noreferrer"
                   aria-label="تواصل معنا عبر تيليجرام"
-                  className="w-10 h-10 rounded-full border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-brand transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-[#D4AF37]/45 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#071A4D] transition-all duration-300"
                 >
                   <Send size={18} />
                 </a>
@@ -143,7 +143,7 @@ export default async function Footer({
                   target="_blank"
                   rel="noreferrer"
                   aria-label="حسابنا على ثريدز"
-                  className="w-10 h-10 rounded-full border border-accent/30 flex items-center justify-center text-accent hover:bg-accent hover:text-brand transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-[#D4AF37]/45 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#071A4D] transition-all duration-300"
                 >
                   <AtSign size={18} />
                 </a>
@@ -152,11 +152,11 @@ export default async function Footer({
           </div>
 
           <div>
-            <h3 className="text-surface font-bold mb-6 tracking-wider text-base">استكشف</h3>
+            <h3 className="text-white font-bold mb-6 tracking-wider text-base">استكشف</h3>
             <ul className="space-y-4">
               {['مجالاتنا', 'حلول مطلوبة', 'فرص وتوريد', 'تجهيزات تجارية'].map((item) => (
                 <li key={item}>
-                  <Link href="/products" className="text-sm text-surface/80 hover:text-accent transition-colors">
+                  <Link href="/products" className="text-sm text-white/80 hover:text-accent transition-colors">
                     {item}
                   </Link>
                 </li>
@@ -165,36 +165,36 @@ export default async function Footer({
           </div>
 
           <div>
-            <h3 className="text-surface font-bold mb-6 tracking-wider text-base">خدماتنا</h3>
+            <h3 className="text-white font-bold mb-6 tracking-wider text-base">خدماتنا</h3>
             <ul className="space-y-4">
               {legalPages.map((page) => (
                 <li key={page.id}>
-                  <Link href={`/pages/${page.slug}`} className="text-sm text-surface/80 hover:text-accent transition-colors">
+                  <Link href={`/pages/${page.slug}`} className="text-sm text-white/80 hover:text-accent transition-colors">
                     {page.title}
                   </Link>
                 </li>
               ))}
               {settings?.showShippingInFooter && (
                 <li>
-                  <Link href="/policies/shipping" className="text-sm text-surface/80 hover:text-accent transition-colors">
+                  <Link href="/policies/shipping" className="text-sm text-white/80 hover:text-accent transition-colors">
                     سياسة الشحن والتوصيل
                   </Link>
                 </li>
               )}
               {settings?.showReturnInFooter && (
                 <li>
-                  <Link href="/policies/return" className="text-sm text-surface/80 hover:text-accent transition-colors">
+                  <Link href="/policies/return" className="text-sm text-white/80 hover:text-accent transition-colors">
                     سياسة الاسترجاع
                   </Link>
                 </li>
               )}
               <li>
-                <Link href="/track" className="text-sm text-surface/80 hover:text-accent transition-colors">
+                <Link href="/track" className="text-sm text-white/80 hover:text-accent transition-colors">
                   متابعة الطلب
                 </Link>
               </li>
               <li>
-                <Link href="/#contact" className="text-sm text-surface/80 hover:text-accent transition-colors">
+                <Link href="/#contact" className="text-sm text-white/80 hover:text-accent transition-colors">
                   تواصل معنا
                 </Link>
               </li>
@@ -202,8 +202,8 @@ export default async function Footer({
           </div>
 
           <div>
-            <h3 className="text-surface font-bold mb-6 tracking-wider text-base">تواصل معنا</h3>
-            <ul className="space-y-4 text-sm text-surface/80">
+            <h3 className="text-white font-bold mb-6 tracking-wider text-base">تواصل معنا</h3>
+            <ul className="space-y-4 text-sm text-white/80">
               {showAddress && (
                 <li className="flex items-center gap-3">
                   <span className="text-accent"><MapPin size={16} /></span>
@@ -226,7 +226,7 @@ export default async function Footer({
           </div>
         </div>
 
-        <div className="border-t border-accent/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-surface/60">
+        <div className="border-t border-[#D4AF37]/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/60">
           <p>© {currentYear} {storeName}. جميع الحقوق محفوظة.</p>
           <div className="flex flex-wrap gap-4 md:gap-6 justify-center">
             {legalPages.map(page => (
