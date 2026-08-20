@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowDownLeft, ArrowLeft, Bolt, Building2, Home, SunMedium } from "lucide-react";
+import { ArrowDownLeft, ArrowLeft, CookingPot, Laptop, Sofa, SunMedium } from "lucide-react";
 
 type HeroData = {
   heroTitle?: string | null;
@@ -30,10 +30,10 @@ export default function Hero({
   };
 
   const serviceMarkers = [
-    { icon: SunMedium, label: "طاقة شمسية" },
-    { icon: Home, label: "أجهزة منزلية" },
-    { icon: Building2, label: "تجهيزات تجارية" },
-    { icon: Bolt, label: "حلول عملية" },
+    { icon: Laptop, label: "إلكترونيات" },
+    { icon: SunMedium, label: "منظومات شمسية" },
+    { icon: CookingPot, label: "مطابخ ألمنيوم" },
+    { icon: Sofa, label: "مجالس عربية" },
   ];
 
   return (
