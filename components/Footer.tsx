@@ -85,7 +85,7 @@ export default async function Footer({
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
           <div className="md:col-span-1">
-            <Link href="/" aria-label={`${storeName} - ${storeNameLatin}`} className="group mb-6 inline-flex">
+            <Link href="/" aria-label={storeName} className="group mb-6 inline-flex">
               <span className="flex flex-col items-end leading-none" dir="rtl">
                 <span className="text-2xl font-black tracking-tight text-white transition-colors duration-300 md:text-3xl">
                   {storeName}
