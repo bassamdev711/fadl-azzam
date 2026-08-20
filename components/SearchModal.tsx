@@ -1,6 +1,7 @@
 'use client'
 
 import { startTransition, useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -76,7 +77,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     }
   }
 
-  return (
+  const modalContent = (
     <AnimatePresence>
       {isOpen && (
         <>
@@ -85,32 +86,32 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 z-[100] backdrop-blur-sm"
+            className="fixed inset-0 bg-foreground/45 z-[100] backdrop-blur-sm"
           />
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-0 left-0 right-0 z-[101] bg-surface shadow-2xl rounded-b-3xl overflow-hidden"
+            className="fixed top-0 left-0 right-0 z-[101] bg-surface border-x border-b border-brand/10 shadow-[0_18px_50px_rgba(18,60,222,0.18)] rounded-b-3xl overflow-hidden"
             dir="rtl"
           >
             <div className="max-w-4xl mx-auto p-3 md:p-8">
               <form onSubmit={handleSearchSubmit} className="relative flex items-center mb-4 md:mb-8">
-                <Search className="absolute right-4 text-foreground/50 w-6 h-6" />
+                <Search className="absolute right-4 text-brand w-6 h-6" />
                 <input
                   ref={inputRef}
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="ابحث عن منتج، تصنيف، أو كلمة مفتاحية..."
-                  className="w-full bg-white border-2 border-brand/20 rounded-full py-3 md:py-4 pr-12 md:pr-14 pl-12 md:pl-14 text-base md:text-lg text-foreground focus:outline-none focus:border-brand transition-colors"
+                  className="w-full bg-brand-light/20 border-2 border-brand/25 rounded-full py-3 md:py-4 pr-12 md:pr-14 pl-12 md:pl-14 text-base md:text-lg text-foreground placeholder:text-foreground/45 focus:outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 transition-colors"
                 />
                 <button
                   type="button"
                   onClick={onClose}
-                  className="absolute left-4 p-2 bg-black/5 hover:bg-black/10 rounded-full transition-colors"
+                  className="absolute left-4 p-2 bg-brand/5 hover:bg-brand/10 rounded-full transition-colors"
                 >
-                  <X className="w-5 h-5 text-foreground" />
+                  <X className="w-5 h-5 text-brand" />
                 </button>
               </form>
 
@@ -122,20 +123,20 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   </div>
                 ) : query && results.length > 0 ? (
                   <div>
-                    <h3 className="text-sm font-bold text-foreground/50 mb-4 px-2">النتائج السريعة</h3>
+                    <h3 className="text-sm font-bold text-brand mb-4 px-2">النتائج السريعة</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {results.map((product) => (
                         <Link
                           key={product.id}
                           href={`/products/${product.slug}`}
                           onClick={onClose}
-                          className="flex items-center gap-3 p-2 md:p-3 rounded-xl hover:bg-white transition-colors border border-transparent hover:border-black/5 group"
+                          className="flex items-center gap-3 p-2 md:p-3 rounded-xl hover:bg-brand-light/30 transition-colors border border-transparent hover:border-brand/10 group"
                         >
                           <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-lg border border-black/5 flex items-center justify-center relative overflow-hidden shrink-0">
                             {product.imageUrl ? (
                               <Image src={product.imageUrl} alt={product.name} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                             ) : (
-                              <span className="text-accent">متجرنا</span>
+                              <span className="text-brand font-bold">متجرنا</span>
                             )}
                           </div>
                           <div className="flex-grow">
@@ -167,18 +168,18 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     <p className="text-sm text-foreground/60">حاول استخدام كلمات مختلفة أو تصفح مجموعاتنا.</p>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-2 opacity-60">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-2">
                     <div>
-                      <h3 className="text-sm font-bold text-foreground/70 mb-4 flex items-center gap-2">
+                      <h3 className="text-sm font-bold text-brand mb-4 flex items-center gap-2">
                         <Search className="w-4 h-4" />
                         عمليات بحث شائعة
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {['الأكثر مبيعًا', 'وصل حديثًا', 'هدايا', 'عروض', 'منتجات مميزة'].map((term) => (
+                        {['الطاقة الشمسية', 'ألواح شمسية', 'بطاريات الطاقة', 'إنفرترات', 'منظمات الشحن', 'حلول الطاقة'].map((term) => (
                           <button 
                             key={term}
                             onClick={() => setQuery(term)}
-                            className="px-4 py-2 bg-white rounded-full text-sm font-medium hover:bg-brand hover:text-white transition-colors border border-black/5"
+                            className="px-4 py-2 bg-brand/5 text-brand rounded-full text-sm font-medium hover:bg-brand hover:text-white transition-colors border border-brand/15"
                           >
                             {term}
                           </button>
@@ -194,4 +195,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
       )}
     </AnimatePresence>
   )
+
+  if (typeof document === 'undefined') return null
+  return createPortal(modalContent, document.body)
 }
