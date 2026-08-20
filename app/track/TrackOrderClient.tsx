@@ -203,7 +203,7 @@ export default function TrackOrderClient() {
             <button 
               type="submit"
               disabled={loading}
-              className="btn btn-primary w-full btn-lg !bg-accent !text-foreground hover:!bg-accent/90 border border-black/10 disabled:opacity-50 disabled:cursor-not-allowed md:h-16 h-14 md:text-lg"
+              className="btn btn-primary w-full btn-lg !bg-brand !text-white hover:!bg-brand-hover border border-[#D4AF37]/60 disabled:opacity-50 disabled:cursor-not-allowed md:h-16 h-14 md:text-lg"
             >
               {loading ? 'جاري البحث...' : 'تتبع الآن'}
             </button>
@@ -240,7 +240,7 @@ export default function TrackOrderClient() {
                     <p className="text-xs text-gray-500 mb-1">رقم الطلب</p>
                     <p className="font-mono font-bold text-lg text-brand group-hover:text-accent transition-colors">{ord.orderNumber || ord.id}</p>
                   </div>
-                  <div className={`px-3 py-1 text-xs font-bold rounded-full ${getStatusStep(ord.status) === -1 ? 'bg-red-100 text-red-700' : getStatusStep(ord.status) === 4 ? 'bg-brand/10 text-brand' : 'bg-blue-50 text-blue-600'}`}>
+                  <div className={`px-3 py-1 text-xs font-bold rounded-full ${getStatusStep(ord.status) === -1 ? 'bg-red-100 text-red-700' : getStatusStep(ord.status) === 4 ? 'bg-brand/10 text-brand' : 'bg-brand/10 text-brand border border-brand/20'}`}>
                     {getStatusText(ord.status)}
                   </div>
                 </div>

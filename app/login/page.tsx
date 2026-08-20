@@ -30,14 +30,14 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-[#071a4d] flex flex-col justify-center items-center px-4 py-20 font-sans text-white" dir="rtl">
-      <Link href="/" className="btn btn-ghost btn-sm absolute right-4 top-4 gap-2 text-white/70 hover:text-accent sm:right-8 sm:top-8">
+      <Link href="/" className="btn btn-ghost btn-sm absolute right-4 top-4 gap-2 text-white/70 hover:text-[#E2C458] sm:right-8 sm:top-8">
         <ArrowRight size={20} />
         العودة للموقع
       </Link>
 
-      <div className="w-full max-w-md rounded-2xl border border-accent/20 bg-white p-5 shadow-xl sm:p-8">
+      <div className="w-full max-w-md rounded-2xl border border-[#D4AF37]/35 bg-white p-5 shadow-xl sm:p-8">
         <div className="flex justify-center mb-6">
-          <div className="w-16 h-16 bg-brand/10 rounded-full flex items-center justify-center border border-brand/20">
+          <div className="w-16 h-16 bg-[#D4AF37]/12 rounded-full flex items-center justify-center border border-[#D4AF37]/35">
             <ShieldCheck className="w-8 h-8 text-brand" />
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="btn btn-primary w-full btn-lg !bg-accent !text-foreground hover:!bg-accent/90 border border-black/10 disabled:opacity-50 disabled:cursor-not-allowed h-14 text-lg"
+            className="btn btn-primary w-full btn-lg !bg-brand !text-white hover:!bg-brand-hover border border-[#D4AF37]/60 disabled:opacity-50 disabled:cursor-not-allowed h-14 text-lg"
           >
             {loading ? 'جاري التحقق...' : 'دخول إلى لوحة التحكم'}
           </button>

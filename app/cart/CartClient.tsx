@@ -180,7 +180,7 @@ export default function CartClient() {
                   </div>
                 </div>
 
-                <Link href="/checkout" className="btn btn-primary w-full btn-lg gap-2 group !bg-accent !text-foreground hover:!bg-accent/90 border border-black/10">
+                <Link href="/checkout" className="btn btn-primary w-full btn-lg gap-2 group !bg-brand !text-white hover:!bg-brand-hover border border-[#D4AF37]/60">
                   <span>إتمام الطلب</span>
                   <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                 </Link>
