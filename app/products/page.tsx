@@ -10,7 +10,7 @@ import { isLegacyCatalogRecord, isLegacyCollectionRecord } from '@/lib/catalog-u
 export async function generateMetadata(): Promise<Metadata> {
   const store = await getStoreConfig()
   return {
-    title: `المنتجات | ${store.name}`,
+    title: 'المنتجات',
     description: `اكتشف منتجات ${store.name}`,
   }
 }

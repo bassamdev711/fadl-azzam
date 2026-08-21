@@ -206,7 +206,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               transition={{ duration: 0.5 }}
             >
               <div className="mb-4">
-                <span className="text-accent font-bold text-[10px] tracking-widest uppercase mb-2 block">
+                <span className="text-accent-readable font-bold text-[10px] tracking-widest uppercase mb-2 block">
                   {product.engName || product.brand || 'Featured product'}
                 </span>
                 <h1 className="text-2xl md:text-4xl font-black text-foreground mb-2">{product.name}</h1>

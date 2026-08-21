@@ -199,7 +199,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.15 }}
           >
-            <span className="text-accent font-bold text-[10px] tracking-[0.3em] uppercase mb-2 block">
+            <span className="text-accent-readable font-bold text-[10px] tracking-[0.3em] uppercase mb-2 block">
               {product.engName || 'Featured product'}
             </span>
             <h2 className="text-2xl md:text-4xl font-black text-foreground mb-3 leading-tight">
@@ -385,7 +385,7 @@ export default function ProductsClient({
   return (
     <section
       id={type || 'products'}
-      className={`site-section ${type === 'offers' ? 'bg-surface-alt' : 'bg-surface'} relative overflow-hidden`}
+      className={`site-section content-visibility-auto ${type === 'offers' ? 'bg-surface-alt' : 'bg-surface'} relative overflow-hidden`}
     >
       <div className="site-container" dir="rtl">
         <motion.div
@@ -393,7 +393,7 @@ export default function ProductsClient({
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-8 md:mb-20"
         >
-          <span className="text-accent tracking-[0.3em] uppercase text-xs font-bold mb-3 md:mb-4 block">
+          <span className="text-accent-readable tracking-[0.3em] uppercase text-xs font-bold mb-3 md:mb-4 block">
             {subtitle || 'المجموعة الحصرية'}
           </span>
           <h2 className="text-2xl md:text-5xl font-black text-foreground mb-4 md:mb-6">
@@ -466,7 +466,7 @@ export default function ProductsClient({
                   </div>
                   <div className="flex-1 flex flex-col items-center justify-center p-2.5 text-center bg-white z-10 border-t border-black/10">
                     <h3 className="text-sm font-black text-foreground mb-0.5">{product.name}</h3>
-                    <p className="text-accent text-[9px] tracking-widest uppercase mb-1.5">{product.engName}</p>
+                    <p className="text-accent-readable text-[9px] tracking-widest uppercase mb-1.5">{product.engName}</p>
                     <div className="flex items-center gap-1.5 mb-2">
                       <p className="text-brand font-bold text-sm">{product.price}</p>
                       {product.compareAtPrice && (
@@ -543,7 +543,7 @@ export default function ProductsClient({
                   </div>
                   <div className="flex-1 flex flex-col items-center justify-center p-5 text-center bg-white z-10 border-t border-black/10">
                     <h3 className="text-xl font-black text-foreground mb-1.5">{product.name}</h3>
-                    <p className="text-accent text-xs tracking-[0.2em] uppercase">{product.engName}</p>
+                    <p className="text-accent-readable text-xs tracking-[0.2em] uppercase">{product.engName}</p>
                     <div className="flex items-center gap-2 my-3">
                       <p className="text-brand font-bold text-base">{product.price}</p>
                       {product.compareAtPrice && (

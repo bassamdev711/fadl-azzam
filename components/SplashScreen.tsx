@@ -25,7 +25,7 @@ export default function SplashScreen({
     }
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const duration = prefersReducedMotion ? 250 : 900;
+    const duration = prefersReducedMotion ? 0 : 500;
 
     sessionStorage.setItem(splashKey, "true");
     const timer = window.setTimeout(() => setShowSplash(false), duration);

@@ -79,7 +79,7 @@ export default function TestimonialsClient({
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative" dir="rtl">
         <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
           <div className="text-center md:text-right">
-            <span className="text-accent tracking-[0.3em] uppercase text-xs font-bold mb-4 block">
+            <span className="text-accent-readable tracking-[0.3em] uppercase text-xs font-bold mb-4 block">
               {title}
             </span>
             <h2 className="text-2xl md:text-5xl font-black text-foreground mb-4">{subtitle}</h2>

@@ -108,7 +108,7 @@ export default function FavoritesClient() {
                 
                 <div className="flex-1 flex flex-col items-center justify-center p-3 md:p-6 text-center bg-white z-20 border-t border-black/5 relative">
                   <h3 className="text-base md:text-2xl font-black text-foreground mb-0.5 md:mb-1">{product.name}</h3>
-                  <p className="text-accent text-[9px] md:text-[10px] tracking-[0.2em] uppercase mb-2 md:mb-4">{product.engName || 'Featured product'}</p>
+                  <p className="text-accent-readable text-[9px] md:text-[10px] tracking-[0.2em] uppercase mb-2 md:mb-4">{product.engName || 'Featured product'}</p>
                   
                   <div className="flex items-center gap-1.5 md:gap-2 mb-3 md:mb-6">
                     <p className="text-brand font-bold text-sm md:text-lg">{Number(product.price).toLocaleString('ar-SA')} {currency}</p>

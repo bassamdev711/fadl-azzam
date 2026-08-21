@@ -45,7 +45,7 @@ export default function ContactClient({ contactData }: { contactData?: ContactDa
     <section id="contact" className="py-24 md:py-32 bg-surface">
       <div className="max-w-7xl mx-auto px-6 lg:px-12" dir="rtl">
         <div className="text-center mb-20">
-          <span className="text-accent tracking-[0.3em] uppercase text-xs font-bold mb-4 block">
+          <span className="text-accent-readable tracking-[0.3em] uppercase text-xs font-bold mb-4 block">
             دائماً في خدمتك
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">تواصل معنا</h2>
@@ -118,9 +118,10 @@ export default function ContactClient({ contactData }: { contactData?: ContactDa
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-foreground text-sm font-bold mb-2">الاسم الكريم</label>
+                  <label htmlFor="contact-name" className="block text-foreground text-sm font-bold mb-2">الاسم الكريم</label>
                   <input
                     type="text"
+                    id="contact-name"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -128,9 +129,10 @@ export default function ContactClient({ contactData }: { contactData?: ContactDa
                   />
                 </div>
                 <div>
-                  <label className="block text-foreground text-sm font-bold mb-2">رقم الهاتف</label>
+                  <label htmlFor="contact-phone" className="block text-foreground text-sm font-bold mb-2">رقم الهاتف</label>
                   <input
                     type="tel"
+                    id="contact-phone"
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -141,9 +143,10 @@ export default function ContactClient({ contactData }: { contactData?: ContactDa
               </div>
 
               <div>
-                <label className="block text-foreground text-sm font-bold mb-2">البريد الإلكتروني</label>
+                <label htmlFor="contact-email" className="block text-foreground text-sm font-bold mb-2">البريد الإلكتروني</label>
                 <input
                   type="email"
+                  id="contact-email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -153,8 +156,9 @@ export default function ContactClient({ contactData }: { contactData?: ContactDa
               </div>
 
               <div>
-                <label className="block text-foreground text-sm font-bold mb-2">رسالتك</label>
+                <label htmlFor="contact-message" className="block text-foreground text-sm font-bold mb-2">رسالتك</label>
                 <textarea
+                  id="contact-message"
                   required
                   rows={4}
                   value={formData.message}

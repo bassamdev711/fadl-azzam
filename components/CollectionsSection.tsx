@@ -49,7 +49,7 @@ export default async function CollectionsSection({ brandName = 'فضل عزام'
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-16 gap-4">
           <div>
-            <span className="text-accent tracking-[0.3em] uppercase text-xs font-bold mb-4 block">
+            <span className="text-accent-readable tracking-[0.3em] uppercase text-xs font-bold mb-4 block">
 مجالات {brandName}
             </span>
             <h2 className="text-3xl md:text-5xl font-black text-foreground">استكشف مجالاتنا</h2>

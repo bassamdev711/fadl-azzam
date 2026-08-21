@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowDownLeft, ArrowLeft, CookingPot, Laptop, Sofa, SunMedium } from "lucide-react";
@@ -39,6 +39,23 @@ export default function Hero({
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const desktopHero = getImageProps({
+    src: "/brand/hero-store-promo-text-right.webp",
+    alt: "واجهة متجر فضل عزام للتجارة العامة والأجهزة المنزلية",
+    width: 2048,
+    height: 1152,
+    sizes: "100vw",
+    quality: 75,
+  });
+  const mobileHero = getImageProps({
+    src: "/brand/hero-mobile-storefront.png",
+    alt: "معرض فضل عزام للتجارة العامة والتجهيزات المنزلية",
+    width: 1440,
+    height: 2560,
+    sizes: "100vw",
+    quality: 75,
+  });
+
   const serviceMarkers = [
     { icon: Laptop, label: "إلكترونيات" },
     { icon: SunMedium, label: "منظومات شمسية" },
@@ -48,25 +65,16 @@ export default function Hero({
 
   return (
     <section id="hero" className="relative min-h-[100dvh] overflow-hidden bg-brand text-surface lg:h-[min(100dvh,56.25vw)] lg:min-h-0" dir="rtl">
-      {/* Desktop artwork remains unchanged on large screens. */}
-      <Image
-        src="/brand/hero-store-promo-text-right.webp"
-        alt="واجهة متجر فضل عزام للتجارة العامة والأجهزة المنزلية"
-        fill
-        priority
-        sizes="100vw"
-        className="hidden object-cover object-right lg:block"
-      />
-
-      {/* A dedicated 9:16 composition is used only on phones. */}
-      <Image
-        src="/brand/hero-mobile-storefront.png"
-        alt="معرض فضل عزام للتجارة العامة والتجهيزات المنزلية"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center lg:hidden"
-      />
+      {/* Responsive art direction keeps the existing desktop/mobile compositions while loading only the selected source. */}
+      <picture className="absolute inset-0 block">
+        <source media="(min-width: 1024px)" srcSet={desktopHero.props.srcSet} sizes="100vw" />
+        <img
+          {...mobileHero.props}
+          alt="معرض فضل عزام للتجارة العامة والتجهيزات المنزلية"
+          fetchPriority="high"
+          className="h-full w-full object-cover object-center lg:object-right"
+        />
+      </picture>
 
       <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(3,12,45,0.06),rgba(4,20,72,0.04)_46%,rgba(5,18,62,0.3))] lg:block" />
       <div className="absolute inset-0 hidden bg-[radial-gradient(circle_at_12%_75%,rgba(63,124,255,0.18),transparent_34%)] lg:block" />
@@ -76,8 +84,8 @@ export default function Hero({
       {/* Phone layout: restrained HTML copy over a spacious editorial composition. */}
       <div className="relative z-10 min-h-[100dvh] lg:hidden">
         <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: -12 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.7 }}
           className="absolute inset-x-6 top-28 text-right text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] sm:inset-x-8 sm:top-32"
         >
@@ -112,8 +120,8 @@ export default function Hero({
       <div className="relative z-10 mx-auto hidden h-full min-h-[100dvh] max-w-7xl flex-col justify-between px-5 pb-8 pt-28 sm:px-8 lg:flex lg:min-h-0 lg:px-12 lg:pb-12 lg:pt-36">
         <div className="flex items-start justify-between gap-6">
           <motion.div
-            initial={{ opacity: 0, x: 28 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ x: 28 }}
+            animate={{ x: 0 }}
             transition={{ duration: 0.8 }}
             className="max-w-3xl lg:max-w-[46%]"
           >

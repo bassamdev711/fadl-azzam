@@ -77,6 +77,10 @@ body.is-admin #announcement-bar {
   display: none;
 }
 
+.text-accent-readable {
+  color: #355FC4;
+}
+
 .text-gradient {
   background: linear-gradient(to right, var(--color-brand), var(--color-accent));
   -webkit-background-clip: text;
@@ -131,6 +135,12 @@ body.is-admin #announcement-bar {
 
 .site-section {
   padding-block: var(--site-section-y);
+}
+
+/* Defer layout/paint work for long-page sections until they approach the viewport. */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
 }
 
 .safe-bottom {
